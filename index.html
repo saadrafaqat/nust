@@ -355,18 +355,12 @@
 let selectedField = 'engineering'; 
 
 function authenticateUserLogin() {
-    const rawId = document.getElementById('candidateIdInput').value.trim();
-    const rawPass = document.getElementById('candidatePassInput').value.trim();
-    const MASTER_PASSWORD = "NUST2026"; 
-    
-    if(!rawId || !rawPass) { alert("Please enter credentials."); return; }
-    if(rawPass !== MASTER_PASSWORD) { alert("Invalid Password."); return; }
-    
-    document.getElementById('displayCandidateId').innerText = rawId;
-    
-    // Hide Login, Show Field Selection
-    document.getElementById('loginScreenView').style.display = 'none';
-    document.getElementById('fieldSelectionView').style.display = 'flex';
+    const password = document.getElementById('candidatePassInput').value;
+    if (password === "NUST2026") {
+        // Your logic here
+    } else {
+        alert("Wrong password!");
+    }
 }
 
 function initField(field) {
