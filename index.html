@@ -401,15 +401,23 @@ function refreshWorkspace() {
     let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
     document.getElementById('questionTextBox').innerHTML = `${q.q} ${imageHTML}`;
 
-    if (typeof renderMathInElement === 'function') {
-        renderMathInElement(document.getElementById('questionTextBox'), {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    }
+    renderMathInElement(document.getElementById('questionTextBox'), {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ]
+    });
 
+    const cont = document.getElementById('optionsRadioGroup');
+    cont.innerHTML = '';
+    q.a.forEach((opt, idx) => {
+        const row = document.createElement('div');
+        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+        row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
+        cont.appendChild(row);
+    });
+}
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
