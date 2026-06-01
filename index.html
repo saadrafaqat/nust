@@ -81,8 +81,12 @@
         • Click the Save button after choosing an option to record your choice.
     </div>
 
-    <script src="questions.js"></script>
+<script src="questions.js"></script>
 <script>
+    let currentQuestions = [];
+    let currentIndex = 0;
+    let score = 0;
+
     function togglePass() {
         const p = document.getElementById("passInput");
         const b = document.querySelector(".eye-btn");
@@ -97,23 +101,70 @@
 
     function toggle(id) { document.getElementById(id).classList.toggle('open'); }
 
-    // Updated function to start the test
     function startTest(track) {
         // Map the button text to the QUESTION_BANK keys
         const map = {
             'Engineering': 'engineering',
             'Applied Sciences': 'applied_sciences',
             'Business Studies': 'business_studies'
+            // Add 'Architecture' and 'Natural Sciences' keys here if they exist in questions.js
         };
         const key = map[track];
         
-        if (QUESTION_BANK[key]) {
-            alert("Starting " + track + " test. Check console for data validation.");
-            console.log("Loaded Questions for " + track + ":", QUESTION_BANK[key]);
-            // Here you can inject questions into the DOM dynamically
+        if (typeof QUESTION_BANK !== 'undefined' && QUESTION_BANK[key]) {
+            // Flatten subjects (e.g., math, physics, english) into one list
+            currentQuestions = Object.values(QUESTION_BANK[key]).flat();
+            currentIndex = 0;
+            score = 0;
+            
+            // Hide the stream selection view and show the test
+            document.getElementById('trackView').style.display = 'none';
+            document.querySelector('.footer-note').style.display = 'none';
+            
+            // Create a test container if it doesn't exist
+            if(!document.getElementById('testContainer')) {
+                const container = document.createElement('div');
+                container.id = 'testContainer';
+                container.className = 'card active';
+                document.body.appendChild(container);
+            }
+            renderQuestion();
         } else {
-            alert("No question bank found for " + track);
+            alert("No question bank found for " + track + ". Please check console.");
+            console.error("Key not found in QUESTION_BANK:", key);
         }
+    }
+
+    function renderQuestion() {
+        const testContainer = document.getElementById('testContainer');
+        testContainer.style.display = 'block';
+        
+        if (currentIndex < currentQuestions.length) {
+            const q = currentQuestions[currentIndex];
+            let optionsHTML = q.a.map((opt, i) => `
+                <button class="action-btn" style="margin:5px 0; background:#444;" onclick="checkAnswer(${i})">${opt}</button>
+            `).join('');
+
+            testContainer.innerHTML = `
+                <h2>Question ${currentIndex + 1}</h2>
+                <p style="margin-bottom:20px; text-align:center;">${q.q}</p>
+                ${optionsHTML}
+            `;
+        } else {
+            testContainer.innerHTML = `
+                <h2>Test Complete</h2>
+                <p style="text-align:center; font-size:18px;">Your Final Score: ${score} / ${currentQuestions.length}</p>
+                <button class="action-btn" style="margin-top:20px;" onclick="location.reload()">Restart Portal</button>
+            `;
+        }
+    }
+
+    function checkAnswer(selectedIndex) {
+        if (selectedIndex === currentQuestions[currentIndex].c) {
+            score++;
+        }
+        currentIndex++;
+        renderQuestion();
     }
 </script>
 </body>
