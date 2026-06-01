@@ -81,19 +81,40 @@
         • Click the Save button after choosing an option to record your choice.
     </div>
 
-    <script>
-        function togglePass() {
-            const p = document.getElementById("passInput");
-            const b = document.querySelector(".eye-btn");
-            if (p.type === "password") { p.type = "text"; b.innerText = "HIDE"; }
-            else { p.type = "password"; b.innerText = "SHOW"; }
+    <script src="questions.js"></script>
+<script>
+    function togglePass() {
+        const p = document.getElementById("passInput");
+        const b = document.querySelector(".eye-btn");
+        if (p.type === "password") { p.type = "text"; b.innerText = "HIDE"; }
+        else { p.type = "password"; b.innerText = "SHOW"; }
+    }
+
+    function showFields() { 
+        document.getElementById('loginView').style.display = 'none'; 
+        document.getElementById('trackView').style.display = 'block'; 
+    }
+
+    function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+
+    // Updated function to start the test
+    function startTest(track) {
+        // Map the button text to the QUESTION_BANK keys
+        const map = {
+            'Engineering': 'engineering',
+            'Applied Sciences': 'applied_sciences',
+            'Business Studies': 'business_studies'
+        };
+        const key = map[track];
+        
+        if (QUESTION_BANK[key]) {
+            alert("Starting " + track + " test. Check console for data validation.");
+            console.log("Loaded Questions for " + track + ":", QUESTION_BANK[key]);
+            // Here you can inject questions into the DOM dynamically
+        } else {
+            alert("No question bank found for " + track);
         }
-        function showFields() { 
-            document.getElementById('loginView').style.display = 'none'; 
-            document.getElementById('trackView').style.display = 'block'; 
-        }
-        function toggle(id) { document.getElementById(id).classList.toggle('open'); }
-        function startTest(track) { alert("Launching " + track + " Assessment..."); }
-    </script>
+    }
+</script>
 </body>
 </html>
