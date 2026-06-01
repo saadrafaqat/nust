@@ -394,12 +394,13 @@ function refreshWorkspace() {
     const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
     const cfg = FIELD_CONFIG[selectedField];
 
-    // 1. Update the UI text
+    // 1. Update the UI text (This restores your question numbers)
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
-    // 2. Handle Question Text & Math Rendering
-    let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
+    // 2. Handle Question Text & Math
+    // To make the image smaller, change 'max-width: 100%' to 'max-width: 300px' (or whatever size you prefer)
+    let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 300px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
     document.getElementById('questionTextBox').innerHTML = `${q.q} ${imageHTML}`;
 
     renderMathInElement(document.getElementById('questionTextBox'), {
