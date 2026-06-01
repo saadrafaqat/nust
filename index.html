@@ -408,6 +408,7 @@ function refreshWorkspace() {
         ]
     });
 
+    // 1. Build options
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
@@ -417,16 +418,8 @@ function refreshWorkspace() {
         row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
         cont.appendChild(row);
     });
-}
-    const cont = document.getElementById('optionsRadioGroup');
-    cont.innerHTML = '';
-    q.a.forEach((opt, idx) => {
-        const row = document.createElement('div');
-        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-        row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
-        cont.appendChild(row);
-    });
+
+    // 2. Update navigation focus
     document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
