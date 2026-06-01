@@ -2,6 +2,9 @@
 <html lang="en">
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3783bac929334b3eac2b0e9e69617817"}'></script>
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="icon" href="icon.png" type="image/png">
@@ -415,7 +418,11 @@ function refreshWorkspace() {
     const cfg = FIELD_CONFIG[selectedField];
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-    document.getElementById('questionTextBox').innerText = q.q;
+    document.getElementById('questionTextBox').innerHTML = q.q;
+    renderMathInElement(document.getElementById('questionTextBox'));
+
+    // 3. (Optional) Add this if you want math inside your options as well:
+    renderMathInElement(document.getElementById('optionsRadioGroup'));
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
