@@ -38,7 +38,7 @@
         .field-card-detail { font-size:11px; color:#555; margin-top:2px; }
         .field-card-weightage { font-size:10px; color:#777; margin-top:3px; background:#EFF6FF; padding:2px 8px; border-radius:3px; display:inline-block; }
         .field-card-code { font-size:10px; font-weight:bold; color:#0055A5; background:#E8F0FE; padding:3px 8px; border-radius:4px; flex-shrink:0; }
-        .btn-back { width:100%; padding:10px; margin-top:8px; background:transparent; color:#999; border:1px solid #ccc; border-radius:8px; font-size:13px; cursor:pointer; transition:all 0.2s; }
+        .btn-back { width:100%; padding:10px; margin-top:8px; background:transparent; color:#999; border:1px solid #ccc; border-radius:8px; font-size:13px; cursor:pointer; }
         .btn-back:hover { color:#0055A5; border-color:#0055A5; }
         .exam-interface { display:none; padding:10px; }
         .test-table { width:100%; border-collapse:collapse; border:3px double #0055A5; margin-bottom:8px; }
@@ -132,8 +132,8 @@
                 </div>
                 <div class="field-card-code">ENG</div>
             </div>
-            <div class="field-card" onclick="selectField(this,'applied-sciences')">
-                <input type="radio" name="fieldChoice" value="applied-sciences">
+            <div class="field-card" onclick="selectField(this,'applied_sciences')">
+                <input type="radio" name="fieldChoice" value="applied_sciences">
                 <div class="field-card-content">
                     <div class="field-card-title">NET-Applied Sciences</div>
                     <div class="field-card-detail">HSSC Pre-Medical group / equivalent</div>
@@ -141,8 +141,8 @@
                 </div>
                 <div class="field-card-code">APS</div>
             </div>
-            <div class="field-card" onclick="selectField(this,'business')">
-                <input type="radio" name="fieldChoice" value="business">
+            <div class="field-card" onclick="selectField(this,'business_studies')">
+                <input type="radio" name="fieldChoice" value="business_studies">
                 <div class="field-card-content">
                     <div class="field-card-title">NET-Business Studies &amp; Social Sciences</div>
                     <div class="field-card-detail">HSSC with any combination / equivalent</div>
@@ -159,8 +159,8 @@
                 </div>
                 <div class="field-card-code">ARC</div>
             </div>
-            <div class="field-card" onclick="selectField(this,'natural-sciences')">
-                <input type="radio" name="fieldChoice" value="natural-sciences">
+            <div class="field-card" onclick="selectField(this,'natural_sciences')">
+                <input type="radio" name="fieldChoice" value="natural_sciences">
                 <div class="field-card-content">
                     <div class="field-card-title">NET-Natural Sciences</div>
                     <div class="field-card-detail">HSSC / equivalent</div>
@@ -225,253 +225,310 @@
         <button class="login-btn" style="margin:0 auto;display:block;width:150px;" onclick="window.location.reload()">Restart Portal</button>
     </div>
 </div>
+
 <script>
-    const FIELD_CONFIG = {
-        'engineering': { label:'NET-Engineering', code:'ENG', description:'Engineering / Computing / ICS Stream', totalMCQs:200, blueprint:{ math:100, physics:60, english:40 }, bankKeys:{ math:'math', physics:'physics', english:'english' } },
-        'applied-sciences': { label:'NET-Applied Sciences', code:'APS', description:'Pre-Medical / Applied Biosciences Stream', totalMCQs:200, blueprint:{ biology:100, chemistry:60, english:40 }, bankKeys:{ biology:'biology', chemistry:'chemistry', english:'english' } },
-        'business': { label:'NET-Business Studies & Social Sciences', code:'BUS', description:'Business / Social Sciences Stream', totalMCQs:200, blueprint:{ quant:100, english:100 }, bankKeys:{ quant:'quant', english:'english' } },
-        'architecture': { label:'NET-Architecture', code:'ARC', description:'Architecture / Industrial Design Stream', totalMCQs:200, blueprint:{ design:100, math:60, english:40 }, bankKeys:{ design:'design', math:'math', english:'english' } },
-        'natural-sciences': { label:'NET-Natural Sciences', code:'NSC', description:'Natural Sciences Stream', totalMCQs:200, blueprint:{ math:100, english:100 }, bankKeys:{ math:'math', english:'english' } }
-    };
-    const SECTION_LABELS = { math:'MATHEMATICS', physics:'PHYSICS', english:'ENGLISH', biology:'BIOLOGY', chemistry:'CHEMISTRY', quant:'QUANTITATIVE MATHEMATICS', design:'DESIGN APTITUDE' };
-
-    let candidateId = '', selectedField = null, activeBlueprint = null, activeBankKeys = null;
-    let activeTestSessionPool = [], globalPointerIndex = 0;
-    let totalSecondsRemaining = 180 * 60, trackingIntervalEngine = null;
-
-    function togglePasswordVisibility() {
-        const p = document.getElementById('candidatePassInput'), b = document.getElementById('togglePasswordBtn');
-        p.type = p.type === 'password' ? 'text' : 'password';
-        b.innerText = p.type === 'password' ? 'Show' : 'Hide';
+// ===== FIELD CONFIG - Maps to YOUR QUESTION_BANK keys =====
+const FIELD_CONFIG = {
+    'engineering': {
+        label: 'NET-Engineering',
+        code: 'ENG',
+        description: 'Engineering / Computing / ICS Stream',
+        totalMCQs: 200,
+        // These section names correspond to what you'll see in the UI
+        blueprint: { mathematics: 100, physics: 60, english: 40 },
+        // These bankKeys map to QUESTION_BANK[fieldKey][bankKey]
+        bankKeys: { mathematics: 'mathematics', physics: 'physics', english: 'english' }
+    },
+    'applied_sciences': {
+        label: 'NET-Applied Sciences',
+        code: 'APS',
+        description: 'Pre-Medical / Applied Biosciences Stream',
+        totalMCQs: 200,
+        blueprint: { biology: 100, chemistry: 60, english: 40 },
+        bankKeys: { biology: 'biology', chemistry: 'chemistry', english: 'english' }
+    },
+    'business_studies': {
+        label: 'NET-Business Studies & Social Sciences',
+        code: 'BUS',
+        description: 'Business / Social Sciences Stream',
+        totalMCQs: 200,
+        blueprint: { quantitative_mathematics: 100, english: 100 },
+        bankKeys: { quantitative_mathematics: 'quantitative_mathematics', english: 'english' }
+    },
+    'architecture': {
+        label: 'NET-Architecture',
+        code: 'ARC',
+        description: 'Architecture / Industrial Design Stream',
+        totalMCQs: 200,
+        blueprint: { design_aptitude: 100, mathematics: 60, english: 40 },
+        bankKeys: { design_aptitude: 'design_aptitude', mathematics: 'mathematics', english: 'english' }
+    },
+    'natural_sciences': {
+        label: 'NET-Natural Sciences',
+        code: 'NSC',
+        description: 'Natural Sciences Stream',
+        totalMCQs: 200,
+        blueprint: { mathematics: 100, english: 100 },
+        bankKeys: { mathematics: 'mathematics', english: 'english' }
     }
+};
 
-    function authenticateUserLogin() {
-        candidateId = document.getElementById('candidateIdInput').value.trim();
-        const pass = document.getElementById('candidatePassInput').value.trim();
-        if (!candidateId || !pass) { alert('Both Roll Number and Password are required.'); return; }
-        if (pass !== 'NUST2026') { alert('Access Denied: Invalid Access Password.'); return; }
-        document.getElementById('fieldSelectCandidateId').innerText = candidateId;
-        document.getElementById('loginScreenView').style.display = 'none';
-        document.getElementById('fieldSelectScreenView').style.display = 'flex';
+// Section display names for the UI
+const SECTION_LABELS = {
+    mathematics: 'MATHEMATICS',
+    physics: 'PHYSICS',
+    english: 'ENGLISH',
+    biology: 'BIOLOGY',
+    chemistry: 'CHEMISTRY',
+    quantitative_mathematics: 'QUANTITATIVE MATHEMATICS',
+    design_aptitude: 'DESIGN APTITUDE'
+};
+
+let candidateId = '', selectedField = null, activeTestSessionPool = [], globalPointerIndex = 0;
+let totalSecondsRemaining = 180 * 60, trackingIntervalEngine = null;
+
+function togglePasswordVisibility() {
+    const p = document.getElementById('candidatePassInput'), b = document.getElementById('togglePasswordBtn');
+    p.type = p.type === 'password' ? 'text' : 'password';
+    b.innerText = p.type === 'password' ? 'Show' : 'Hide';
+}
+
+function authenticateUserLogin() {
+    candidateId = document.getElementById('candidateIdInput').value.trim();
+    const pass = document.getElementById('candidatePassInput').value.trim();
+    if (!candidateId || !pass) { alert('Both Roll Number and Password are required.'); return; }
+    if (pass !== 'NUST2026') { alert('Access Denied: Invalid Access Password.'); return; }
+    document.getElementById('fieldSelectCandidateId').innerText = candidateId;
+    document.getElementById('loginScreenView').style.display = 'none';
+    document.getElementById('fieldSelectScreenView').style.display = 'flex';
+}
+
+function goBackToLogin() {
+    document.getElementById('fieldSelectScreenView').style.display = 'none';
+    document.getElementById('loginScreenView').style.display = 'flex';
+}
+
+function selectField(el, val) {
+    document.querySelectorAll('.field-card').forEach(c => c.classList.remove('selected'));
+    document.querySelectorAll('.field-card input').forEach(r => r.checked = false);
+    el.classList.add('selected');
+    el.querySelector('input').checked = true;
+    selectedField = val;
+}
+
+function startExam() {
+    if (!selectedField) { alert('Please select your Field / Stream.'); return; }
+    const cfg = FIELD_CONFIG[selectedField];
+    
+    // Check that QUESTION_BANK exists and has the selected field
+    if (typeof QUESTION_BANK === 'undefined') { alert('questions.js missing or corrupted.'); return; }
+    if (!QUESTION_BANK[selectedField]) { alert('No question data for this field in questions.js'); return; }
+    
+    document.getElementById('displayCandidateId').innerText = candidateId;
+    document.getElementById('displayFieldCode').innerText = cfg.code;
+    document.getElementById('streamTitleBar').innerText = cfg.description + ' Mock Portal';
+    document.getElementById('fieldSelectScreenView').style.display = 'none';
+    document.getElementById('examPortalView').style.display = 'block';
+    
+    buildSectionButtons();
+    launchTestEngine();
+}
+
+function buildSectionButtons() {
+    const container = document.getElementById('sectionButtonsContainer');
+    const reviewBtn = container.querySelector('.btn-review');
+    let html = '';
+    const cfg = FIELD_CONFIG[selectedField];
+    for (const sec of Object.keys(cfg.blueprint)) {
+        const lbl = (SECTION_LABELS[sec] || sec).substring(0, 4);
+        html += `<button class="retro-control-btn btn-subject" onclick="switchSubjectCluster('${sec}')">${lbl}</button>`;
     }
+    reviewBtn.insertAdjacentHTML('afterend', html);
+}
 
-    function goBackToLogin() {
-        document.getElementById('fieldSelectScreenView').style.display = 'none';
-        document.getElementById('loginScreenView').style.display = 'flex';
-    }
+function pullRandomPool(src, limit) {
+    if (!src || !src.length) return [];
+    let c = [...src].sort(() => 0.5 - Math.random());
+    while (c.length < limit) c = c.concat(c);
+    return c.slice(0, limit).map(i => ({ ...i, chosenIndexValue: null, isFlagged: false, isSavedPermanently: false }));
+}
 
-    function selectField(el, val) {
-        document.querySelectorAll('.field-card').forEach(c => c.classList.remove('selected'));
-        document.querySelectorAll('.field-card input').forEach(r => r.checked = false);
-        el.classList.add('selected');
-        el.querySelector('input').checked = true;
-        selectedField = val;
-    }
-
-    function startExam() {
-        if (!selectedField) { alert('Please select your Field / Stream.'); return; }
-        const cfg = FIELD_CONFIG[selectedField];
-        activeBlueprint = cfg.blueprint;
-        activeBankKeys = cfg.bankKeys;
-        document.getElementById('displayCandidateId').innerText = candidateId;
-        document.getElementById('displayFieldCode').innerText = cfg.code;
-        document.getElementById('streamTitleBar').innerText = cfg.description + ' Mock Portal';
-        document.getElementById('fieldSelectScreenView').style.display = 'none';
-        document.getElementById('examPortalView').style.display = 'block';
-        buildSectionButtons();
-        launchTestEngine();
-    }
-
-    function buildSectionButtons() {
-        const container = document.getElementById('sectionButtonsContainer');
-        const reviewBtn = container.querySelector('.btn-review');
-        let html = '';
-        for (const sec of Object.keys(FIELD_CONFIG[selectedField].blueprint)) {
-            const lbl = (SECTION_LABELS[sec] || sec.toUpperCase()).substring(0,4);
-            html += `<button class="retro-control-btn btn-subject" onclick="switchSubjectCluster('${sec}')">${lbl}</button>`;
+function launchTestEngine() {
+    activeTestSessionPool = [];
+    const cfg = FIELD_CONFIG[selectedField];
+    const fieldData = QUESTION_BANK[selectedField];
+    const order = Object.keys(cfg.bankKeys);
+    
+    // Pull questions from each section in the bank
+    for (const sec of order) {
+        const bankKey = cfg.bankKeys[sec];
+        if (fieldData[bankKey]) {
+            const qs = pullRandomPool(fieldData[bankKey], cfg.blueprint[sec]);
+            let cnt = 1;
+            qs.forEach(i => { i.innerIndexValue = cnt++; i.sectionKeyName = sec; });
+            activeTestSessionPool = activeTestSessionPool.concat(qs);
         }
-        reviewBtn.insertAdjacentHTML('afterend', html);
     }
+    
+    // Sort by section order defined in blueprint
+    const bpOrder = Object.keys(cfg.blueprint);
+    activeTestSessionPool.sort((a, b) => {
+        const oa = bpOrder.indexOf(a.sectionKeyName), ob = bpOrder.indexOf(b.sectionKeyName);
+        return oa !== ob ? oa - ob : a.innerIndexValue - b.innerIndexValue;
+    });
+    
+    // Renumber within each section
+    const counts = {};
+    activeTestSessionPool.forEach(i => {
+        if (!counts[i.sectionKeyName]) counts[i.sectionKeyName] = 0;
+        counts[i.sectionKeyName]++;
+        i.innerIndexValue = counts[i.sectionKeyName];
+    });
+    
+    globalPointerIndex = 0;
+    totalSecondsRemaining = 180 * 60;
+    updateTimerDisplay();
+    if (trackingIntervalEngine) clearInterval(trackingIntervalEngine);
+    trackingIntervalEngine = setInterval(() => {
+        if (totalSecondsRemaining <= 0) { clearInterval(trackingIntervalEngine); compileExamResults(); }
+        else { totalSecondsRemaining--; updateTimerDisplay(); }
+    }, 1000);
+    refreshWorkspace();
+    generateNavMatrix();
+}
 
-    function pullRandomPool(src, limit) {
-        if (!src || !src.length) return [];
-        let c = [...src].sort(() => 0.5 - Math.random());
-        while (c.length < limit) c = c.concat(c);
-        return c.slice(0, limit).map(i => ({ ...i, chosenIndexValue:null, isFlagged:false, isSavedPermanently:false }));
+function updateTimerDisplay() {
+    const h = Math.floor(totalSecondsRemaining / 3600);
+    const m = Math.floor((totalSecondsRemaining % 3600) / 60);
+    const s = totalSecondsRemaining % 60;
+    document.getElementById('timerClockMinutes').innerText =
+        String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+function refreshWorkspace() {
+    if (!activeTestSessionPool.length) return;
+    const q = activeTestSessionPool[globalPointerIndex];
+    const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
+    const cfg = FIELD_CONFIG[selectedField];
+    document.getElementById('currentSubjectHeader').innerText = label;
+    document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
+    document.getElementById('questionTextBox').innerText = q.q;
+    const cont = document.getElementById('optionsRadioGroup');
+    cont.innerHTML = '';
+    q.a.forEach((opt, idx) => {
+        const row = document.createElement('div');
+        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+        row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
+        cont.appendChild(row);
+    });
+    // Highlight nav
+    document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
+    document.querySelectorAll('.nav-square-btn').forEach(b => {
+        if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
+    });
+}
+
+function generateNavMatrix() {
+    const grid = document.getElementById('navButtonMatrixGrid');
+    grid.innerHTML = '';
+    if (!activeTestSessionPool.length) return;
+    const cfg = FIELD_CONFIG[selectedField];
+    for (const sec of Object.keys(cfg.blueprint)) {
+        const label = SECTION_LABELS[sec] || sec.toUpperCase();
+        const sq = activeTestSessionPool.filter(i => i.sectionKeyName === sec);
+        if (!sq.length) continue;
+        const cols = Math.min(cfg.blueprint[sec], 20);
+        let html = `<div class="nav-section-label"><span>${label}</span></div>`;
+        html += `<div class="nav-sub-grid" style="grid-template-columns:repeat(${cols},1fr);">`;
+        sq.forEach(i => {
+            const gIdx = activeTestSessionPool.indexOf(i);
+            let cls = 'nav-square-btn';
+            if (i.isSavedPermanently) cls += ' filled';
+            if (i.isFlagged) cls += ' flagged-review';
+            if (gIdx === globalPointerIndex) cls += ' active-focus';
+            html += `<div class="${cls}" data-sid="${gIdx}" onclick="navigateTo(${gIdx})">${i.innerIndexValue}</div>`;
+        });
+        html += '</div>';
+        grid.innerHTML += html;
     }
+}
 
-    function launchTestEngine() {
-        activeTestSessionPool = [];
-        if (typeof QUESTION_BANK === 'undefined') { alert('questions.js missing or corrupted.'); return; }
-        const cfg = FIELD_CONFIG[selectedField];
-        const order = Object.keys(cfg.blueprint);
-        for (const sec of order) {
-            const bk = cfg.bankKeys[sec];
-            if (QUESTION_BANK[bk]) {
-                const qs = pullRandomPool(QUESTION_BANK[bk], cfg.blueprint[sec]);
-                let cnt = 1;
-                qs.forEach(i => { i.innerIndexValue = cnt++; i.sectionKeyName = sec; });
-                activeTestSessionPool = activeTestSessionPool.concat(qs);
-            }
-        }
-        // Sort by section order, then by innerIndexValue
-        activeTestSessionPool.sort((a,b) => {
-            const oa = order.indexOf(a.sectionKeyName), ob = order.indexOf(b.sectionKeyName);
-            return oa !== ob ? oa - ob : a.innerIndexValue - b.innerIndexValue;
-        });
-        // Renumber innerIndex within each section
-        const counts = {};
-        activeTestSessionPool.forEach(i => {
-            if (!counts[i.sectionKeyName]) counts[i.sectionKeyName] = 0;
-            counts[i.sectionKeyName]++;
-            i.innerIndexValue = counts[i.sectionKeyName];
-        });
-        globalPointerIndex = 0;
-        totalSecondsRemaining = 180 * 60;
-        updateTimerDisplay();
-        if (trackingIntervalEngine) clearInterval(trackingIntervalEngine);
-        trackingIntervalEngine = setInterval(() => {
-            if (totalSecondsRemaining <= 0) { clearInterval(trackingIntervalEngine); compileExamResults(); }
-            else { totalSecondsRemaining--; updateTimerDisplay(); }
-        }, 1000);
+function navigateTo(gIdx) {
+    if (gIdx >= 0 && gIdx < activeTestSessionPool.length) {
+        globalPointerIndex = gIdx;
         refreshWorkspace();
         generateNavMatrix();
     }
+}
 
-    function updateTimerDisplay() {
-        const h = Math.floor(totalSecondsRemaining/3600);
-        const m = Math.floor((totalSecondsRemaining%3600)/60);
-        const s = totalSecondsRemaining%60;
-        document.getElementById('timerClockMinutes').innerText = 
-            String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    }
+function saveAnswerState() {
+    const q = activeTestSessionPool[globalPointerIndex];
+    if (q.chosenIndexValue !== null) q.isSavedPermanently = true;
+    generateNavMatrix();
+    shiftActiveIndex(1);
+}
 
-    function refreshWorkspace() {
-        if (!activeTestSessionPool.length) return;
-        const q = activeTestSessionPool[globalPointerIndex];
-        const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
-        document.getElementById('currentSubjectHeader').innerText = label;
-        document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${FIELD_CONFIG[selectedField].blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-        document.getElementById('questionTextBox').innerText = q.q;
-        const cont = document.getElementById('optionsRadioGroup');
-        cont.innerHTML = '';
-        q.a.forEach((opt, idx) => {
-            const row = document.createElement('div');
-            row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-            row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-            row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue===idx?' checked':''}><span class="option-text">${opt}</span>`;
-            cont.appendChild(row);
-        });
-        // Highlight nav
-        document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
-        const qidx = globalPointerIndex;
-        document.querySelectorAll('.nav-square-btn').forEach(b => {
-            const si = parseInt(b.getAttribute('data-sid'), 10);
-            if (si === qidx) b.classList.add('active-focus');
-        });
-    }
+function flagQuestionToggle() {
+    activeTestSessionPool[globalPointerIndex].isFlagged = !activeTestSessionPool[globalPointerIndex].isFlagged;
+    generateNavMatrix();
+}
 
-    function generateNavMatrix() {
-        const grid = document.getElementById('navButtonMatrixGrid');
-        grid.innerHTML = '';
-        if (!activeTestSessionPool.length) return;
-        const cfg = FIELD_CONFIG[selectedField];
-        for (const sec of Object.keys(cfg.blueprint)) {
-            const label = SECTION_LABELS[sec] || sec.toUpperCase();
-            const sq = activeTestSessionPool.filter(i => i.sectionKeyName === sec);
-            if (!sq.length) continue;
-            const cols = Math.min(cfg.blueprint[sec], 20);
-            let html = `<div class="nav-section-label"><span>${label}</span><span style="font-size:9px;color:#777;">(${sec})</span></div>`;
-            html += `<div class="nav-sub-grid" style="grid-template-columns:repeat(${cols},1fr);">`;
-            sq.forEach(i => {
-                const globalIdx = activeTestSessionPool.indexOf(i);
-                let cls = 'nav-square-btn';
-                if (i.isSavedPermanently) cls += ' filled';
-                if (i.isFlagged) cls += ' flagged-review';
-                if (globalIdx === globalPointerIndex) cls += ' active-focus';
-                html += `<div class="${cls}" data-sid="${globalIdx}" onclick="navigateTo(${globalIdx})">${i.innerIndexValue}</div>`;
-            });
-            html += '</div>';
-            grid.innerHTML += html;
-        }
-    }
-
-    function navigateTo(gidx) {
-        if (gidx >= 0 && gidx < activeTestSessionPool.length) {
-            globalPointerIndex = gidx;
-            refreshWorkspace();
-            generateNavMatrix();
-        }
-    }
-
-    function saveAnswerState() {
-        const q = activeTestSessionPool[globalPointerIndex];
-        if (q.chosenIndexValue !== null) q.isSavedPermanently = true;
-        generateNavMatrix();
-        shiftActiveIndex(1);
-    }
-
-    function flagQuestionToggle() {
-        activeTestSessionPool[globalPointerIndex].isFlagged = !activeTestSessionPool[globalPointerIndex].isFlagged;
+function shiftActiveIndex(step) {
+    const t = globalPointerIndex + step;
+    if (t >= 0 && t < activeTestSessionPool.length) {
+        globalPointerIndex = t;
+        refreshWorkspace();
         generateNavMatrix();
     }
+}
 
-    function shiftActiveIndex(step) {
-        const t = globalPointerIndex + step;
-        if (t >= 0 && t < activeTestSessionPool.length) {
-            globalPointerIndex = t;
-            refreshWorkspace();
-            generateNavMatrix();
+function switchSubjectCluster(sec) {
+    const idx = activeTestSessionPool.findIndex(i => i.sectionKeyName === sec);
+    if (idx !== -1) { globalPointerIndex = idx; refreshWorkspace(); generateNavMatrix(); }
+}
+
+function triggerSubmitConfirmation() {
+    if (confirm('Do you want to finalise and submit your assessment?')) compileExamResults();
+}
+
+function compileExamResults() {
+    if (trackingIntervalEngine) clearInterval(trackingIntervalEngine);
+    let score = 0;
+    const cfg = FIELD_CONFIG[selectedField];
+    const stats = {};
+    for (const k of Object.keys(cfg.blueprint)) stats[k] = 0;
+    let reviewHTML = `<h3 style="color:#003399;margin-top:20px;font-size:16px;text-align:center;">Comprehensive Test Evaluation Log</h3>`;
+    const logs = {};
+    for (const k of Object.keys(cfg.blueprint)) logs[k] = '';
+    
+    activeTestSessionPool.forEach(i => {
+        const correct = i.chosenIndexValue !== null && i.chosenIndexValue === i.c;
+        if (correct) { score++; stats[i.sectionKeyName]++; }
+        const chosen = i.chosenIndexValue !== null ? i.a[i.chosenIndexValue] : 'Unattempted';
+        const right = i.a[i.c];
+        const exp = i.e || 'No explanation provided.';
+        if (correct) {
+            logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
+        } else {
+            logs[i.sectionKeyName] += `<div class="review-box"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#C0392B;font-weight:600;margin-top:4px;">&#10060; Your: ${chosen}</p><p style="color:#27AE60;font-weight:600;">&#9989; Correct: ${right}</p><p style="color:#555;margin-top:6px;font-style:italic;background:#F2F4F4;padding:6px;border-left:3px solid #0055A5;"><strong>Explanation:</strong> ${exp}</p></div>`;
         }
+    });
+    
+    for (const k of Object.keys(logs)) {
+        const lbl = SECTION_LABELS[k] || k.toUpperCase();
+        reviewHTML += `<div class="review-header">${lbl} Record</div>` + (logs[k] || '<p style="padding:10px;color:#888;">No questions in this section.</p>');
     }
-
-    function switchSubjectCluster(sec) {
-        const idx = activeTestSessionPool.findIndex(i => i.sectionKeyName === sec);
-        if (idx !== -1) { globalPointerIndex = idx; refreshWorkspace(); generateNavMatrix(); }
+    
+    document.getElementById('totalScoreTarget').innerText = `${score} / ${cfg.totalMCQs}`;
+    let bd = `<strong>Subject Breakdown (${cfg.label}):</strong><br>`;
+    for (const k of Object.keys(stats)) {
+        bd += `&bull; ${SECTION_LABELS[k] || k.toUpperCase()}: ${stats[k]} / ${cfg.blueprint[k]}<br>`;
     }
-
-    function triggerSubmitConfirmation() {
-        if (confirm('Do you want to finalise and submit your assessment?')) compileExamResults();
-    }
-
-    function compileExamResults() {
-        if (trackingIntervalEngine) clearInterval(trackingIntervalEngine);
-        let score = 0;
-        const stats = {};
-        const cfg = FIELD_CONFIG[selectedField];
-        for (const k of Object.keys(cfg.blueprint)) stats[k] = 0;
-
-        let reviewHTML = `<h3 style="color:#003399;margin-top:20px;font-size:16px;text-align:center;">Comprehensive Test Evaluation Log</h3>`;
-        const logs = {};
-        for (const k of Object.keys(cfg.blueprint)) logs[k] = '';
-
-        activeTestSessionPool.forEach(i => {
-            const correct = i.chosenIndexValue !== null && i.chosenIndexValue === i.c;
-            if (correct) { score++; stats[i.sectionKeyName]++; }
-            const chosen = i.chosenIndexValue !== null ? i.a[i.chosenIndexValue] : 'Unattempted';
-            const right = i.a[i.c];
-            const exp = i.e || 'No explanation provided.';
-            if (correct) {
-                logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
-            } else {
-                logs[i.sectionKeyName] += `<div class="review-box"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#C0392B;font-weight:600;margin-top:4px;">&#10060; Your: ${chosen}</p><p style="color:#27AE60;font-weight:600;">&#9989; Correct: ${right}</p><p style="color:#555;margin-top:6px;font-style:italic;background:#F2F4F4;padding:6px;border-left:3px solid #0055A5;"><strong>Explanation:</strong> ${exp}</p></div>`;
-            }
-        });
-
-        for (const k of Object.keys(logs)) {
-            const lbl = SECTION_LABELS[k] || k.toUpperCase();
-            reviewHTML += `<div class="review-header">${lbl} Record</div>` + (logs[k] || '<p style="padding:10px;color:#888;">No questions in this section.</p>');
-        }
-
-        document.getElementById('totalScoreTarget').innerText = `${score} / ${cfg.totalMCQs}`;
-        let bd = `<strong>Subject Breakdown (${cfg.label}):</strong><br>`;
-        for (const k of Object.keys(stats)) {
-            bd += `&bull; ${SECTION_LABELS[k]||k.toUpperCase()}: ${stats[k]} / ${cfg.blueprint[k]}<br>`;
-        }
-        document.getElementById('subjectScoreBreakdownBox').innerHTML = bd;
-        document.getElementById('wrongQuestionsReviewPanel').innerHTML = reviewHTML;
-        document.getElementById('reportCardModalOverlay').style.display = 'flex';
-    }
+    document.getElementById('subjectScoreBreakdownBox').innerHTML = bd;
+    document.getElementById('wrongQuestionsReviewPanel').innerHTML = reviewHTML;
+    document.getElementById('reportCardModalOverlay').style.display = 'flex';
+}
 </script>
 </body>
 </html>
