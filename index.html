@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="icon" href="icon.png" type="image/png">
@@ -15,24 +15,35 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #FFFFFF; user-select: none; }
-        .login-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; position:relative; }
-        .field-select-screen { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; position:relative; }
 
-        /* NUST photo overlay on login and field-select screens */
-        .login-screen, .field-select-screen { 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    min-height: 100vh; 
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('nust.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-}
+        .login-screen { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('nust.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            padding: 20px; 
+            position: relative;
+            overflow: hidden;
+        }
+        .field-select-screen { 
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('nust.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            padding: 20px; 
+            position: relative;
         }
 
-        /* ensure content sits above the background image */
         .login-container, .field-select-container, .instructions-box {
             position: relative;
             z-index: 1;
@@ -418,11 +429,7 @@ function refreshWorkspace() {
     const cfg = FIELD_CONFIG[selectedField];
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-    document.getElementById('questionTextBox').innerHTML = q.q;
-    renderMathInElement(document.getElementById('questionTextBox'));
-
-    // 3. (Optional) Add this if you want math inside your options as well:
-    renderMathInElement(document.getElementById('optionsRadioGroup'));
+    document.getElementById('questionTextBox').innerText = q.q;
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
