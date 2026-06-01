@@ -394,7 +394,16 @@ function refreshWorkspace() {
     const cfg = FIELD_CONFIG[selectedField];
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-    document.getElementById('questionTextBox').innerText = q.q;
+    document.getElementById('questionTextBox').innerHTML = q.q;
+    renderMathInElement(document.getElementById('questionTextBox'));
+
+    // 2. Handle the image (NEW CODE)
+    const imgContainer = document.getElementById('questionImageContainer'); // You might need to add this div to your HTML
+    if (q.image) {
+        imgContainer.innerHTML = `<img src="${q.image}" style="max-width: 100%; height: auto;">`;
+    } else {
+        imgContainer.innerHTML = ''; // Clear it if no image exists
+    }
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
