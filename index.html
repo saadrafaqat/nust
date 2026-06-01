@@ -4,56 +4,68 @@
     <meta charset="UTF-8">
     <title>NUST CBNET Portal</title>
     <style>
-        :root { --nust-blue: #003399; --nust-red: #FF0000; --bg: #2C4855; }
+        :root { --nust-blue: #003399; --bg: #2C4855; }
         body { background: var(--bg); font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
-        
         .card { background: #fff; padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); display: none; }
         .active { display: block; }
-        
         h2 { color: var(--nust-blue); text-align: center; margin-bottom: 20px; }
         
-        /* Interactive Field Cards */
-        .field-item { border: 2px solid #e1e1e1; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: 0.3s; }
-        .field-item:hover { border-color: var(--nust-blue); transform: translateX(5px); }
-        .field-btn { width: 100%; padding: 15px; border: none; background: #f8f9fa; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        
+        .field-item { border: 2px solid #e1e1e1; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        .field-btn { width: 100%; padding: 15px; border: none; background: #f8f9fa; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
         .syllabus { padding: 0 15px; max-height: 0; overflow: hidden; transition: 0.4s; background: #fdfdfd; font-size: 13px; color: #555; }
-        .syllabus.open { padding: 15px; max-height: 200px; border-top: 1px solid #eee; }
-        
-        .select-btn { background: var(--nust-blue); color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; margin-top: 5px; cursor: pointer; }
+        .syllabus.open { padding: 15px; max-height: 150px; border-top: 1px solid #eee; }
+        .select-btn { background: var(--nust-blue); color: white; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- Field Selection Screen -->
-    <div id="trackView" class="card active">
+    <!-- 1. LOGIN -->
+    <div id="loginView" class="card active">
+        <h2>NUST Login</h2>
+        <input type="text" class="field-btn" placeholder="Candidate Roll Number" style="margin-bottom:10px;">
+        <input type="password" class="field-btn" placeholder="Access Password" style="margin-bottom:10px;">
+        <button class="select-btn" onclick="showFields()">Login & Continue</button>
+    </div>
+
+    <!-- 2. FIELD SELECTION -->
+    <div id="trackView" class="card">
         <h2>Select Academic Stream</h2>
-        
-        <!-- Field 1 -->
+
         <div class="field-item">
-            <button class="field-btn" onclick="toggleSyllabus('eng')">Engineering <span>+</span></button>
-            <div id="eng" class="syllabus">Math (40%), Physics (30%), Chemistry (15%), English (15%)</div>
+            <button class="field-btn" onclick="toggle('s1')">Engineering <span>+</span></button>
+            <div id="s1" class="syllabus">Mathematics 50%, Physics 30%, English 20%</div>
             <button class="select-btn" onclick="startTest('Engineering')">SELECT ENGINEERING</button>
         </div>
 
-        <!-- Field 2 -->
         <div class="field-item">
-            <button class="field-btn" onclick="toggleSyllabus('app')">Applied Sciences <span>+</span></button>
-            <div id="app" class="syllabus">Math (45%), Physics (30%), English (25%)</div>
-            <button class="select-btn" onclick="startTest('Applied')">SELECT APPLIED SCIENCES</button>
+            <button class="field-btn" onclick="toggle('s2')">Applied Sciences <span>+</span></button>
+            <div id="s2" class="syllabus">Biology 50%, Chemistry 30%, English 20%</div>
+            <button class="select-btn" onclick="startTest('Applied Sciences')">SELECT APPLIED SCIENCES</button>
         </div>
 
-        <!-- Add more fields as needed -->
+        <div class="field-item">
+            <button class="field-btn" onclick="toggle('s3')">Business Studies <span>+</span></button>
+            <div id="s3" class="syllabus">Quantitative Mathematics 50%, English 50%</div>
+            <button class="select-btn" onclick="startTest('Business Studies')">SELECT BUSINESS STUDIES</button>
+        </div>
+
+        <div class="field-item">
+            <button class="field-btn" onclick="toggle('s4')">Architecture <span>+</span></button>
+            <div id="s4" class="syllabus">Design Aptitude 50%, Mathematics 30%, English 20%</div>
+            <button class="select-btn" onclick="startTest('Architecture')">SELECT ARCHITECTURE</button>
+        </div>
+
+        <div class="field-item">
+            <button class="field-btn" onclick="toggle('s5')">Natural Sciences <span>+</span></button>
+            <div id="s5" class="syllabus">Mathematics 50%, English 50%</div>
+            <button class="select-btn" onclick="startTest('Natural Sciences')">SELECT NATURAL SCIENCES</button>
+        </div>
     </div>
 
     <script>
-        function toggleSyllabus(id) {
-            document.getElementById(id).classList.toggle('open');
-        }
-        function startTest(track) {
-            alert("Launching " + track + " Exam...");
-            // Link to your test interface here
-        }
+        function showFields() { document.getElementById('loginView').classList.remove('active'); document.getElementById('trackView').classList.add('active'); }
+        function toggle(id) { document.getElementById(id).classList.toggle('open'); }
+        function startTest(track) { alert("Launching " + track + " Assessment..."); }
     </script>
 </body>
 </html>
