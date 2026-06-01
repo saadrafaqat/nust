@@ -9,7 +9,8 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #FFFFFF; user-select: none; }
-        .login-screen, .field-select-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; }
+        .login-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; }
+        .field-select-screen { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; }
         @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
         .login-container, .field-select-container { width:100%; max-width:520px; background:rgba(255,255,255,0.95); padding:35px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
         .login-header { color:#003399; font-size:22px; font-weight:800; text-align:center; letter-spacing:-0.5px; }
@@ -116,7 +117,7 @@
     </div>
 </div>
 
-<!-- ===== FIELD SELECTION SCREEN ===== -->
+<!-- ===== FIELD SELECTION SCREEN (hidden by default) ===== -->
 <div class="field-select-screen" id="fieldSelectScreenView">
     <div class="field-select-container">
         <div class="status-badge"><div class="pulse-dot"></div><span>CANDIDATE: <span id="fieldSelectCandidateId">NUST026</span></span></div>
@@ -227,59 +228,38 @@
 </div>
 
 <script>
-// ===== FIELD CONFIG - Maps to YOUR QUESTION_BANK keys =====
+// ===== FIELD CONFIG =====
 const FIELD_CONFIG = {
     'engineering': {
-        label: 'NET-Engineering',
-        code: 'ENG',
-        description: 'Engineering / Computing / ICS Stream',
-        totalMCQs: 200,
-        // These section names correspond to what you'll see in the UI
+        label: 'NET-Engineering', code: 'ENG', description: 'Engineering / Computing / ICS Stream', totalMCQs: 200,
         blueprint: { mathematics: 100, physics: 60, english: 40 },
-        // These bankKeys map to QUESTION_BANK[fieldKey][bankKey]
         bankKeys: { mathematics: 'mathematics', physics: 'physics', english: 'english' }
     },
     'applied_sciences': {
-        label: 'NET-Applied Sciences',
-        code: 'APS',
-        description: 'Pre-Medical / Applied Biosciences Stream',
-        totalMCQs: 200,
+        label: 'NET-Applied Sciences', code: 'APS', description: 'Pre-Medical / Applied Biosciences Stream', totalMCQs: 200,
         blueprint: { biology: 100, chemistry: 60, english: 40 },
         bankKeys: { biology: 'biology', chemistry: 'chemistry', english: 'english' }
     },
     'business_studies': {
-        label: 'NET-Business Studies & Social Sciences',
-        code: 'BUS',
-        description: 'Business / Social Sciences Stream',
-        totalMCQs: 200,
+        label: 'NET-Business Studies & Social Sciences', code: 'BUS', description: 'Business / Social Sciences Stream', totalMCQs: 200,
         blueprint: { quantitative_mathematics: 100, english: 100 },
         bankKeys: { quantitative_mathematics: 'quantitative_mathematics', english: 'english' }
     },
     'architecture': {
-        label: 'NET-Architecture',
-        code: 'ARC',
-        description: 'Architecture / Industrial Design Stream',
-        totalMCQs: 200,
+        label: 'NET-Architecture', code: 'ARC', description: 'Architecture / Industrial Design Stream', totalMCQs: 200,
         blueprint: { design_aptitude: 100, mathematics: 60, english: 40 },
         bankKeys: { design_aptitude: 'design_aptitude', mathematics: 'mathematics', english: 'english' }
     },
     'natural_sciences': {
-        label: 'NET-Natural Sciences',
-        code: 'NSC',
-        description: 'Natural Sciences Stream',
-        totalMCQs: 200,
+        label: 'NET-Natural Sciences', code: 'NSC', description: 'Natural Sciences Stream', totalMCQs: 200,
         blueprint: { mathematics: 100, english: 100 },
         bankKeys: { mathematics: 'mathematics', english: 'english' }
     }
 };
 
-// Section display names for the UI
 const SECTION_LABELS = {
-    mathematics: 'MATHEMATICS',
-    physics: 'PHYSICS',
-    english: 'ENGLISH',
-    biology: 'BIOLOGY',
-    chemistry: 'CHEMISTRY',
+    mathematics: 'MATHEMATICS', physics: 'PHYSICS', english: 'ENGLISH',
+    biology: 'BIOLOGY', chemistry: 'CHEMISTRY',
     quantitative_mathematics: 'QUANTITATIVE MATHEMATICS',
     design_aptitude: 'DESIGN APTITUDE'
 };
@@ -299,6 +279,7 @@ function authenticateUserLogin() {
     if (!candidateId || !pass) { alert('Both Roll Number and Password are required.'); return; }
     if (pass !== 'NUST2026') { alert('Access Denied: Invalid Access Password.'); return; }
     document.getElementById('fieldSelectCandidateId').innerText = candidateId;
+    // Hide login, show field selection
     document.getElementById('loginScreenView').style.display = 'none';
     document.getElementById('fieldSelectScreenView').style.display = 'flex';
 }
@@ -319,8 +300,6 @@ function selectField(el, val) {
 function startExam() {
     if (!selectedField) { alert('Please select your Field / Stream.'); return; }
     const cfg = FIELD_CONFIG[selectedField];
-    
-    // Check that QUESTION_BANK exists and has the selected field
     if (typeof QUESTION_BANK === 'undefined') { alert('questions.js missing or corrupted.'); return; }
     if (!QUESTION_BANK[selectedField]) { alert('No question data for this field in questions.js'); return; }
     
@@ -357,10 +336,9 @@ function launchTestEngine() {
     activeTestSessionPool = [];
     const cfg = FIELD_CONFIG[selectedField];
     const fieldData = QUESTION_BANK[selectedField];
-    const order = Object.keys(cfg.bankKeys);
+    const bpOrder = Object.keys(cfg.blueprint);
     
-    // Pull questions from each section in the bank
-    for (const sec of order) {
+    for (const sec of bpOrder) {
         const bankKey = cfg.bankKeys[sec];
         if (fieldData[bankKey]) {
             const qs = pullRandomPool(fieldData[bankKey], cfg.blueprint[sec]);
@@ -370,14 +348,11 @@ function launchTestEngine() {
         }
     }
     
-    // Sort by section order defined in blueprint
-    const bpOrder = Object.keys(cfg.blueprint);
     activeTestSessionPool.sort((a, b) => {
         const oa = bpOrder.indexOf(a.sectionKeyName), ob = bpOrder.indexOf(b.sectionKeyName);
         return oa !== ob ? oa - ob : a.innerIndexValue - b.innerIndexValue;
     });
     
-    // Renumber within each section
     const counts = {};
     activeTestSessionPool.forEach(i => {
         if (!counts[i.sectionKeyName]) counts[i.sectionKeyName] = 0;
@@ -422,7 +397,6 @@ function refreshWorkspace() {
         row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
         cont.appendChild(row);
     });
-    // Highlight nav
     document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
