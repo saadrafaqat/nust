@@ -1,93 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>NUST CBNET Portal</title>
     <style>
-        :root { --nust-blue: #003399; --nust-red: #FF0000; --bg: #2C4855; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
-        
-        /* Screens */
-        .card { background: #fff; padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); display: none; }
-        .active { display: block; }
-        
-        /* Login/Select UI */
-        .status { background: #DFF6E9; color: #28A745; font-size: 11px; font-weight: 700; padding: 5px 15px; border-radius: 20px; border: 1px solid #28A745; display: inline-block; margin-bottom: 10px; }
-        h2 { color: var(--nust-blue); text-align: center; margin-bottom: 5px; }
-        .sub { color: var(--nust-red); font-size: 12px; font-weight: 700; text-transform: uppercase; text-align: center; margin-bottom: 25px; }
-        .input-group { margin-bottom: 15px; position: relative; }
-        input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; }
-        .eye-btn { position: absolute; right: 10px; top: 12px; cursor: pointer; border: none; background: none; font-weight: bold; }
-        .action-btn { width: 100%; padding: 12px; background: var(--nust-blue); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 10px; }
-        
-        /* Test Area Layout */
-        #testArea { display: none; width: 100%; height: 100vh; background: #f4f4f4; }
-        .palette-btn { padding: 10px; border: 1px solid #999; cursor: pointer; background: white; }
+        body { font-family: Arial, sans-serif; background: #fff; margin: 0; }
+        /* Header */
+        .header { background: #003399; color: white; padding: 10px; font-weight: bold; }
+        /* Question Layout */
+        .q-container { border: 2px solid #003399; margin: 20px; padding: 20px; }
+        .option-box { border: 1px solid #000; padding: 10px; margin: 5px 0; cursor: pointer; }
+        .option-box:hover { background: #f0f0f0; }
+        /* Navigation */
+        .nav-bar { border: 1px solid #003399; padding: 10px; margin: 20px; display: flex; gap: 10px; }
     </style>
 </head>
 <body>
 
-    <div id="loginView" class="card active">
-        <div style="text-align:center"><span class="status">● SYSTEM STATUS: OPERATIONAL</span></div>
-        <h2>National University of Sciences & Technology</h2>
-        <div class="input-group"><input type="text" placeholder="Roll Number"></div>
-        <div class="input-group"><input type="password" id="passInput" placeholder="Password"><button class="eye-btn" onclick="togglePass()">SHOW</button></div>
-        <button class="action-btn" onclick="showFields()">Login</button>
+    <!-- 1. LOGIN / SELECT -->
+    <div id="setupView">
+        <h2>Login</h2>
+        <input type="text" id="roll" placeholder="Roll No"><br>
+        <button onclick="document.getElementById('setupView').style.display='none'; document.getElementById('testView').style.display='block';">Login</button>
     </div>
 
-    <div id="trackView" class="card">
-        <h2>Select Stream</h2>
-        <button class="action-btn" onclick="startTest('Engineering')">Engineering</button>
-        <button class="action-btn" onclick="startTest('Applied Sciences')">Applied Sciences</button>
-        <button class="action-btn" onclick="startTest('Business Studies')">Business Studies</button>
-    </div>
-
-    <div id="testArea">
-        <div style="background:#003399; color:white; padding:15px; display:flex; justify-content:space-between;">
-            <span>NUST CBNET Portal</span><span>Candidate Time: 180:00</span>
+    <!-- 2. TEST INTERFACE (NUST STYLE) -->
+    <div id="testView" style="display:none;">
+        <div class="header">NUST Computer Based Entry Test</div>
+        <div class="q-container">
+            <h3 id="qNum">Question 1</h3>
+            <p id="qText">Loading question...</p>
+            <div id="options"></div>
         </div>
-        <div style="display:flex; height:90vh; padding:20px; gap:20px;">
-            <div style="width:300px; background:white; padding:15px; border:1px solid #ccc;">
-                <h3>Palette</h3>
-                <div id="palette" style="display:grid; grid-template-columns:repeat(5, 1fr); gap:5px; margin-top:10px;"></div>
-            </div>
-            <div style="flex:1; background:white; padding:30px; border:1px solid #ccc;">
-                <h2 id="qNum">Question 1</h2>
-                <p id="qText" style="margin:20px 0; font-size:18px;"></p>
-                <div id="qOpts" style="display:flex; flex-direction:column; gap:10px;"></div>
-                <div style="margin-top:30px;"><button class="action-btn" onclick="saveNext()">Save & Next</button></div>
-            </div>
+        <div class="nav-bar">
+            <button onclick="prev()">Prev</button>
+            <button onclick="next()">Next</button>
+            <span>Time: 79 min</span>
         </div>
     </div>
 
     <script src="questions.js"></script>
     <script>
-        let currentQuestions = [], currentIndex = 0;
-        function togglePass() { const p = document.getElementById("passInput"); p.type = (p.type==="password"?"text":"password"); }
-        function showFields() { document.getElementById('loginView').style.display='none'; document.getElementById('trackView').style.display='block'; }
-        
-        function startTest(track) {
-            const map = {'Engineering':'engineering', 'Applied Sciences':'applied_sciences', 'Business Studies':'business_studies'};
-            currentQuestions = Object.values(QUESTION_BANK[map[track]]).flat();
-            document.getElementById('trackView').style.display = 'none';
-            document.getElementById('testArea').style.display = 'block';
-            renderPalette(); renderQ();
-        }
+        let currentIdx = 0;
+        // Adjust this to match your questions.js structure
+        let questions = window.QUESTION_BANK ? Object.values(QUESTION_BANK.engineering).flat() : [];
 
-        function renderPalette() {
-            document.getElementById('palette').innerHTML = currentQuestions.map((_,i) => `<button class="palette-btn" onclick="goTo(${i})">${i+1}</button>`).join('');
-        }
-
-        function renderQ() {
-            const q = currentQuestions[currentIndex];
-            document.getElementById('qNum').innerText = "Question " + (currentIndex + 1);
+        function render() {
+            if(questions.length === 0) return;
+            const q = questions[currentIdx];
+            document.getElementById('qNum').innerText = "Question " + (currentIdx + 1);
             document.getElementById('qText').innerText = q.q;
-            document.getElementById('qOpts').innerHTML = q.a.map((opt, i) => `<button class="action-btn" style="background:#ddd; color:black;" onclick="this.style.background='#003399'; this.style.color='white';">${opt}</button>`).join('');
+            document.getElementById('options').innerHTML = q.a.map(opt => `<div class="option-box">${opt}</div>`).join('');
         }
 
-        function saveNext() { if(currentIndex < currentQuestions.length -1) { currentIndex++; renderQ(); } }
-        function goTo(i) { currentIndex = i; renderQ(); }
+        function next() { if(currentIdx < questions.length - 1) { currentIdx++; render(); } }
+        function prev() { if(currentIdx > 0) { currentIdx--; render(); } }
+
+        render();
     </script>
 </body>
 </html>
