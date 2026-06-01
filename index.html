@@ -389,61 +389,52 @@ function updateTimerDisplay() {
 }
 
 function refreshWorkspace() {
-    try {
-        if (!activeTestSessionPool || activeTestSessionPool.length === 0) return;
-        
-        const q = activeTestSessionPool[globalPointerIndex];
-        const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
-        const cfg = FIELD_CONFIG[selectedField];
+    if (!activeTestSessionPool || activeTestSessionPool.length === 0) return;
+    
+    const q = activeTestSessionPool[globalPointerIndex];
+    const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
+    const cfg = FIELD_CONFIG[selectedField];
 
-        // --- PART 1: UI UPDATES (Where the question numbers are) ---
-        const header = document.getElementById('currentSubjectHeader');
-        const tracker = document.getElementById('questionNumTracker');
+    // 1. Update the UI text
+    document.getElementById('currentSubjectHeader').innerText = label;
+    document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
-        if (header) header.innerText = label;
-        if (tracker) {
-            tracker.innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-        } else {
-            console.error("CRITICAL: Element 'questionNumTracker' not found in HTML!");
-        }
+    // 2. Handle Question Text & Image (CLEARED AND REBUILT EVERY TIME)
+    const qBox = document.getElementById('questionTextBox');
+    
+    // We create the image tag only if q.image exists. 
+    // If q.image is undefined/null, imageHTML becomes an empty string.
+    let imageHTML = (q.image) ? `<br><img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
+    
+    // By setting innerHTML here, we completely replace the old text+old image
+    qBox.innerHTML = `${q.q} ${imageHTML}`;
 
-        // --- PART 2: QUESTION TEXT & IMAGE ---
-        let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
-        const qBox = document.getElementById('questionTextBox');
-        if (qBox) {
-            qBox.innerHTML = `${q.q} ${imageHTML}`;
-            if (typeof renderMathInElement === 'function') {
-                renderMathInElement(qBox, {
-                    delimiters: [
-                        {left: "$$", right: "$$", display: true},
-                        {left: "$", right: "$", display: false}
-                    ]
-                });
-            }
-        }
-
-        // --- PART 3: OPTIONS ---
-        const cont = document.getElementById('optionsRadioGroup');
-        if (cont) {
-            cont.innerHTML = '';
-            q.a.forEach((opt, idx) => {
-                const row = document.createElement('div');
-                row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-                row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-                row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
-                cont.appendChild(row);
-            });
-        }
-
-        // --- PART 4: NAVIGATION ---
-        document.querySelectorAll('.nav-square-btn').forEach(b => {
-            b.classList.remove('active-focus');
-            if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
+    // 3. Render Math
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(qBox, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
         });
-
-    } catch (error) {
-        console.error("Error in refreshWorkspace:", error);
     }
+
+    // 4. Build Options
+    const cont = document.getElementById('optionsRadioGroup');
+    cont.innerHTML = '';
+    q.a.forEach((opt, idx) => {
+        const row = document.createElement('div');
+        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+        row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
+        cont.appendChild(row);
+    });
+
+    // 5. Update Navigation
+    document.querySelectorAll('.nav-square-btn').forEach(b => {
+        b.classList.remove('active-focus');
+        if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
+    });
 }
 function generateNavMatrix() {
     const grid = document.getElementById('navButtonMatrixGrid');
