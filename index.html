@@ -275,9 +275,10 @@ let candidateId = '', selectedField = null, activeTestSessionPool = [], globalPo
 let totalSecondsRemaining = 180 * 60, trackingIntervalEngine = null;
 
 function togglePasswordVisibility() {
-    const p = document.getElementById('candidatePassInput'), b = document.getElementById('togglePasswordBtn');
-    p.type = p.type === 'password' ? 'text' : 'password';
-    b.innerText = p.type === 'password' ? 'Show' : 'Hide';
+    const p = document.getElementById('candidatePassInput');
+    const b = p.nextElementSibling;
+    if (p.type === 'password') { p.type = 'text'; b.innerText = 'Hide'; }
+    else { p.type = 'password'; b.innerText = 'Show'; }
 }
 
 function authenticateUserLogin() {
@@ -400,12 +401,14 @@ function refreshWorkspace() {
     let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
     document.getElementById('questionTextBox').innerHTML = `${q.q} ${imageHTML}`;
 
-    renderMathInElement(document.getElementById('questionTextBox'), {
-        delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
-        ]
-    });
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(document.getElementById('questionTextBox'), {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    }
 
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
@@ -416,7 +419,6 @@ function refreshWorkspace() {
         row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
         cont.appendChild(row);
     });
-}
     document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
