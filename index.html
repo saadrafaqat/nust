@@ -389,52 +389,61 @@ function updateTimerDisplay() {
 }
 
 function refreshWorkspace() {
-    console.log("Starting refresh...");
-    if (!activeTestSessionPool.length) return;
-    
-    const q = activeTestSessionPool[globalPointerIndex];
-    const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
-    const cfg = FIELD_CONFIG[selectedField];
+    try {
+        if (!activeTestSessionPool || activeTestSessionPool.length === 0) return;
+        
+        const q = activeTestSessionPool[globalPointerIndex];
+        const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
+        const cfg = FIELD_CONFIG[selectedField];
 
-    // 1. Update UI
-    const header = document.getElementById('currentSubjectHeader');
-    const tracker = document.getElementById('questionNumTracker');
-    
-    if (header) header.innerText = label;
-    if (tracker) tracker.innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
-    else console.error("Could not find questionNumTracker element!");
+        // --- PART 1: UI UPDATES (Where the question numbers are) ---
+        const header = document.getElementById('currentSubjectHeader');
+        const tracker = document.getElementById('questionNumTracker');
 
-    // 2. Question & Image
-    let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
-    const qBox = document.getElementById('questionTextBox');
-    if (qBox) {
-        qBox.innerHTML = `${q.q} ${imageHTML}`;
-        renderMathInElement(qBox, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
+        if (header) header.innerText = label;
+        if (tracker) {
+            tracker.innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
+        } else {
+            console.error("CRITICAL: Element 'questionNumTracker' not found in HTML!");
+        }
+
+        // --- PART 2: QUESTION TEXT & IMAGE ---
+        let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
+        const qBox = document.getElementById('questionTextBox');
+        if (qBox) {
+            qBox.innerHTML = `${q.q} ${imageHTML}`;
+            if (typeof renderMathInElement === 'function') {
+                renderMathInElement(qBox, {
+                    delimiters: [
+                        {left: "$$", right: "$$", display: true},
+                        {left: "$", right: "$", display: false}
+                    ]
+                });
+            }
+        }
+
+        // --- PART 3: OPTIONS ---
+        const cont = document.getElementById('optionsRadioGroup');
+        if (cont) {
+            cont.innerHTML = '';
+            q.a.forEach((opt, idx) => {
+                const row = document.createElement('div');
+                row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+                row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+                row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
+                cont.appendChild(row);
+            });
+        }
+
+        // --- PART 4: NAVIGATION ---
+        document.querySelectorAll('.nav-square-btn').forEach(b => {
+            b.classList.remove('active-focus');
+            if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
         });
-    }
 
-    // 3. Options
-    const cont = document.getElementById('optionsRadioGroup');
-    if (cont) {
-        cont.innerHTML = '';
-        q.a.forEach((opt, idx) => {
-            const row = document.createElement('div');
-            row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-            row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-            row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
-            cont.appendChild(row);
-        });
+    } catch (error) {
+        console.error("Error in refreshWorkspace:", error);
     }
-
-    // 4. Nav
-    document.querySelectorAll('.nav-square-btn').forEach(b => {
-        b.classList.remove('active-focus');
-        if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
-    });
 }
 function generateNavMatrix() {
     const grid = document.getElementById('navButtonMatrixGrid');
