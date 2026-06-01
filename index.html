@@ -5,86 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUST Computer Based Entry Test (CBNET)</title>
     <style>
-        :root { --nust-blue: #0055A5; --nust-dark: #003399; --accent: #FFD700; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        :root { --nust-blue: #003399; --nust-red: #FF0000; --bg: #2C4855; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--bg); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
         
-        /* Background Animation */
-        body { 
-            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0055A5); 
-            background-size: 400% 400%; animation: gradientBG 15s ease infinite; 
-            min-height: 100vh; display: flex; align-items: center; justify-content: center;
-        }
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        /* Main Card */
+        .card { background: #F8F9FA; padding: 40px; border-radius: 15px; width: 100%; max-width: 480px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center; display: none; }
+        .active { display: block; }
 
-        /* Glassmorphism Containers */
-        .card { 
-            background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 20px; 
-            width: 100%; max-width: 450px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
-            text-align: center; backdrop-filter: blur(10px); display: none;
-        }
-        .active { display: block; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
+        /* System Status Pill */
+        .status { background: #DFF6E9; color: #28A745; font-size: 11px; font-weight: 700; padding: 5px 15px; border-radius: 20px; border: 1px solid #28A745; margin-bottom: 20px; display: inline-block; }
+        .status::before { content: "● "; }
 
-        h2 { color: var(--nust-dark); font-size: 24px; margin-bottom: 10px; }
-        .sub { color: #FF0000; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 1px; }
+        h2 { color: var(--nust-blue); font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+        .sub { color: var(--nust-red); font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; }
 
-        input { width: 100%; padding: 15px; margin-bottom: 20px; border: 2px solid #eee; border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--nust-blue); box-shadow: 0 0 10px rgba(0,85,165,0.2); }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #CED4DA; border-radius: 5px; background: #F0F4F8; }
+        .pass-container { position: relative; }
+        .toggle-btn { position: absolute; right: 10px; top: 12px; font-size: 11px; font-weight: bold; color: #666; background: #E2E6EA; padding: 3px 8px; border-radius: 4px; cursor: pointer; }
 
-        .pass-wrapper { position: relative; display: flex; align-items: center; }
-        .toggle-btn { position: absolute; right: 15px; cursor: pointer; font-size: 11px; font-weight: 700; color: #888; background: #eee; padding: 5px 10px; border-radius: 5px; }
-
-        button { width: 100%; padding: 15px; background: var(--nust-blue); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 16px; margin-top: 10px; transition: 0.3s; }
-        button:hover { background: var(--nust-dark); transform: scale(1.02); }
-
-        .field-grid { display: grid; gap: 15px; margin-top: 20px; }
+        button { width: 100%; padding: 14px; background: var(--nust-blue); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        
+        /* Instructions Footer */
+        .footer-note { margin-top: 30px; width: 100%; max-width: 480px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; text-align: left; color: white; font-size: 12px; }
+        .footer-note b { color: #FFD700; }
     </style>
 </head>
 <body>
 
+    <!-- 1. LOGIN -->
     <div id="loginView" class="card active">
+        <div class="status">SYSTEM STATUS: OPERATIONAL</div>
         <h2>National University of Sciences & Technology</h2>
-        <div class="sub">Computer Based Entry Test Portal (CBNET)</div>
-        <input type="text" id="roll" placeholder="Candidate Roll Number">
-        <div class="pass-wrapper">
-            <input type="password" id="pass" placeholder="Access Password">
+        <div class="sub">COMPUTER BASED ENTRY TEST PORTAL (CBNET)</div>
+        <input type="text" id="roll" placeholder="CANDIDATE ROLL NUMBER / ID">
+        <div class="pass-container">
+            <input type="password" id="pass" placeholder="••••••••">
             <span class="toggle-btn" onclick="togglePass()">SHOW</span>
         </div>
-        <button onclick="checkLogin()">Login & Select Field</button>
+        <button onclick="checkLogin()">Login & Start Assessment</button>
     </div>
 
+    <!-- 2. FIELD SELECTION (As seen in image_40c1bd.jpg) -->
     <div id="trackView" class="card">
         <h2>Select Academic Stream</h2>
-        <div class="sub">Please choose your testing category</div>
-        <div class="field-grid">
-            <button onclick="startTest('engineering')">Engineering</button>
-            <button onclick="startTest('applied')">Applied Sciences</button>
-            <button onclick="startTest('business')">Business Studies</button>
-            <button onclick="startTest('architecture')">Architecture</button>
-            <button onclick="startTest('natural')">Natural Sciences</button>
-        </div>
+        <div class="sub">PLEASE CHOOSE YOUR TESTING CATEGORY</div>
+        <button onclick="startTest('eng')">Engineering</button>
+        <button onclick="startTest('app')">Applied Sciences</button>
+        <button onclick="startTest('bus')">Business Studies</button>
+        <button onclick="startTest('arch')">Architecture</button>
+        <button onclick="startTest('nat')">Natural Sciences</button>
+    </div>
+
+    <!-- Instructions Footer -->
+    <div class="footer-note">
+        <b>Important System Instructions:</b><br>
+        • Total Test duration is exactly 180 minutes.<br>
+        • The test pattern contains Mathematics (100), Physics (60), and English (40).<br>
+        • Click the 💾 Save button after choosing an option to record your choice and automatically advance.
     </div>
 
     <script>
         function togglePass() {
             let p = document.getElementById('pass');
             let b = document.querySelector('.toggle-btn');
-            if(p.type === "password") { p.type = "text"; b.innerText = "HIDE"; }
-            else { p.type = "password"; b.innerText = "SHOW"; }
+            p.type = (p.type === "password") ? "text" : "password";
+            b.innerText = (p.type === "password") ? "SHOW" : "HIDE";
         }
-
         function checkLogin() {
-            // Add simple auth check here
-            if(document.getElementById('pass').value) {
-                document.getElementById('loginView').classList.remove('active');
-                document.getElementById('trackView').classList.add('active');
-            } else { alert("Please enter password"); }
+            document.getElementById('loginView').classList.remove('active');
+            document.getElementById('trackView').classList.add('active');
         }
-
         function startTest(track) {
-            console.log("Selected Track:", track);
-            alert("Redirecting to " + track + " assessment...");
-            // Now you can easily add the call to your existing exam logic
+            alert("Starting " + track + " test...");
+            // Your existing test interface code goes here
         }
     </script>
 </body>
