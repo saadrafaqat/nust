@@ -380,16 +380,12 @@ function launchTestEngine() {
     generateNavMatrix();
 }
 
-function updateTimerDisplay() {
-    const h = Math.floor(totalSecondsRemaining / 3600);
-    const m = Math.floor((totalSecondsRemaining % 3600) / 60);
-    const s = totalSecondsRemaining % 60;
-    document.getElementById('timerClockMinutes').innerText =
-        String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-}
-
 function refreshWorkspace() {
     if (!activeTestSessionPool || activeTestSessionPool.length === 0) return;
+    
+    // 1. CLEAR IMMEDIATELY: This prevents the old question's image from flashing
+    const qBox = document.getElementById('questionTextBox');
+    qBox.innerHTML = "Loading question..."; 
     
     const q = activeTestSessionPool[globalPointerIndex];
     const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
