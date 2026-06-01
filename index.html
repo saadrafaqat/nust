@@ -2,9 +2,6 @@
 <html lang="en">
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3783bac929334b3eac2b0e9e69617817"}'></script>
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="icon" href="icon.png" type="image/png">
@@ -15,61 +12,9 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #FFFFFF; user-select: none; }
-
-       .login-screen { 
-    display:flex; 
-    flex-direction:column; 
-    align-items:center; 
-    justify-content:center; 
-    min-height:100vh; 
-    background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('nust.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-    padding:20px; 
-    position:relative;
-    overflow: hidden;
-}
-}
-        }
-        .field-select-screen { 
-            display: none; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); 
-            background-size: 400% 400%; 
-            animation: gradientBG 15s ease infinite; 
-            padding: 20px; 
-            position: relative;
-        }
-
-        /* NUST photo overlay on login and field-select screens using ::before */
-        .login-screen::before,
-        .field-select-screen::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('nust.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.25;
-            pointer-events: none;
-            z-index: 0;
-        }
-
+        .login-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; }
+        .field-select-screen { display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#0055A5); background-size:400% 400%; animation:gradientBG 15s ease infinite; padding:20px; }
         @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-
-        .login-container, .field-select-container, .instructions-box {
-            position: relative;
-            z-index: 1;
-        }
-
         .login-container, .field-select-container { width:100%; max-width:520px; background:rgba(255,255,255,0.95); padding:35px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
         .login-header { color:#003399; font-size:22px; font-weight:800; text-align:center; letter-spacing:-0.5px; }
         .nust-logo-sub { text-align:center; font-size:13px; color:#FF0000; font-weight:700; margin-bottom:20px; text-transform:uppercase; letter-spacing:1px; }
@@ -281,6 +226,7 @@
         <div class="score-output" id="totalScoreTarget">0 / 200</div>
         <div id="subjectScoreBreakdownBox" style="text-align:left;background:#F8F9F9;padding:12px;font-size:13px;line-height:1.6;border:1px solid #BDC3C7;margin-bottom:15px;"></div>
         
+        <!-- EXIT PORTAL BUTTON - Added at the top of the review section -->
         <button class="login-btn" style="margin:0 auto 20px auto;display:block;width:150px;background:linear-gradient(135deg,#C0392B,#E74C3C);box-shadow:0 4px 12px rgba(192,57,43,0.3);" onclick="window.location.reload()">Exit Portal</button>
         
         <div id="wrongQuestionsReviewPanel" style="text-align:left;margin-bottom:20px;"></div>
@@ -340,6 +286,7 @@ function authenticateUserLogin() {
     if (!candidateId || !pass) { alert('Both Roll Number and Password are required.'); return; }
     if (pass !== 'NUST2026') { alert('Access Denied: Invalid Access Password.'); return; }
     document.getElementById('fieldSelectCandidateId').innerText = candidateId;
+    // Hide login, show field selection
     document.getElementById('loginScreenView').style.display = 'none';
     document.getElementById('fieldSelectScreenView').style.display = 'flex';
 }
