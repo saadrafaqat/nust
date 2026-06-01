@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUST Computer Based Entry Test (CBNET)</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0055A5); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 35px; border-radius: 16px; width: 100%; max-width: 460px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; }
+        .view { display: none; } .active { display: block; }
+        h2 { color: #003399; font-weight: 800; margin-bottom: 5px; }
+        .sub { color: #FF0000; font-size: 13px; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #D5DBDB; border-radius: 8px; }
+        .pass-wrapper { position: relative; display: flex; align-items: center; }
+        .toggle-btn { position: absolute; right: 10px; cursor: pointer; font-size: 12px; font-weight: bold; color: #0055A5; }
+        button { width: 100%; padding: 14px; background: #0055A5; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        button:hover { background: #003399; }
+    </style>
+</head>
+<body>
+
+    <div id="loginView" class="view active card">
+        <h2>National University of Sciences & Technology</h2>
+        <div class="sub">Computer Based Entry Test Portal (CBNET)</div>
+        <input type="text" id="roll" placeholder="Candidate Roll Number">
+        <div class="pass-wrapper">
+            <input type="password" id="pass" placeholder="Access Password">
+            <span class="toggle-btn" onclick="togglePass()">SHOW</span>
+        </div>
+        <button onclick="checkLogin()">Login & Select Field</button>
+    </div>
+
+    <div id="trackView" class="view card">
+        <h2>Select Academic Field</h2>
+        <button onclick="startTest('engineering')">NET-Engineering</button>
+        <button onclick="startTest('applied')">NET-Applied Sciences</button>
+        <button onclick="startTest('business')">NET-Business Studies</button>
+        <button onclick="startTest('architecture')">NET-Architecture</button>
+        <button onclick="startTest('natural')">NET-Natural Sciences</button>
+    </div>
+
+    <script>
+        function togglePass() {
+            let p = document.getElementById('pass');
+            let b = document.querySelector('.toggle-btn');
+            if(p.type === "password") { p.type = "text"; b.innerText = "HIDE"; }
+            else { p.type = "password"; b.innerText = "SHOW"; }
+        }
+
+        function checkLogin() {
+            // Add your authentication logic here
+            document.getElementById('loginView').classList.remove('active');
+            document.getElementById('trackView').classList.add('active');
+        }
+
+        function startTest(track) {
+            alert("Starting " + track + " test. Redirecting to interface...");
+            // Link your existing exam interface logic here
+        }
+    </script>
+</body>
+</html>
