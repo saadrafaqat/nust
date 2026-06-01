@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NUST CBNET Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUST Computer Based Entry Test (CBNET)</title>
     <style>
-        :root { --nust-blue: #003399; --bg: #2C4855; }
-        body { background: var(--bg); font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
+        :root { --nust-blue: #003399; --nust-red: #FF0000; --bg: #2C4855; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
+        
         .card { background: #fff; padding: 30px; border-radius: 20px; width: 100%; max-width: 500px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); display: none; }
         .active { display: block; }
-        h2 { color: var(--nust-blue); text-align: center; margin-bottom: 20px; }
         
-        .field-item { border: 2px solid #e1e1e1; border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+        /* Elements */
+        .status { background: #DFF6E9; color: #28A745; font-size: 11px; font-weight: 700; padding: 5px 15px; border-radius: 20px; border: 1px solid #28A745; margin-bottom: 20px; display: inline-block; }
+        h2 { color: var(--nust-blue); text-align: center; margin-bottom: 5px; }
+        .sub { color: var(--nust-red); font-size: 12px; font-weight: 700; text-transform: uppercase; text-align: center; margin-bottom: 25px; }
+        
+        .input-wrapper { position: relative; margin-bottom: 15px; }
+        input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+        .eye-btn { position: absolute; right: 15px; top: 15px; cursor: pointer; background: none; border: none; font-size: 16px; }
+
+        .field-item { border: 2px solid #e1e1e1; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: 0.3s; }
         .field-btn { width: 100%; padding: 15px; border: none; background: #f8f9fa; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
         .syllabus { padding: 0 15px; max-height: 0; overflow: hidden; transition: 0.4s; background: #fdfdfd; font-size: 13px; color: #555; }
         .syllabus.open { padding: 15px; max-height: 150px; border-top: 1px solid #eee; }
         .select-btn { background: var(--nust-blue); color: white; border: none; padding: 12px; width: 100%; font-weight: bold; cursor: pointer; }
+
+        .footer-note { margin-top: 30px; width: 100%; max-width: 500px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; color: white; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <!-- 1. LOGIN -->
     <div id="loginView" class="card active">
-        <h2>NUST Login</h2>
-        <input type="text" class="field-btn" placeholder="Candidate Roll Number" style="margin-bottom:10px;">
-        <input type="password" class="field-btn" placeholder="Access Password" style="margin-bottom:10px;">
+        <div style="text-align:center"><span class="status">● SYSTEM STATUS: OPERATIONAL</span></div>
+        <h2>National University of Sciences & Technology</h2>
+        <div class="sub">COMPUTER BASED ENTRY TEST PORTAL (CBNET)</div>
+        <input type="text" placeholder="Candidate Roll Number" style="margin-bottom:15px;">
+        <div class="input-wrapper">
+            <input type="password" id="passInput" placeholder="Access Password">
+            <button type="button" class="eye-btn" onclick="togglePass()">👁️</button>
+        </div>
         <button class="select-btn" onclick="showFields()">Login & Continue</button>
     </div>
 
-    <!-- 2. FIELD SELECTION -->
     <div id="trackView" class="card">
         <h2>Select Academic Stream</h2>
+        <div class="sub">PLEASE CHOOSE YOUR TESTING CATEGORY</div>
 
         <div class="field-item">
             <button class="field-btn" onclick="toggle('s1')">Engineering <span>+</span></button>
@@ -62,7 +79,17 @@
         </div>
     </div>
 
+    <div class="footer-note">
+        <b>Important System Instructions:</b><br>
+        • Total Test duration is exactly 180 minutes.<br>
+        • Click the Save button after choosing an option to record your choice.
+    </div>
+
     <script>
+        function togglePass() {
+            const p = document.getElementById("passInput");
+            p.type = (p.type === "password") ? "text" : "password";
+        }
         function showFields() { document.getElementById('loginView').classList.remove('active'); document.getElementById('trackView').classList.add('active'); }
         function toggle(id) { document.getElementById(id).classList.toggle('open'); }
         function startTest(track) { alert("Launching " + track + " Assessment..."); }
