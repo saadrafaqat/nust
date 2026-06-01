@@ -394,10 +394,11 @@ function refreshWorkspace() {
     const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
     const cfg = FIELD_CONFIG[selectedField];
 
+    // 1. Update the UI text
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
-    // Logic to include image if it exists
+    // 2. Handle Question Text & Math Rendering
     let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 100%; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
     document.getElementById('questionTextBox').innerHTML = `${q.q} ${imageHTML}`;
 
@@ -408,7 +409,7 @@ function refreshWorkspace() {
         ]
     });
 
-    // 1. Build options
+    // 3. Build Options
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
@@ -419,7 +420,7 @@ function refreshWorkspace() {
         cont.appendChild(row);
     });
 
-    // 2. Update navigation focus
+    // 4. Update Navigation Buttons
     document.querySelectorAll('.nav-square-btn').forEach(b => b.classList.remove('active-focus'));
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
