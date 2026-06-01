@@ -400,7 +400,7 @@ function refreshWorkspace() {
 
     // 2. Handle Question Text & Math
     // To make the image smaller, change 'max-width: 100%' to 'max-width: 300px' (or whatever size you prefer)
-    let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 300px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
+    let imageHTML = q.image ? `<img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
     document.getElementById('questionTextBox').innerHTML = `${q.q} ${imageHTML}`;
 
     renderMathInElement(document.getElementById('questionTextBox'), {
