@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUST Computer Based Entry Test (CBNET)</title>
     
-    <!-- KaTeX for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -103,6 +102,26 @@
         .hidden { display:none !important; }
         .katex-display { display:inline-block; margin:0; }
         .katex { font-size:1.1em; }
+        /* Hide browser's native radio circle - we use label-based selection */
+        .option-radio-input { display:none; }
+        /* Style the custom radio indicator */
+        .option-row-item::before {
+            content: '';
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #A9CCE3;
+            margin-right: 12px;
+            flex-shrink: 0;
+            background: white;
+            transition: all 0.2s;
+        }
+        .option-row-item.selected::before {
+            border-color: #0055A5;
+            background: #0055A5;
+            box-shadow: inset 0 0 0 3px white;
+        }
     </style>
 </head>
 <body>
@@ -248,7 +267,6 @@
 </div>
 
 <script>
-// ===== FIELD CONFIG =====
 const FIELD_CONFIG = {
     'engineering': {
         label: 'NET-Engineering', code: 'ENG', description: 'Engineering / Computing / ICS Stream', totalMCQs: 200,
@@ -488,7 +506,7 @@ function refreshWorkspace() {
     qBox.innerHTML = html;
     renderMathInElementSafe(qBox);
 
-    // Build options
+    // Build options with clickable labels
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     
@@ -497,32 +515,22 @@ function refreshWorkspace() {
         row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
         row.setAttribute('data-opt-index', idx);
         
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.className = 'option-radio-input';
-        radio.name = 'nust_radio';
-        if (q.chosenIndexValue === idx) radio.checked = true;
-        
         const span = document.createElement('span');
         span.className = 'option-text';
         span.innerHTML = opt;
         
-        row.appendChild(radio);
         row.appendChild(span);
         cont.appendChild(row);
     });
 
-    // Render KaTeX FIRST
+    // Render KaTeX in options
     renderMathInElementSafe(cont);
 
-    // THEN attach click listeners AFTER KaTeX rendering
+    // Simple click handler - just update data and refresh
     cont.querySelectorAll('.option-row-item').forEach(row => {
-        row.addEventListener('click', function(e) {
+        row.addEventListener('click', function() {
             const idx = parseInt(this.getAttribute('data-opt-index'));
             q.chosenIndexValue = idx;
-            // Manually check the radio button so the blue circle fills in
-            const radio = this.querySelector('.option-radio-input');
-            if (radio) radio.checked = true;
             refreshWorkspace();
         });
     });
