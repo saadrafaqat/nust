@@ -489,14 +489,14 @@ function refreshWorkspace() {
     qBox.innerHTML = html;
     renderMathInElementSafe(qBox);
 
-    // --- FIXED: Options selection ---
+    // Build options
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     
-    // Use a document fragment for performance
     q.a.forEach((opt, idx) => {
         const row = document.createElement('div');
         row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+        row.setAttribute('data-opt-index', idx);
         
         const radio = document.createElement('input');
         radio.type = 'radio';
@@ -510,27 +510,22 @@ function refreshWorkspace() {
         
         row.appendChild(radio);
         row.appendChild(span);
-        
-        // FIX: Use click handler on the row, which also checks the radio
-        row.addEventListener('click', function(e) {
-            // Don't toggle if the click was directly on the radio (to avoid double-toggle)
-            if (e.target.tagName !== 'INPUT') {
-                q.chosenIndexValue = idx;
-                refreshWorkspace();
-            }
-        });
-        
-        // Also add click handler on radio specifically
-        radio.addEventListener('change', function() {
-            q.chosenIndexValue = idx;
-            refreshWorkspace();
-        });
-        
         cont.appendChild(row);
     });
 
+    // Render KaTeX FIRST
     renderMathInElementSafe(cont);
 
+    // THEN attach click listeners AFTER KaTeX rendering
+    cont.querySelectorAll('.option-row-item').forEach(row => {
+        row.addEventListener('click', function(e) {
+            const idx = parseInt(this.getAttribute('data-opt-index'));
+            q.chosenIndexValue = idx;
+            refreshWorkspace();
+        });
+    });
+
+    // Update navigation highlights
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         b.classList.remove('active-focus');
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
