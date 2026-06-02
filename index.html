@@ -71,6 +71,9 @@
         .option-row-item.selected { background:#D4E6F1; border:1px solid #0055A5; font-weight:bold; }
         .option-radio-input { margin-right:12px; transform:scale(1.2); cursor:pointer; flex-shrink:0; }
         .option-text { text-align:left; font-size:14px; }
+        /* KaTeX rendering within options - prevent overflow */
+        .option-text .katex { font-size:1.05em; }
+        .option-text .katex-display { display:inline-block; }
         .right-photo-panel { width:160px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; background:#FFF; }
         .photo-box-frame { width:120px; height:140px; border:1px solid #003399; display:flex; align-items:center; justify-content:center; text-align:center; font-weight:bold; font-size:13px; color:#555; background:#FAFAFA; margin-bottom:12px; }
         .navigation-grid-wrapper { border:1px solid #0055A5; margin:8px 0; padding:8px; background:#F2F4F4; }
@@ -320,6 +323,89 @@ function selectField(el, val) {
     selectedField = val;
 }
 
+/**
+ * FIX: Pre-process math text to wrap bare matrix/array/equation environments
+ * in $$...$$ delimiters so KaTeX auto-render picks them up.
+ * Also handles cases like \begin{pmatrix} without surrounding $ signs.
+ */
+function wrapMathEnvironments(text) {
+    // List of environments that KaTeX supports but auto-render won't catch without $...$ wrappers
+    const envs = [
+        'matrix', 'pmatrix', 'bmatrix', 'Bmatrix', 'vmatrix', 'Vmatrix',
+        'array', 'cases', 'dcases', 'rcases', 'drcases',
+        'aligned', 'gathered', 'split',
+        'smallmatrix', 'subarray'
+    ];
+    
+    // Pattern: \begin{ENV} ... \end{ENV} NOT already wrapped in $ or $$
+    // We wrap each standalone environment in $$...$$
+    let result = text;
+    for (const env of envs) {
+        const regex = new RegExp(
+            '(?<!\\$|\\\\\\()' +                       // not preceded by $ or \(
+            '(\\\\begin\\{' + env + '\\})' +            // capture \begin{env}
+            '([\\s\\S]*?)' +                            // content
+            '(\\\\end\\{' + env + '\\})' +              // capture \end{env}
+            '(?!\\$|\\\\\\))',                          // not followed by $ or \)
+            'g'
+        );
+        result = result.replace(regex, '$$$1$2$3$$');
+    }
+    
+    // Also catch \begin{align}, \begin{equation}, \begin{gather}, \begin{CD}
+    const specialEnvs = ['align', 'equation', 'gather', 'CD', 'alignat', 'flalign', 'multline'];
+    for (const env of specialEnvs) {
+        const regex = new RegExp(
+            '(?<!\\$|\\\\\\()' +
+            '(\\\\begin\\{' + env + '\\})' +
+            '([\\s\\S]*?)' +
+            '(\\\\end\\{' + env + '\\})' +
+            '(?!\\$|\\\\\\))',
+            'g'
+        );
+        result = result.replace(regex, '$$$1$2$3$$');
+    }
+    
+    return result;
+}
+
+/**
+ * FIX: Render KaTeX in a DOM element with comprehensive delimiters
+ * including matrix environments.
+ */
+function renderMathInElementSafe(element) {
+    if (typeof renderMathInElement !== 'function') return;
+    
+    // First wrap any bare matrix environments
+    if (element.innerHTML) {
+        element.innerHTML = wrapMathEnvironments(element.innerHTML);
+    }
+    
+    try {
+        renderMathInElement(element, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+                {left: "\\begin{align}", right: "\\end{align}", display: true},
+                {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+                {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+                {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+                {left: "\\begin{flalign}", right: "\\end{flalign}", display: true},
+                {left: "\\begin{multline}", right: "\\end{multline}", display: true}
+            ],
+            // Don't throw on errors - render the raw LaTeX instead
+            throwOnError: false,
+            errorColor: '#CC0000'
+        });
+    } catch(e) {
+        // Silently fail - content still shows as raw text
+        console.warn('KaTeX rendering error:', e);
+    }
+}
+
 function startExam() {
     if (!selectedField) { alert('Please select your Field / Stream.'); return; }
     const cfg = FIELD_CONFIG[selectedField];
@@ -422,7 +508,7 @@ function refreshWorkspace() {
         html += `<div class="passage-container"><div class="passage-label">Read the following passage carefully:</div>${q.passage}</div>`;
     }
 
-    // 2) Question text
+    // 2) Question text - use innerHTML to preserve HTML tags like <sup>, <sub>, etc.
     html += `<div class="question-text">${q.q}</div>`;
 
     // 3) Diagram image (if the question has an image field)
@@ -432,21 +518,13 @@ function refreshWorkspace() {
 
     qBox.innerHTML = html;
 
-    // --- Render math with KaTeX ---
-    if (typeof renderMathInElement === 'function') {
-        renderMathInElement(qBox, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    }
+    // FIX: Render KaTeX in question with matrix support
+    renderMathInElementSafe(qBox);
 
     // --- Build options ---
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
-        // Also render math in option text if present
         const row = document.createElement('div');
         row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
         row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
@@ -457,24 +535,18 @@ function refreshWorkspace() {
         radio.name = 'nust_radio';
         if (q.chosenIndexValue === idx) radio.checked = true;
         
+        // FIX: Use innerHTML instead of textContent so <sup>, <sub>, <i>, <b> etc. render properly
         const span = document.createElement('span');
         span.className = 'option-text';
-        span.textContent = opt;
+        span.innerHTML = opt;  // Changed from textContent to innerHTML
         
         row.appendChild(radio);
         row.appendChild(span);
         cont.appendChild(row);
     });
 
-    // Render math in options too if KaTeX is loaded
-    if (typeof renderMathInElement === 'function') {
-        renderMathInElement(cont, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    }
+    // FIX: Render KaTeX in options with matrix support
+    renderMathInElementSafe(cont);
 
     // --- Update navigation ---
     document.querySelectorAll('.nav-square-btn').forEach(b => {
@@ -562,7 +634,8 @@ function compileExamResults() {
         const chosen = i.chosenIndexValue !== null ? i.a[i.chosenIndexValue] : 'Unattempted';
         const right = i.a[i.c];
         const exp = i.e || 'No explanation provided.';
-        const dispQ = i.q.replace(/\$/g, ''); // strip KaTeX delimiters for review readability
+        // Use innerHTML for review display too (preserve <sup>, <sub>, KaTeX etc.)
+        const dispQ = i.q;
         if (correct) {
             logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${dispQ}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
         } else {
@@ -581,7 +654,14 @@ function compileExamResults() {
         bd += `&bull; ${SECTION_LABELS[k] || k.toUpperCase()}: ${stats[k]} / ${cfg.blueprint[k]}<br>`;
     }
     document.getElementById('subjectScoreBreakdownBox').innerHTML = bd;
+    
+    // FIX: Render KaTeX in the review panel too
     document.getElementById('wrongQuestionsReviewPanel').innerHTML = reviewHTML;
+    renderMathInElementSafe(document.getElementById('wrongQuestionsReviewPanel'));
+    
+    // Also render breakdown box math
+    renderMathInElementSafe(document.getElementById('subjectScoreBreakdownBox'));
+    
     document.getElementById('reportCardModalOverlay').style.display = 'flex';
 }
 </script>
