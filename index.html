@@ -444,46 +444,38 @@ function refreshWorkspace() {
 
     // --- Build options ---
     const cont = document.getElementById('optionsRadioGroup');
-cont.innerHTML = '';
+    cont.innerHTML = '';
+    q.a.forEach((opt, idx) => {
+        // Also render math in option text if present
+        const row = document.createElement('div');
+        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
+        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+        
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.className = 'option-radio-input';
+        radio.name = 'nust_radio';
+        if (q.chosenIndexValue === idx) radio.checked = true;
+        
+        const span = document.createElement('span');
+        span.className = 'option-text';
+        span.textContent = opt;
+        
+        row.appendChild(radio);
+        row.appendChild(span);
+        cont.appendChild(row);
+    });
 
-// 1. Force the container to be a vertical list
-cont.style.display = 'flex';
-cont.style.flexDirection = 'column'; 
-
-q.a.forEach((opt, idx) => {
-    // 2. Create the label wrapper
-    const label = document.createElement('label');
-    label.style.display = 'flex';         // Flex row for radio + text
-    label.style.alignItems = 'center';    // Center vertically
-    label.style.padding = '10px';
-    label.style.margin = '5px 0';         // Spacing between options
-    label.style.border = '1px solid #ccc';
-    label.style.borderRadius = '5px';
-    label.style.cursor = 'pointer';
-    
-    // Highlight if selected
-    if (q.chosenIndexValue === idx) {
-        label.style.backgroundColor = '#D4E6F1';
-        label.style.borderColor = '#0055A5';
+    // Render math in options too if KaTeX is loaded
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(cont, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
     }
 
-    // 3. Create the radio input
-    const radio = document.createElement('input');
-    radio.type = 'radio';
-    radio.name = 'nust_radio';
-    radio.style.marginRight = '12px';
-    radio.style.transform = 'scale(1.2)';
-    if (q.chosenIndexValue === idx) radio.checked = true;
-
-    // 4. Add click event
-    label.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-
-    // 5. Build the row
-    label.appendChild(radio);
-    label.appendChild(document.createTextNode(opt));
-    cont.appendChild(label);
-});
-    
     // --- Update navigation ---
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         b.classList.remove('active-focus');
