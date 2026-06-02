@@ -112,8 +112,7 @@ const QUESTION_BANK = {
             { id: "e_62", passage: "One of my favorite vacation places is Mexico. I really like the weather there because it never gets cold. The people are very nice too. They never laugh at my bad Spanish. The food is really good. Mexico City is a very interesting place to visit. It has some great museums and lots of fascinating old buildings. The hotels are too expensive to stay but there are more affordable options. For example, you can stay at one of the beach resorts like Acapulco. If you are planning to visit Mexico, you should definitely see the Mayan temples near Merida.", q: "What can you conclude from the paragraph?", a: ["Hotels are very cheap in Mexico", "The hotels aren't comfortable there", "Hotels are all poor in Mexico", "The hotels in Mexico are pretty expensive"], c: 3, e: "The text states: 'The hotels are too expensive to stay'." },
             { id: "e_63", passage: "Dear Melissa, I hope you are well. Guess what I am having a big party next week at my house and am inviting all my close friends. The theme of the party is going to be Harry Potter, so all must dress accordingly. You would make a great witch I need to let everyone know by Wednesday since I am throwing the party next Saturday. Sam is going to decorate the house and my mother is going to bake a cake and making lots of food. There is going to be music and dancing as well. John is going to be the DJ. You can stay over at my house. It's going to be great I hope to see you then.", q: "What kind of an organization is it?", a: ["It is a slumber party", "It is a costume party", "It is about making cake", "It is a dance party"], c: 1, e: "The theme is Harry Potter, so all must dress accordingly." },
             { id: "e_64", passage: "Often mistaken for insects, spiders actually belong to a different classification of creatures, called arachnids. They're insects' worst enemies. Although a few species, such as the black widow and the brown recluse, are dangerous, the majority are harmless to humans. Moreover, they can be helpful. Pest control, for example is just one of the many ways spiders can help us. They kill far more pests than commercial insecticides do. In the future, perhaps if farmers employ armies of spiders to protect their fields, our grocery bills will be lower and our soil and water and food will have fewer pesticide remains.", q: "Unlike many people think,", a: ["Spiders can be used in insecticide industry", "The black widow is a dangerous species of the spider", "Spiders are the worst enemy of insects", "A spider is not a kind of insect at all"], c: 3, e: "The text starts: 'Often mistaken for insects, spiders actually belong to a different classification... arachnids.'" },
-            
-              // --- Grammar ---
+        
             { id: "e_65", q: "Fate smiles ______ those who untiringly grapple with stark realities of life.", a: ["At", "Over", "On", "Upon"], c: 3, e: "'Smile upon' means to favor." },
             { id: "e_66", q: "The miser gazed ______ at the pile of gold coins in front of him.", a: ["Avidly", "Admiringly", "Thoughtfully", "Earnestly"], c: 0, e: "'Avidly' means with keen interest." },
             { id: "e_67", q: "Catching the earlier train will give us the ______ to do some shopping.", a: ["Chance", "Luck", "Possibility", "Occasion"], c: 0, e: "'Chance' is an opportunity." },
@@ -139,19 +138,13 @@ const QUESTION_BANK = {
             { id: "e_87", q: "It ______ that Miraal will not be selected for the post.", a: ["Feels", "Looks", "Believes", "Seems"], c: 3, e: "'Seems' is the logical verb here." },
             { id: "e_88", q: "Teachers are up ______ some major problems these days.", a: ["For", "Into", "Against", "To"], c: 2, e: "'Up against' means facing difficulties." },
             { id: "e_89", q: "I have not seen you ______ a week.", a: ["Within", "Since", "For", "From"], c: 2, e: "'For' denotes a duration." },
-            
-              // --- Spelling ---
-            
             { id: "e_93", q: "Select the correctly spelled word:", a: ["Posthumous", "Posthumus", "Postheumous", "Posthumos"], c: 0, e: "P-O-S-T-H-U-M-O-U-S." },
             { id: "e_94", q: "Select the correctly spelled word:", a: ["Boundry", "Boundary", "Boundery", "Baundary"], c: 1, e: "B-O-U-N-D-A-R-Y." },
             { id: "e_95", q: "Select the correctly spelled word:", a: ["Toungue", "Tounge", "Tongue", "Tungue"], c: 2, e: "T-O-N-G-U-E." },
             { id: "e_96", q: "Select the correctly spelled word:", a: ["Emoticon", "Emoticonn", "Emotican", "Emoticon"], c: 0, e: "E-M-O-T-I-C-O-N." },
             { id: "e_97", q: "Select the correctly spelled word:", a: ["Phenomenal", "Phenominal", "Phenomennal", "Fenomenal"], c: 0, e: "P-H-E-N-O-M-E-N-A-L." },
             { id: "e_98", q: "Select the correctly spelled word:", a: ["Profesion", "Proffession", "Profession", "Proffesion"], c: 2, e: "P-R-O-F-E-S-S-I-O-N." },
-            { id: "e_99", q: "Select the correctly spelled word:", a: ["Liquer", "Liquor", "Likor", "Liquour"], c: 1, e: "L-I-Q-U-O-R." },
-            
-              // --- Analogies ---
-            
+            { id: "e_99", q: "Select the correctly spelled word:", a: ["Liquer", "Liquor", "Likor", "Liquour"], c: 1, e: "L-I-Q-U-O-R." },           
             { id: "e_105", q: "Traitor : Disloyalty", a: ["Executioner : Reliability", "Rebel : Defiance", "Manager : Administration", "Hope : Pessimism"], c: 1, e: "A traitor exhibits disloyalty; a rebel exhibits defiance." },
             { id: "e_106", q: "Dubious : Indisputable", a: ["Slander : Libel", "Painful : Tormenting", "Avaricious : Generous", "Perspicacious : Tenacity"], c: 2, e: "Antonyms." },
             { id: "e_107", q: "Arrows : Quiver", a: ["Fear : Tremble", "Money : Bank", "Sound : Music", "Coin : Mint"], c: 1, e: "Arrows are kept in a quiver; money is kept in a bank." },
