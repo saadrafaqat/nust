@@ -192,7 +192,7 @@ const QUESTION_BANK = {
             { id: "as_c19", q: "The primary catalyst deployed during the industrial Haber Process for ammonia synthesis is:", a: ["Finely divided Iron", "Vanadium Pentoxide", "Platinum Gauze", "Nickel Matrix"], c: 0, e: "Finely divided iron optimized with potassium and aluminum oxide promoters accelerates N2 and H2 recombination." },
             { id: "as_c20", q: "The dynamic state of chemical equilibrium is best defined as a condition where:", a: ["Reactants completely stop changing into products", "The forward and reverse reaction rates become equal", "Concentrations of all components become completely identical", "Net entropy reaches zero"], c: 1, e: "Equilibrium is highly dynamic; opposing processes continue running at identical structural velocities." }
         ],
-        applied_sciences_english: [
+        english: [
             { id: "as_e1", q: "Choose the word closest in meaning to 'Knuckle Head':", a: ["Intolerable", "Inept person", "Musical", "Talented"], c: 1, e: "" },
             { id: "as_e2", q: "Choose the word closest in meaning to 'Axiom':", a: ["Paradox", "Absurdity", "Foolish", "Truism"], c: 3, e: "" },
             { id: "as_e3", q: "Choose the word closest in meaning to 'Industrious':", a: ["Indolent", "Active", "Slothful", "Idle"], c: 1, e: "" },
