@@ -444,27 +444,30 @@ function refreshWorkspace() {
 
     // --- Build options ---
     const cont = document.getElementById('optionsRadioGroup');
-    cont.innerHTML = '';
-    q.a.forEach((opt, idx) => {
-        // Also render math in option text if present
-        const row = document.createElement('div');
-        row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-        
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.className = 'option-radio-input';
-        radio.name = 'nust_radio';
-        if (q.chosenIndexValue === idx) radio.checked = true;
-        
-        const span = document.createElement('span');
-        span.className = 'option-text';
-        span.textContent = opt;
-        
-        row.appendChild(radio);
-        row.appendChild(span);
-        cont.appendChild(row);
-    });
+cont.innerHTML = '';
+q.a.forEach((opt, idx) => {
+    // We use a <label> with display: block to ensure they stack vertically
+    const label = document.createElement('label');
+    label.style.display = 'block';
+    label.style.padding = '8px';
+    label.style.cursor = 'pointer';
+    label.style.border = '1px solid #ddd';
+    label.style.marginBottom = '5px';
+    if (q.chosenIndexValue === idx) label.style.backgroundColor = '#D4E6F1';
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'nust_radio';
+    radio.style.marginRight = '10px';
+    if (q.chosenIndexValue === idx) radio.checked = true;
+    
+    // Add event listener to select the option when the label is clicked
+    label.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
+
+    label.appendChild(radio);
+    label.appendChild(document.createTextNode(opt));
+    cont.appendChild(label);
+});
 
     // Render math in options too if KaTeX is loaded
     if (typeof renderMathInElement === 'function') {
