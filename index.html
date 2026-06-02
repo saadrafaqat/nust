@@ -15,34 +15,31 @@
     
     <script src="questions.js"></script>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #FFFFFF; user-select: none; }
-        .login-screen { 
-            display:flex; 
-            flex-direction:column; 
-            align-items:center; 
-            justify-content:center; 
-            min-height:100vh; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('nust.jpg');
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
-            padding:20px; 
-        }
+        @keyframes panBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        /* Updated Field Select Screen */
-        .field-select-screen { 
-            display:none; 
-            flex-direction:column; 
-            align-items:center; 
-            justify-content:center; 
-            min-height:100vh; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('nust.jpg');
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
-            padding:20px; 
-        }
+/* 2. Replace your current .login-screen and .field-select-screen with this: */
+.login-screen, .field-select-screen { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    padding: 20px; 
+    
+    /* Background settings */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('nust.jpg');
+    background-size: 200% 100%; 
+    background-position: 0% 50%;
+    background-repeat: no-repeat;
+    animation: panBackground 30s linear infinite;
+}
+
+/* Ensure the field select is hidden by default as before */
+.field-select-screen { display: none; }
         @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
         .login-container, .field-select-container { width:100%; max-width:520px; background:rgba(255,255,255,0.95); padding:35px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
         .login-header { color:#003399; font-size:22px; font-weight:800; text-align:center; letter-spacing:-0.5px; }
