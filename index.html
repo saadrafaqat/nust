@@ -57,13 +57,11 @@
         .workspace-container { display:flex; border-bottom:2px solid #0055A5; min-height:300px; }
         .left-main-canvas { flex:1; display:flex; flex-direction:column; border-right:2px solid #0055A5; }
         .question-meta-bar { background:#D4E6F1; color:#003399; font-weight:bold; font-size:13px; padding:5px 10px; border-bottom:1px solid #0055A5; display:flex; justify-content:space-between; }
-        /* Question body with passage support */
         .question-body-pane { padding:18px 20px; font-size:15px; font-weight:600; color:#000; min-height:100px; border-bottom:2px solid #0055A5; line-height:1.6; background:#FFF; text-align:left; }
         .passage-container { background:#F8F9FA; border:1px solid #BDC3C7; border-left:4px solid #0055A5; padding:14px 16px; margin-bottom:14px; font-weight:400; font-size:14px; line-height:1.7; color:#333; border-radius:4px; }
         .passage-label { font-size:11px; font-weight:700; color:#0055A5; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
         .question-text { font-weight:600; font-size:15px; }
         .question-diagram { display:block; max-width:280px; height:auto; margin:12px auto; border-radius:6px; border:1px solid #D5DBDB; }
-        .equation-inline { display:inline; }
         .options-pane-title { background:#D4E6F1; color:#003399; font-weight:bold; font-size:13px; padding:5px 10px; border-bottom:1px solid #0055A5; }
         .options-list-wrapper { padding:12px 15px; display:flex; flex-direction:column; gap:6px; background:#FFF; flex:1; }
         .option-row-item { display:flex; align-items:center; border:1px solid #A9CCE3; padding:10px 14px; background:white; cursor:pointer; border-radius:4px; }
@@ -71,7 +69,6 @@
         .option-row-item.selected { background:#D4E6F1; border:1px solid #0055A5; font-weight:bold; }
         .option-radio-input { margin-right:12px; transform:scale(1.2); cursor:pointer; flex-shrink:0; }
         .option-text { text-align:left; font-size:14px; }
-        /* KaTeX rendering within options - prevent overflow */
         .option-text .katex { font-size:1.05em; }
         .option-text .katex-display { display:inline-block; }
         .right-photo-panel { width:160px; padding:12px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; background:#FFF; }
@@ -104,7 +101,6 @@
         .review-box { border:1px solid #BDC3C7; text-align:left; padding:12px; margin-top:8px; font-size:13px; line-height:1.5; background:#FFF9F9; border-left:5px solid #FF0000; }
         .review-box.box-correct { background:#F4FBF7; border-left:5px solid #2ECC71; }
         .hidden { display:none !important; }
-        /* KaTeX fixes */
         .katex-display { display:inline-block; margin:0; }
         .katex { font-size:1.1em; }
     </style>
@@ -305,7 +301,6 @@ function authenticateUserLogin() {
     if (!candidateId || !pass) { alert('Both Roll Number and Password are required.'); return; }
     if (pass !== 'NUST2026') { alert('Access Denied: Invalid Access Password.'); return; }
     document.getElementById('fieldSelectCandidateId').innerText = candidateId;
-    // Hide login, show field selection
     document.getElementById('loginScreenView').style.display = 'none';
     document.getElementById('fieldSelectScreenView').style.display = 'flex';
 }
@@ -323,36 +318,25 @@ function selectField(el, val) {
     selectedField = val;
 }
 
-/**
- * FIX: Pre-process math text to wrap bare matrix/array/equation environments
- * in $$...$$ delimiters so KaTeX auto-render picks them up.
- * Also handles cases like \begin{pmatrix} without surrounding $ signs.
- */
 function wrapMathEnvironments(text) {
-    // List of environments that KaTeX supports but auto-render won't catch without $...$ wrappers
     const envs = [
         'matrix', 'pmatrix', 'bmatrix', 'Bmatrix', 'vmatrix', 'Vmatrix',
         'array', 'cases', 'dcases', 'rcases', 'drcases',
         'aligned', 'gathered', 'split',
         'smallmatrix', 'subarray'
     ];
-    
-    // Pattern: \begin{ENV} ... \end{ENV} NOT already wrapped in $ or $$
-    // We wrap each standalone environment in $$...$$
     let result = text;
     for (const env of envs) {
         const regex = new RegExp(
-            '(?<!\\$|\\\\\\()' +                       // not preceded by $ or \(
-            '(\\\\begin\\{' + env + '\\})' +            // capture \begin{env}
-            '([\\s\\S]*?)' +                            // content
-            '(\\\\end\\{' + env + '\\})' +              // capture \end{env}
-            '(?!\\$|\\\\\\))',                          // not followed by $ or \)
+            '(?<!\\$|\\\\\\()' +
+            '(\\\\begin\\{' + env + '\\})' +
+            '([\\s\\S]*?)' +
+            '(\\\\end\\{' + env + '\\})' +
+            '(?!\\$|\\\\\\))',
             'g'
         );
         result = result.replace(regex, '$$$1$2$3$$');
     }
-    
-    // Also catch \begin{align}, \begin{equation}, \begin{gather}, \begin{CD}
     const specialEnvs = ['align', 'equation', 'gather', 'CD', 'alignat', 'flalign', 'multline'];
     for (const env of specialEnvs) {
         const regex = new RegExp(
@@ -365,22 +349,14 @@ function wrapMathEnvironments(text) {
         );
         result = result.replace(regex, '$$$1$2$3$$');
     }
-    
     return result;
 }
 
-/**
- * FIX: Render KaTeX in a DOM element with comprehensive delimiters
- * including matrix environments.
- */
 function renderMathInElementSafe(element) {
     if (typeof renderMathInElement !== 'function') return;
-    
-    // First wrap any bare matrix environments
     if (element.innerHTML) {
         element.innerHTML = wrapMathEnvironments(element.innerHTML);
     }
-    
     try {
         renderMathInElement(element, {
             delimiters: [
@@ -396,12 +372,10 @@ function renderMathInElementSafe(element) {
                 {left: "\\begin{flalign}", right: "\\end{flalign}", display: true},
                 {left: "\\begin{multline}", right: "\\end{multline}", display: true}
             ],
-            // Don't throw on errors - render the raw LaTeX instead
             throwOnError: false,
             errorColor: '#CC0000'
         });
     } catch(e) {
-        // Silently fail - content still shows as raw text
         console.warn('KaTeX rendering error:', e);
     }
 }
@@ -499,35 +473,30 @@ function refreshWorkspace() {
     document.getElementById('currentSubjectHeader').innerHTML = label;
     document.getElementById('questionNumTracker').innerHTML = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
-    // --- Build question display: passage + image + question text ---
     const qBox = document.getElementById('questionTextBox');
     let html = '';
 
-    // 1) Passage box (if the question has a passage field)
     if (q.passage) {
         html += `<div class="passage-container"><div class="passage-label">Read the following passage carefully:</div>${q.passage}</div>`;
     }
 
-    // 2) Question text - use innerHTML to preserve HTML tags like <sup>, <sub>, etc.
     html += `<div class="question-text">${q.q}</div>`;
 
-    // 3) Diagram image (if the question has an image field)
     if (q.image) {
         html += `<img class="question-diagram" src="${q.image}" alt="Diagram">`;
     }
 
     qBox.innerHTML = html;
-
-    // FIX: Render KaTeX in question with matrix support
     renderMathInElementSafe(qBox);
 
-    // --- Build options ---
+    // --- FIXED: Options selection ---
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
+    
+    // Use a document fragment for performance
     q.a.forEach((opt, idx) => {
         const row = document.createElement('div');
         row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
-        row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
         
         const radio = document.createElement('input');
         radio.type = 'radio';
@@ -535,20 +504,33 @@ function refreshWorkspace() {
         radio.name = 'nust_radio';
         if (q.chosenIndexValue === idx) radio.checked = true;
         
-        // FIX: Use innerHTML instead of textContent so <sup>, <sub>, <i>, <b> etc. render properly
         const span = document.createElement('span');
         span.className = 'option-text';
-        span.innerHTML = opt;  // Changed from textContent to innerHTML
+        span.innerHTML = opt;
         
         row.appendChild(radio);
         row.appendChild(span);
+        
+        // FIX: Use click handler on the row, which also checks the radio
+        row.addEventListener('click', function(e) {
+            // Don't toggle if the click was directly on the radio (to avoid double-toggle)
+            if (e.target.tagName !== 'INPUT') {
+                q.chosenIndexValue = idx;
+                refreshWorkspace();
+            }
+        });
+        
+        // Also add click handler on radio specifically
+        radio.addEventListener('change', function() {
+            q.chosenIndexValue = idx;
+            refreshWorkspace();
+        });
+        
         cont.appendChild(row);
     });
 
-    // FIX: Render KaTeX in options with matrix support
     renderMathInElementSafe(cont);
 
-    // --- Update navigation ---
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         b.classList.remove('active-focus');
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
@@ -634,7 +616,6 @@ function compileExamResults() {
         const chosen = i.chosenIndexValue !== null ? i.a[i.chosenIndexValue] : 'Unattempted';
         const right = i.a[i.c];
         const exp = i.e || 'No explanation provided.';
-        // Use innerHTML for review display too (preserve <sup>, <sub>, KaTeX etc.)
         const dispQ = i.q;
         if (correct) {
             logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${dispQ}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
@@ -655,11 +636,8 @@ function compileExamResults() {
     }
     document.getElementById('subjectScoreBreakdownBox').innerHTML = bd;
     
-    // FIX: Render KaTeX in the review panel too
     document.getElementById('wrongQuestionsReviewPanel').innerHTML = reviewHTML;
     renderMathInElementSafe(document.getElementById('wrongQuestionsReviewPanel'));
-    
-    // Also render breakdown box math
     renderMathInElementSafe(document.getElementById('subjectScoreBreakdownBox'));
     
     document.getElementById('reportCardModalOverlay').style.display = 'flex';
