@@ -445,40 +445,45 @@ function refreshWorkspace() {
     // --- Build options ---
     const cont = document.getElementById('optionsRadioGroup');
 cont.innerHTML = '';
-q.a.forEach((opt, idx) => {
-    // We use a <label> with display: block to ensure they stack vertically
-    const label = document.createElement('label');
-    label.style.display = 'block';
-    label.style.padding = '8px';
-    label.style.cursor = 'pointer';
-    label.style.border = '1px solid #ddd';
-    label.style.marginBottom = '5px';
-    if (q.chosenIndexValue === idx) label.style.backgroundColor = '#D4E6F1';
 
+// 1. Force the container to be a vertical list
+cont.style.display = 'flex';
+cont.style.flexDirection = 'column'; 
+
+q.a.forEach((opt, idx) => {
+    // 2. Create the label wrapper
+    const label = document.createElement('label');
+    label.style.display = 'flex';         // Flex row for radio + text
+    label.style.alignItems = 'center';    // Center vertically
+    label.style.padding = '10px';
+    label.style.margin = '5px 0';         // Spacing between options
+    label.style.border = '1px solid #ccc';
+    label.style.borderRadius = '5px';
+    label.style.cursor = 'pointer';
+    
+    // Highlight if selected
+    if (q.chosenIndexValue === idx) {
+        label.style.backgroundColor = '#D4E6F1';
+        label.style.borderColor = '#0055A5';
+    }
+
+    // 3. Create the radio input
     const radio = document.createElement('input');
     radio.type = 'radio';
     radio.name = 'nust_radio';
-    radio.style.marginRight = '10px';
+    radio.style.marginRight = '12px';
+    radio.style.transform = 'scale(1.2)';
     if (q.chosenIndexValue === idx) radio.checked = true;
-    
-    // Add event listener to select the option when the label is clicked
+
+    // 4. Add click event
     label.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
 
+    // 5. Build the row
     label.appendChild(radio);
     label.appendChild(document.createTextNode(opt));
     cont.appendChild(label);
 });
-
-    // Render math in options too if KaTeX is loaded
-    if (typeof renderMathInElement === 'function') {
-        renderMathInElement(cont, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    }
-
+    
     // --- Update navigation ---
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         b.classList.remove('active-focus');
