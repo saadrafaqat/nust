@@ -432,8 +432,8 @@ const QUESTION_BANK = {
             { id: "bs_e139", q: "Choose the correctly spelled word:", a: ["Enviroment", "Environment", "Envirorment", "Invironment"], c: 1, e: "" },
             { id: "bs_e140", q: "Choose the correctly spelled word:", a: ["Proscedure", "Proceedure", "Procedure", "Prosedure"], c: 2, e: "" },
             { id: "bs_e141", q: "Choose the correctly spelled word:", a: ["Seperate", "Separate", "Separete", "Saperate"], c: 1, e: "" },
-            { id: "bs_e142", q: "Choose the correctly spelled word:", a: ["Endeavour", "Endevour", "Endeavior", "Endever"], c: 0, e: "" }
-        ];
+            { id: "bs_e142", q: "Choose the correctly spelled word:", a: ["Endeavour", "Endevour", "Endeavior", "Endever"], c: 0, e: "" },
+        ]
     },
     architecture: {
         // NET-Architecture: Design Aptitude (50%), Mathematics (30%), English (20%)
