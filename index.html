@@ -410,8 +410,8 @@ function refreshWorkspace() {
     const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
     const cfg = FIELD_CONFIG[selectedField];
 
-    document.getElementById('currentSubjectHeader').innerText = label;
-    document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
+    document.getElementById('currentSubjectHeader').innerHTML = label;
+    document.getElementById('questionNumTracker').innerHTML = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
     // --- Build question display: passage + image + question text ---
     const qBox = document.getElementById('questionTextBox');
