@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3783bac929334b3eac2b0e9e69617817"}'></script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3783bac929334b3eac2b0e9e69617817"}'></script>
 <head>
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png" type="image/png">
@@ -8,6 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUST Computer Based Entry Test (CBNET)</title>
+    
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    
     <script src="questions.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -51,7 +57,13 @@
         .workspace-container { display:flex; border-bottom:2px solid #0055A5; min-height:300px; }
         .left-main-canvas { flex:1; display:flex; flex-direction:column; border-right:2px solid #0055A5; }
         .question-meta-bar { background:#D4E6F1; color:#003399; font-weight:bold; font-size:13px; padding:5px 10px; border-bottom:1px solid #0055A5; display:flex; justify-content:space-between; }
+        /* Question body with passage support */
         .question-body-pane { padding:18px 20px; font-size:15px; font-weight:600; color:#000; min-height:100px; border-bottom:2px solid #0055A5; line-height:1.6; background:#FFF; text-align:left; }
+        .passage-container { background:#F8F9FA; border:1px solid #BDC3C7; border-left:4px solid #0055A5; padding:14px 16px; margin-bottom:14px; font-weight:400; font-size:14px; line-height:1.7; color:#333; border-radius:4px; }
+        .passage-label { font-size:11px; font-weight:700; color:#0055A5; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+        .question-text { font-weight:600; font-size:15px; }
+        .question-diagram { display:block; max-width:280px; height:auto; margin:12px auto; border-radius:6px; border:1px solid #D5DBDB; }
+        .equation-inline { display:inline; }
         .options-pane-title { background:#D4E6F1; color:#003399; font-weight:bold; font-size:13px; padding:5px 10px; border-bottom:1px solid #0055A5; }
         .options-list-wrapper { padding:12px 15px; display:flex; flex-direction:column; gap:6px; background:#FFF; flex:1; }
         .option-row-item { display:flex; align-items:center; border:1px solid #A9CCE3; padding:10px 14px; background:white; cursor:pointer; border-radius:4px; }
@@ -89,6 +101,9 @@
         .review-box { border:1px solid #BDC3C7; text-align:left; padding:12px; margin-top:8px; font-size:13px; line-height:1.5; background:#FFF9F9; border-left:5px solid #FF0000; }
         .review-box.box-correct { background:#F4FBF7; border-left:5px solid #2ECC71; }
         .hidden { display:none !important; }
+        /* KaTeX fixes */
+        .katex-display { display:inline-block; margin:0; }
+        .katex { font-size:1.1em; }
     </style>
 </head>
 <body>
@@ -226,7 +241,7 @@
         <div class="score-output" id="totalScoreTarget">0 / 200</div>
         <div id="subjectScoreBreakdownBox" style="text-align:left;background:#F8F9F9;padding:12px;font-size:13px;line-height:1.6;border:1px solid #BDC3C7;margin-bottom:15px;"></div>
         
-        <!-- EXIT PORTAL BUTTON - Added at the top of the review section -->
+        <!-- EXIT PORTAL BUTTON -->
         <button class="login-btn" style="margin:0 auto 20px auto;display:block;width:150px;background:linear-gradient(135deg,#C0392B,#E74C3C);box-shadow:0 4px 12px rgba(192,57,43,0.3);" onclick="window.location.reload()">Exit Portal</button>
         
         <div id="wrongQuestionsReviewPanel" style="text-align:left;margin-bottom:20px;"></div>
@@ -380,32 +395,44 @@ function launchTestEngine() {
     generateNavMatrix();
 }
 
+function updateTimerDisplay() {
+    const h = Math.floor(totalSecondsRemaining / 3600);
+    const m = Math.floor((totalSecondsRemaining % 3600) / 60);
+    const s = totalSecondsRemaining % 60;
+    document.getElementById('timerClockMinutes').innerText =
+        String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
 function refreshWorkspace() {
     if (!activeTestSessionPool || activeTestSessionPool.length === 0) return;
-    
-    // 1. CLEAR IMMEDIATELY: This prevents the old question's image from flashing
-    const qBox = document.getElementById('questionTextBox');
-    qBox.innerHTML = "Loading question..."; 
     
     const q = activeTestSessionPool[globalPointerIndex];
     const label = SECTION_LABELS[q.sectionKeyName] || q.sectionKeyName.toUpperCase();
     const cfg = FIELD_CONFIG[selectedField];
 
-    // 1. Update the UI text
     document.getElementById('currentSubjectHeader').innerText = label;
     document.getElementById('questionNumTracker').innerText = `Question No: ${q.innerIndexValue} of ${cfg.blueprint[q.sectionKeyName]} (${q.sectionKeyName.toUpperCase()})`;
 
-    // 2. Handle Question Text & Image (CLEARED AND REBUILT EVERY TIME)
+    // --- Build question display: passage + image + question text ---
     const qBox = document.getElementById('questionTextBox');
-    
-    // We create the image tag only if q.image exists. 
-    // If q.image is undefined/null, imageHTML becomes an empty string.
-    let imageHTML = (q.image) ? `<br><img src="${q.image}" style="display: block; max-width: 200px; height: auto; margin: 15px auto; border-radius: 8px;">` : '';
-    
-    // By setting innerHTML here, we completely replace the old text+old image
-    qBox.innerHTML = `${q.q} ${imageHTML}`;
+    let html = '';
 
-    // 3. Render Math
+    // 1) Passage box (if the question has a passage field)
+    if (q.passage) {
+        html += `<div class="passage-container"><div class="passage-label">Read the following passage carefully:</div>${q.passage}</div>`;
+    }
+
+    // 2) Question text
+    html += `<div class="question-text">${q.q}</div>`;
+
+    // 3) Diagram image (if the question has an image field)
+    if (q.image) {
+        html += `<img class="question-diagram" src="${q.image}" alt="Diagram">`;
+    }
+
+    qBox.innerHTML = html;
+
+    // --- Render math with KaTeX ---
     if (typeof renderMathInElement === 'function') {
         renderMathInElement(qBox, {
             delimiters: [
@@ -415,23 +442,47 @@ function refreshWorkspace() {
         });
     }
 
-    // 4. Build Options
+    // --- Build options ---
     const cont = document.getElementById('optionsRadioGroup');
     cont.innerHTML = '';
     q.a.forEach((opt, idx) => {
+        // Also render math in option text if present
         const row = document.createElement('div');
         row.className = 'option-row-item' + (q.chosenIndexValue === idx ? ' selected' : '');
         row.onclick = () => { q.chosenIndexValue = idx; refreshWorkspace(); };
-        row.innerHTML = `<input type="radio" class="option-radio-input" name="nust_radio"${q.chosenIndexValue === idx ? ' checked' : ''}><span class="option-text">${opt}</span>`;
+        
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.className = 'option-radio-input';
+        radio.name = 'nust_radio';
+        if (q.chosenIndexValue === idx) radio.checked = true;
+        
+        const span = document.createElement('span');
+        span.className = 'option-text';
+        span.textContent = opt;
+        
+        row.appendChild(radio);
+        row.appendChild(span);
         cont.appendChild(row);
     });
 
-    // 5. Update Navigation
+    // Render math in options too if KaTeX is loaded
+    if (typeof renderMathInElement === 'function') {
+        renderMathInElement(cont, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    }
+
+    // --- Update navigation ---
     document.querySelectorAll('.nav-square-btn').forEach(b => {
         b.classList.remove('active-focus');
         if (parseInt(b.getAttribute('data-sid'), 10) === globalPointerIndex) b.classList.add('active-focus');
     });
 }
+
 function generateNavMatrix() {
     const grid = document.getElementById('navButtonMatrixGrid');
     grid.innerHTML = '';
@@ -511,10 +562,11 @@ function compileExamResults() {
         const chosen = i.chosenIndexValue !== null ? i.a[i.chosenIndexValue] : 'Unattempted';
         const right = i.a[i.c];
         const exp = i.e || 'No explanation provided.';
+        const dispQ = i.q.replace(/\$/g, ''); // strip KaTeX delimiters for review readability
         if (correct) {
-            logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
+            logs[i.sectionKeyName] += `<div class="review-box box-correct"><p><strong>Q${i.innerIndexValue}:</strong> ${dispQ}</p><p style="color:#2ECC71;font-weight:700;margin-top:4px;">&#128994; Correct</p></div>`;
         } else {
-            logs[i.sectionKeyName] += `<div class="review-box"><p><strong>Q${i.innerIndexValue}:</strong> ${i.q}</p><p style="color:#C0392B;font-weight:600;margin-top:4px;">&#10060; Your: ${chosen}</p><p style="color:#27AE60;font-weight:600;">&#9989; Correct: ${right}</p><p style="color:#555;margin-top:6px;font-style:italic;background:#F2F4F4;padding:6px;border-left:3px solid #0055A5;"><strong>Explanation:</strong> ${exp}</p></div>`;
+            logs[i.sectionKeyName] += `<div class="review-box"><p><strong>Q${i.innerIndexValue}:</strong> ${dispQ}</p><p style="color:#C0392B;font-weight:600;margin-top:4px;">&#10060; Your: ${chosen}</p><p style="color:#27AE60;font-weight:600;">&#9989; Correct: ${right}</p><p style="color:#555;margin-top:6px;font-style:italic;background:#F2F4F4;padding:6px;border-left:3px solid #0055A5;"><strong>Explanation:</strong> ${exp}</p></div>`;
         }
     });
     
