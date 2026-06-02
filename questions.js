@@ -279,19 +279,7 @@ const QUESTION_BANK = {
             { id: "bs_e77", q: "Quaid e Azam spent his last days ______ Ziarat residency.", a: ["At", "In", "On", "Across"], c: 0, e: "" },
             { id: "bs_e78", q: "If negotiations are to prove fruitful, there must not only be sincerity on each side, but there must also be ______ in the sincerity of the other side.", a: ["Faith", "Belief", "Substance", "Certainty"], c: 0, e: "" },
             
-            { id: "bs_e92", q: "This, partly, explains how the Nawaz family has been able to ______ its lavish lifestyle in recent times, despite the fact that all its assets have been ______", a: ["Keep, Removed", "Afford, Attached", "Develop, Liquidated", "Keep Up, Destroyed"], c: 1, e: "" },
-            { id: "bs_e93", q: "The machine is difficult to build ______ easy to maintain.", a: ["But", "And", "For", "If"], c: 0, e: "" },
-            { id: "bs_e94", q: "If you work beyond your capacity, you will naturally feel ______", a: ["Drowsy", "Tired", "Confident", "Giddy"], c: 1, e: "" },
-            { id: "bs_e95", q: "If you persist in telling lies to me, I shall sue you ______ slander.", a: ["To", "On", "For", "With"], c: 2, e: "" },
-            { id: "bs_e96", q: "His father-in-law ______ him up in business.", a: ["Put", "Made", "Set", "Built"], c: 2, e: "" },
-            { id: "bs_e97", q: "______ works of reference are valuable as Encyclopedia Britannica.", a: ["A Few", "Few", "The Few", "Fewer"], c: 1, e: "" },
-            { id: "bs_e98", q: "This book is quite similar ______", a: ["With The \"Treasure Island\"", "Of That Film We Saw At School", "To The One I Read Last Week", "Than A Story Told By Our Teacher"], c: 2, e: "" },
-            { id: "bs_e99", q: "If our friends are not able to take us in their car, we must make ______ arrangements to go to the airport.", a: ["Alternative", "Another", "Alternate", "Possible"], c: 0, e: "" },
-            { id: "bs_e100", q: "A crescendo of metallic thuds arose from the market, where the ironsmiths were ______ the pieces of metals.", a: ["Flattening", "Striking", "Hammering", "Thrashing"], c: 2, e: "" },
-            { id: "bs_e101", q: "I haven't eaten an apple ______ a long while.", a: ["From", "Since", "For", "Until"], c: 2, e: "" },
-            { id: "bs_e102", q: "The parliament invested the new organization ______ judicial authority.", a: ["By", "With", "From", "Through"], c: 1, e: "" },
-            { id: "bs_e103", q: "Owing to the power cut in the area, factories are being forced to ______ men.", a: ["Throw Away", "Send Off", "Put Off", "Lay Off"], c: 3, e: "" },
-            { id: "bs_e104", q: "Man must ______ to stop pollution.", a: ["Act", "Perform", "Operate", "Behave"], c: 0, e: "" },
+            
             { id: "bs_e105", q: "He was sent to the prison for his ______", a: ["Sin", "Vice", "Crime", "Guilt"], c: 2, e: "" },
             { id: "bs_e106", q: "The answer was written ______ blue ink.", a: ["With", "By", "In", "On"], c: 2, e: "" },
             { id: "bs_e107", q: "Many ______ decisions were taken at the meeting.", a: ["Hectic", "Historic", "Historical", "Histrionic"], c: 1, e: "" },
@@ -340,7 +328,16 @@ const QUESTION_BANK = {
             { id: "bs_e169", q: "Which of the following is closest in meaning to 'Malleable'?", a: ["Rigid", "Pliable", "Inflexible", "Stubborn"], c: 1, e: "" },
             { id: "bs_e170", q: "Which of the following is closest in meaning to 'Pernicious'?", a: ["Harmful", "Beneficial", "Salubrious", "Wholesome"], c: 0, e: "" },
             { id: "bs_e171", q: "Which of the following is closest in meaning to 'Pragmatic'?", a: ["Idealistic", "Practical", "Visionary", "Impractical"], c: 1, e: "" },
-            { id: "bs_e172", q: "Which of the following is closest in meaning to 'Ephemeral'?", a: ["Transient", "Enduring", "Perennial", "Abiding"], c: 0, e: "" }
+            { id: "bs_e193", q: "Which of the following is most opposite in meaning to 'Melancholy'?", a: ["Sorrowful", "Joyful", "Gloomy", "Mournful"], c: 1 },
+            { id: "bs_e194", q: "Which of the following is most opposite in meaning to 'Audacity'?", a: ["Boldness", "Cowardice", "Courage", "Bravery"], c: 1 },
+            { id: "bs_e195", q: "Which of the following is most opposite in meaning to 'Concur'?", a: ["Agree", "Dissent", "Assent", "Accede"], c: 1 },
+            { id: "bs_e196", q: "Which of the following is most opposite in meaning to 'Fluctuate'?", a: ["Waver", "Stabilize", "Oscillate", "Vary"], c: 1 },
+            { id: "bs_e197", q: "Which of the following is most opposite in meaning to 'Meager'?", a: ["Sparse", "Abundant", "Scanty", "Deficient"], c: 1 },
+            { id: "bs_e198", q: "Which of the following is closest in meaning to 'Ineffable'?", a: ["Indescribable", "Common", "Simple", "Plain"], c: 0 },
+            { id: "bs_e199", q: "Which of the following is closest in meaning to 'Voracious'?", a: ["Satisfied", "Insatiable", "Full", "Temperate"], c: 1 },
+            { id: "bs_e200", q: "Which of the following is closest in meaning to 'Ephemeral'?", a: ["Lasting", "Transient", "Eternal", "Enduring"], c: 1 },
+            { id: "bs_e201", q: "Which of the following is closest in meaning to 'Sagacious'?", a: ["Foolish", "Wise", "Ignorant", "Naive"], c: 1 },
+            { id: "bs_e202", q: "Which of the following is closest in meaning to 'Reticent'?", a: ["Talkative", "Reserved", "Outgoing", "Garrulous"], c: 1 }
         ]
     },
     architecture: {
