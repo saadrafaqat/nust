@@ -240,7 +240,6 @@
         <div class="score-output" id="totalScoreTarget">0 / 200</div>
         <div id="subjectScoreBreakdownBox" style="text-align:left;background:#F8F9F9;padding:12px;font-size:13px;line-height:1.6;border:1px solid #BDC3C7;margin-bottom:15px;"></div>
         
-        <!-- EXIT PORTAL BUTTON -->
         <button class="login-btn" style="margin:0 auto 20px auto;display:block;width:150px;background:linear-gradient(135deg,#C0392B,#E74C3C);box-shadow:0 4px 12px rgba(192,57,43,0.3);" onclick="window.location.reload()">Exit Portal</button>
         
         <div id="wrongQuestionsReviewPanel" style="text-align:left;margin-bottom:20px;"></div>
@@ -521,6 +520,9 @@ function refreshWorkspace() {
         row.addEventListener('click', function(e) {
             const idx = parseInt(this.getAttribute('data-opt-index'));
             q.chosenIndexValue = idx;
+            // Manually check the radio button so the blue circle fills in
+            const radio = this.querySelector('.option-radio-input');
+            if (radio) radio.checked = true;
             refreshWorkspace();
         });
     });
