@@ -135,7 +135,7 @@ const QUESTION_BANK = {
             { id: "e_e87", q: "Arrows : Quiver", a: ["Fear : Tremble", "Money : Bank", "Sound : Music", "Coin : Mint"], c: 1, e: "A quiver is a container for arrows; a bank is a container/storage for money." },
             { id: "e_e88", q: "Fragile : Crack", a: ["Cemetery : Death", "Pliable : Bend", "Hydro : Water", "Irreducible : Reduce"], c: 1, e: "Something fragile is easily cracked; something pliable is easily bent." },
             { id: "e_e89", q: "State : Exile", a: ["Church : Ex-communicate", "Constitution : Amendment", "Judge : Convict", "Police : Arrest"], c: 0, e: "Exile is the formal removal from a State; excommunication is the formal removal from a Church." }
-        ];
+        ]
     },
     applied_sciences: {
         // NET-Applied Sciences: Biology (50%), Chemistry (30%), English (20%)
