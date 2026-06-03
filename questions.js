@@ -1512,7 +1512,7 @@ const QUESTION_BANK = {
             { id: "ns_m197", q: "If AB=AC, A non-singular:", a: ["B=C", "B!=C", "A=0", "det=0"], c: 0, e: "Cancellation law." },
             { id: "ns_m198", q: "Conjugate of -3i is:", a: ["3i", "-3i", "3", "-3"], c: 0, e: "Change i sign." },
             { id: "ns_m199", q: "If z1=1+i, z2=1-i, z1/z2 is:", a: ["i", "-i", "1", "2i"], c: 0, e: "Complex division." },
-            { id: "ns_m200", q: "0.142857 in p/q form:", a: ["1/7", "2/7", "1/8", "1/9"], c: 0, e: "Recurring decimal." }
+            { id: "ns_m200", q: "0.142857 in p/q form:", a: ["1/7", "2/7", "1/8", "1/9"], c: 0, e: "Recurring decimal." }        
         ],
         english: [
             { id: "ns_e1", q: "Choose the synonym of 'ANOMALOUS':", a: ["Normal", "Abnormal", "Aggressive", "Capacious"], c: 1, e: "'Anomalous' refers to something that deviates from what is standard, normal, or expected; hence, 'abnormal' is its exact synonym." },
