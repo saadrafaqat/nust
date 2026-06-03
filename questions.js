@@ -414,9 +414,9 @@ const QUESTION_BANK = {
             { id: "e_p167", q: "In a pure inductor circuit, current lags voltage by:", a: ["0°", "90°", "180°", "45°"], c: 1, e: "In a purely inductive circuit, current lags voltage by 90°." },
             { id: "e_p168", q: "Which of the following has zero rest mass?", a: ["Electron", "Proton", "Photon", "Neutron"], c: 2, e: "Photons have zero rest mass and travel at speed of light." },
             { id: "e_p169", q: "The device used to detect nuclear radiations is:", a: ["Galvanometer", "Geiger-Müller tube", "Thermocouple", "Potentiometer"], c: 1, e: "Geiger-Müller (GM) tube is used to detect and measure nuclear radiations." },
-            { id: "e_p170", q: "For a convex lens, when the object is placed at the focal point, the image is formed at:", a: ["Focus", "Infinity", "Center of curvature", "2F"], c: 1, e: "When object is at F, rays become parallel after refraction, forming image at infinity." }
-            
+            { id: "e_p170", q: "For a convex lens, when the object is placed at the focal point, the image is formed at:", a: ["Focus", "Infinity", "Center of curvature", "2F"], c: 1, e: "When object is at F, rays become parallel after refraction, forming image at infinity." },
         ],
+        
         english: [
             { id: "e_e1", q: "Choose the word closest in meaning to 'Accord':", a: ["Disunity", "Cord", "Concurrence", "Pack"], c: 2, e: "Accord means agreement or harmony; concurrence is a synonym." },
             { id: "e_e2", q: "Choose the word closest in meaning to 'Mediation':", a: ["Annoyance", "Irritating", "Aggregate", "Intercession"], c: 3, e: "Mediation is the act of intervening between parties; intercession is a synonym." },
