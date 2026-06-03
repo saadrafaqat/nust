@@ -2,246 +2,246 @@ const QUESTION_BANK = {
     engineering: {
         // NET-Engineering: Mathematics (50%), Physics (30%), English (20%)
         mathematics: [
-            { id: "e_m1", q: "If z = 3 + 4i, then |z| equals:", a: ["5", "7", "25", "√5"], c: 0, e: "|z| = √(3² + 4²) = √(9 + 16) = √25 = 5." },
-            { id: "e_m2", q: "The value of i<sup>19</sup> is:", a: ["-i", "i", "1", "-1"], c: 0, e: "i<sup>19</sup> = i<sup>16</sup> × i<sup>3</sup> = 1 × (-i) = -i." },
-            { id: "e_m3", q: "The conjugate of (2 + 3i)(1 - i) is:", a: ["5 + i", "5 - i", "1 + 5i", "1 - 5i"], c: 1, e: "(2+3i)(1-i) = 2-2i+3i-3i² = 2+i+3 = 5+i. Conjugate = 5-i." },
-            { id: "e_m4", q: "If z = 1 + i, then z<sup>3</sup> equals:", a: ["-2 + 2i", "2 - 2i", "-2 - 2i", "2 + 2i"], c: 0, e: "z² = (1+i)² = 2i. z<sup>3</sup> = 2i(1+i) = 2i + 2i² = 2i - 2 = -2 + 2i." },
-            { id: "e_m5", q: "The modulus of (1 + i)(2 + i) is:", a: ["√10", "√5", "2√5", "5"], c: 0, e: "(1+i)(2+i) = 1+3i. |1+3i| = √(1+9) = √10." },
-            { id: "e_m6", q: "The argument of -1 - i is:", a: ["π/4", "-π/4", "3π/4", "-3π/4"], c: 3, e: "-1 - i lies in Q3. arg = -π + tan⁻¹(1) = -π + π/4 = -3π/4." },
-            { id: "e_m7", q: "If |z - 1| = |z + 1|, then:", a: ["x = 0", "y = 0", "x = y", "x + y = 0"], c: 0, e: "|x-1+iy| = |x+1+iy| → (x-1)² = (x+1)² → x = 0." },
-            { id: "e_m8", q: "The multiplicative inverse of i is:", a: ["-i", "i", "1", "-1"], c: 0, e: "1/i = i/i² = i/(-1) = -i." },
-            { id: "e_m9", q: "If z = 2 - 3i, then Im(z̅) equals:", a: ["-3", "3", "2", "-2"], c: 1, e: "z̅ = 2 + 3i, so Im(z̅) = 3." },
-            { id: "e_m10", q: "The complex number (1 + i)<sup>4</sup> equals:", a: ["-4", "4", "4i", "-4i"], c: 0, e: "(1+i)² = 2i. (1+i)<sup>4</sup> = (2i)² = 4i² = -4." },
-            { id: "e_m11", q: "√(-25) + √(-9) equals:", a: ["8i", "(√34)i", "-8i", "8"], c: 0, e: "√(-25) = 5i, √(-9) = 3i. Sum = 8i." },
-            { id: "e_m12", q: "If z<sub>1</sub> = 2 + i and z<sub>2</sub> = 1 - 3i, then z<sub>1</sub> + z<sub>2</sub> is:", a: ["3 - 2i", "3 + 2i", "1 - 4i", "1 + 4i"], c: 0, e: "(2+1) + (1-3)i = 3 - 2i." },
-            { id: "e_m13", q: "The polar form of -1 + i is:", a: ["√2(cos 135° + i sin 135°)", "√2(cos 45° + i sin 45°)", "2(cos 135° + i sin 135°)", "√2(cos 225° + i sin 225°)"], c: 0, e: "r = √2, θ = 135° since x = -1, y = 1 in Q2." },
-            { id: "e_m14", q: "If (x + iy)(1 + i) = 2 + 3i, then y equals:", a: ["1/2", "5/2", "-1/2", "3/2"], c: 1, e: "x+iy = (2+3i)/(1+i) = (2+3i)(1-i)/2 = (5+i)/2. So y = 1/2." },
-            { id: "e_m15", q: "The value of i<sup>49</sup> + i<sup>50</sup> + i<sup>51</sup> + i<sup>52</sup> is:", a: ["0", "1", "i", "-1"], c: 0, e: "i<sup>49</sup> = i, i<sup>50</sup> = -1, i<sup>51</sup> = -i, i<sup>52</sup> = 1. Sum = 0." },
-            { id: "e_m16", q: "If A = {1, 2, 3} and B = {2, 3, 4}, then A ∪ B is:", a: ["{1, 2, 3, 4}", "{2, 3}", "{1, 4}", "{1, 2, 3}"], c: 0, e: "A ∪ B = {1, 2, 3, 4} (all elements from both sets)." },
-            { id: "e_m17", q: "The set of all subsets of a set is called its:", a: ["Power set", "Complement", "Union", "Intersection"], c: 0, e: "The power set P(A) is the set of all subsets of A." },
-            { id: "e_m18", q: "If n(A) = 5, then n(P(A)) equals:", a: ["32", "25", "10", "5"], c: 0, e: "n(P(A)) = 2<sup>5</sup> = 32." },
-            { id: "e_m19", q: "A function f: A → B is bijective if it is:", a: ["Both one-one and onto", "Only one-one", "Only onto", "Neither one-one nor onto"], c: 0, e: "A bijective function is both injective (one-one) and surjective (onto)." },
-            { id: "e_m20", q: "If f(x) = x² + 1, then f(-2) equals:", a: ["5", "3", "-3", "1"], c: 0, e: "f(-2) = (-2)² + 1 = 4 + 1 = 5." },
-            { id: "e_m21", q: "The range of f(x) = √x is:", a: ["[0, ∞)", "(-∞, ∞)", "(0, ∞)", "(-∞, 0]"], c: 0, e: "√x is defined for x ≥ 0 and gives non-negative outputs, so range is [0, ∞)." },
-            { id: "e_m22", q: "If A = {a, b} and B = {1, 2}, then A × B has how many elements?", a: ["4", "2", "3", "1"], c: 0, e: "n(A × B) = n(A) × n(B) = 2 × 2 = 4." },
-            { id: "e_m23", q: "The set of integers is closed under:", a: ["Addition and multiplication", "Subtraction only", "Division only", "All operations"], c: 0, e: "Integers are closed under addition, subtraction, and multiplication (not division)." },
-            { id: "e_m24", q: "A group (G, *) is called abelian if:", a: ["a * b = b * a for all a, b ∈ G", "a * a = e for all a", "a * (b * c) = (a * b) * c", "There exists identity"], c: 0, e: "An abelian (commutative) group satisfies commutativity." },
-            { id: "e_m25", q: "The identity element of a group is always:", a: ["Unique", "Not unique", "Zero", "One"], c: 0, e: "The identity element in any group is unique." },
-            { id: "e_m26", q: "If f(x) = 2x + 3, then f<sup>-1</sup>(x) equals:", a: ["(x - 3)/2", "(x + 3)/2", "2x - 3", "x/2 + 3"], c: 0, e: "y = 2x + 3 → 2x = y - 3 → x = (y - 3)/2. So f<sup>-1</sup>(x) = (x - 3)/2." },
-            { id: "e_m27", q: "The domain of f(x) = 1/(x - 1) is:", a: ["R - {1}", "R", "R - {0}", "All integers"], c: 0, e: "Denominator cannot be zero → x - 1 ≠ 0 → x ≠ 1." },
-            { id: "e_m28", q: "A binary operation * on a set S is commutative if:", a: ["a * b = b * a", "a * (b * c) = (a * b) * c", "a * e = a", "a * a<sup>-1</sup> = e"], c: 0, e: "Commutativity means a * b = b * a for all a, b." },
-            { id: "e_m29", q: "If f(x) = 3x - 1 and g(x) = x + 2, then (f ∘ g)(x) equals:", a: ["3x + 5", "3x + 1", "3x - 1", "x + 1"], c: 0, e: "(f ∘ g)(x) = f(g(x)) = 3(x+2) - 1 = 3x + 6 - 1 = 3x + 5." },
-            { id: "e_m30", q: "Which of the following is not a group?", a: ["(N, +)", "(Z, +)", "(R, +)", "(Q, +)"], c: 0, e: "Natural numbers under addition have no identity (0 ∉ N) and no inverses." },
-            { id: "e_m31", q: "If A = [1 2; 3 4], the determinant of A is:", a: ["-2", "2", "10", "4"], c: 0, e: "det(A) = 1×4 - 2×3 = 4 - 6 = -2." },
-            { id: "e_m32", q: "A matrix is singular if its determinant is:", a: ["0", "1", "Non-zero", "Negative"], c: 0, e: "A singular matrix has determinant equal to zero." },
-            { id: "e_m33", q: "If A = [a b; c d], then A<sup>-1</sup> exists if:", a: ["ad - bc ≠ 0", "ad - bc = 0", "a ≠ 0", "d ≠ 0"], c: 0, e: "The inverse exists if the determinant ad - bc is non-zero." },
-            { id: "e_m34", q: "The transpose of a row matrix is a:", a: ["Column matrix", "Row matrix", "Square matrix", "Null matrix"], c: 0, e: "The transpose of a 1×n row matrix is an n×1 column matrix." },
-            { id: "e_m35", q: "If A = [1 0; 0 1], then A is called:", a: ["Identity matrix", "Null matrix", "Diagonal matrix", "Scalar matrix"], c: 0, e: "The matrix with 1s on the main diagonal and 0s elsewhere is the identity matrix." },
-            { id: "e_m36", q: "The order of matrix A = [1 2 3; 4 5 6] is:", a: ["2 × 3", "3 × 2", "2 × 2", "3 × 3"], c: 0, e: "2 rows and 3 columns → order 2 × 3." },
-            { id: "e_m37", q: "If A is a symmetric matrix, then A<sup>T</sup> equals:", a: ["A", "-A", "A<sup>-1</sup>", "0"], c: 0, e: "Symmetric means A<sup>T</sup> = A." },
-            { id: "e_m38", q: "For two matrices A and B, (AB)<sup>T</sup> equals:", a: ["B<sup>T</sup>A<sup>T</sup>", "A<sup>T</sup>B<sup>T</sup>", "AB", "BA"], c: 0, e: "The transpose of a product is the product of transposes in reverse order." },
-            { id: "e_m39", q: "If A = [2 1; 1 2], then A² equals:", a: ["[5 4; 4 5]", "[4 4; 4 4]", "[2 1; 1 2]", "[1 0; 0 1]"], c: 0, e: "A² = [2 1; 1 2][2 1; 1 2] = [4+1 2+2; 2+2 1+4] = [5 4; 4 5]." },
-            { id: "e_m40", q: "The determinant of a 3×3 matrix can be found using:", a: ["Sarrus rule", "Cramer's rule only", "Addition only", "Multiplication only"], c: 0, e: "Sarrus rule is a method to find the determinant of a 3×3 matrix." },
-            { id: "e_m41", q: "The discriminant of x² - 4x + 4 = 0 is:", a: ["0", "16", "-16", "8"], c: 0, e: "D = b² - 4ac = (-4)² - 4(1)(4) = 16 - 16 = 0." },
-            { id: "e_m42", q: "Roots of the equation x² - 5x + 6 = 0 are:", a: ["2, 3", "-2, -3", "2, -3", "-2, 3"], c: 0, e: "x² - 5x + 6 = (x-2)(x-3) = 0 → x = 2, 3." },
-            { id: "e_m43", q: "If D > 0, the roots are:", a: ["Real and distinct", "Real and equal", "Complex", "Imaginary"], c: 0, e: "A positive discriminant indicates two distinct real roots." },
-            { id: "e_m44", q: "Sum of roots of ax² + bx + c = 0 is:", a: ["-b/a", "b/a", "c/a", "-c/a"], c: 0, e: "Sum of roots = -b/a." },
-            { id: "e_m45", q: "Product of roots of ax² + bx + c = 0 is:", a: ["c/a", "b/a", "-c/a", "-b/a"], c: 0, e: "Product of roots = c/a." },
-            { id: "e_m46", q: "The roots of x² + 1 = 0 are:", a: ["±i", "±1", "0", "±√2"], c: 0, e: "x² = -1 → x = ±i." },
-            { id: "e_m47", q: "If one root of x² - 5x + k = 0 is 2, then k equals:", a: ["6", "-6", "10", "-10"], c: 0, e: "Putting x = 2: 4 - 10 + k = 0 → k = 6." },
-            { id: "e_m48", q: "The nature of roots of x² + x + 1 = 0 is:", a: ["Complex", "Real and equal", "Real and distinct", "Rational"], c: 0, e: "D = 1 - 4 = -3 < 0 → complex roots." },
-            { id: "e_m49", q: "If sum of roots = -3 and product = 2, the equation is:", a: ["x² + 3x + 2 = 0", "x² - 3x + 2 = 0", "x² - 3x - 2 = 0", "x² + 3x - 2 = 0"], c: 0, e: "x² - (sum)x + product = 0 → x² - (-3)x + 2 = x² + 3x + 2 = 0." },
-            { id: "e_m50", q: "The graph of a quadratic function is a:", a: ["Parabola", "Circle", "Ellipse", "Hyperbola"], c: 0, e: "The graph of y = ax² + bx + c is a parabola." },
-            { id: "e_m51", q: "For proper rational fractions, the degree of numerator is:", a: ["Less than denominator", "Greater than denominator", "Equal to denominator", "Zero"], c: 0, e: "A proper fraction has numerator degree < denominator degree." },
-            { id: "e_m52", q: "The partial fraction of 1/[(x+1)(x-1)] has the form:", a: ["A/(x+1) + B/(x-1)", "A/(x+1) + Bx/(x-1)", "A/x + B/(x-1)", "A/(x+1)² + B/(x-1)"], c: 0, e: "For distinct linear factors, use A/(x+1) + B/(x-1)." },
-            { id: "e_m53", q: "If the denominator has repeated linear factor (x-a)², the partial fraction includes:", a: ["A/(x-a) + B/(x-a)²", "A/(x-a)", "A/(x-a)²", "A/(x-a) + Bx/(x-a)²"], c: 0, e: "For repeated factors, include terms for each power." },
-            { id: "e_m54", q: "The nth term of an AP is given by:", a: ["a + (n-1)d", "a + nd", "ar<sup>n-1</sup>", "a(r<sup>n</sup> - 1)/(r - 1)"], c: 0, e: "nth term of AP: a<sub>n</sub> = a + (n-1)d." },
-            { id: "e_m55", q: "If 5, x, 11 are in AP, then x equals:", a: ["8", "6", "16", "3"], c: 0, e: "x - 5 = 11 - x → 2x = 16 → x = 8." },
-            { id: "e_m56", q: "Sum of first n natural numbers is:", a: ["n(n+1)/2", "n(n-1)/2", "n²", "n(n+1)"], c: 0, e: "Sum = n(n+1)/2." },
-            { id: "e_m57", q: "The nth term of a GP is:", a: ["ar<sup>n-1</sup>", "a + (n-1)d", "a(r<sup>n</sup> - 1)/(r - 1)", "a(1 - r<sup>n</sup>)/(1 - r)"], c: 0, e: "nth term of GP: a<sub>n</sub> = ar<sup>n-1</sup>." },
-            { id: "e_m58", q: "If 2, x, 8 are in GP, then x equals:", a: ["±4", "4", "5", "6"], c: 0, e: "x/2 = 8/x → x² = 16 → x = ±4." },
-            { id: "e_m59", q: "The sum of infinite GP 1 + 1/2 + 1/4 + ... is:", a: ["2", "1", "3", "∞"], c: 0, e: "S<sub>∞</sub> = a/(1-r) = 1/(1-1/2) = 2." },
-            { id: "e_m60", q: "Arithmetic mean between a and b is:", a: ["(a+b)/2", "√(ab)", "2ab/(a+b)", "a - b"], c: 0, e: "AM = (a+b)/2." },
-            { id: "e_m61", q: "Geometric mean between a and b is:", a: ["√(ab)", "(a+b)/2", "2ab/(a+b)", "ab"], c: 0, e: "GM = √(ab)." },
-            { id: "e_m62", q: "The sum of first 10 terms of AP 1, 3, 5, ... is:", a: ["100", "50", "25", "200"], c: 0, e: "S<sub>10</sub> = 10/2[2(1) + 9(2)] = 5[2+18] = 100." },
-            { id: "e_m63", q: "A sequence is a function whose domain is:", a: ["Set of natural numbers", "Set of integers", "Set of real numbers", "Set of complex numbers"], c: 0, e: "A sequence is defined as a function from N to any set." },
-            { id: "e_m64", q: "Harmonic mean between a and b is:", a: ["2ab/(a+b)", "(a+b)/2", "√(ab)", "ab/(a+b)"], c: 0, e: "HM = 2ab/(a+b)." },
-            { id: "e_m65", q: "The series 1 + 1/2 + 1/3 + 1/4 + ... is:", a: ["Divergent", "Convergent", "Converges to 2", "Converges to 1"], c: 0, e: "The harmonic series diverges." },
-            { id: "e_m66", q: "(1 + x)<sup>n</sup> expands to:", a: ["Σ C(n,r) x<sup>r</sup>", "Σ n! x<sup>r</sup>", "Σ r! x<sup>r</sup>", "Σ (n-r)! x<sup>r</sup>"], c: 0, e: "Binomial theorem: (1+x)<sup>n</sup> = Σ C(n,r) x<sup>r</sup>." },
-            { id: "e_m67", q: "C(10, 3) equals:", a: ["120", "720", "30", "240"], c: 0, e: "C(10,3) = 10!/(3!7!) = (10×9×8)/(3×2×1) = 720/6 = 120." },
-            { id: "e_m68", q: "The number of terms in (a + b)<sup>n</sup> is:", a: ["n + 1", "n", "2n", "n - 1"], c: 0, e: "There are n+1 terms in the expansion of (a+b)<sup>n</sup>." },
-            { id: "e_m69", q: "The middle term of (a + b)<sup>10</sup> is the:", a: ["6th term", "5th term", "7th term", "10th term"], c: 0, e: "For n=10 (even), middle term is T<sub>6</sub> = C(10,5)a<sup>5</sup>b<sup>5</sup>." },
-            { id: "e_m70", q: "C(n, 0) + C(n, 1) + ... + C(n, n) equals:", a: ["2<sup>n</sup>", "n", "2n", "n²"], c: 0, e: "Sum of binomial coefficients = 2<sup>n</sup>." },
-            { id: "e_m71", q: "The general term of (1 + x)<sup>n</sup> is:", a: ["C(n,r) x<sup>r</sup>", "C(n,r) x<sup>n-r</sup>", "n!(n-r)! x<sup>r</sup>", "C(n,r) (1)<sup>n-r</sup> x<sup>r</sup>"], c: 0, e: "T<sub>r+1</sub> = C(n,r) x<sup>r</sup> for (1+x)<sup>n</sup>." },
-            { id: "e_m72", q: "C(n, r) + C(n, r-1) equals:", a: ["C(n+1, r)", "C(n, r+1)", "C(n-1, r)", "C(n+1, r+1)"], c: 0, e: "Pascal's identity: C(n,r) + C(n,r-1) = C(n+1,r)." },
-            { id: "e_m73", q: "sin(π/2) equals:", a: ["1", "0", "-1", "1/2"], c: 0, e: "sin(π/2) = sin(90°) = 1." },
-            { id: "e_m74", q: "cos(0°) equals:", a: ["1", "0", "-1", "1/2"], c: 0, e: "cos(0°) = 1." },
-            { id: "e_m75", q: "tan(π/4) equals:", a: ["1", "0", "√3", "1/√3"], c: 0, e: "tan(45°) = 1." },
-            { id: "e_m76", q: "sin²θ + cos²θ equals:", a: ["1", "0", "sin²θ", "cos²θ"], c: 0, e: "Fundamental identity: sin²θ + cos²θ = 1." },
-            { id: "e_m77", q: "sin(2θ) equals:", a: ["2 sinθ cosθ", "sin²θ - cos²θ", "2 cos²θ - 1", "1 - 2 sin²θ"], c: 0, e: "Double angle formula: sin(2θ) = 2 sinθ cosθ." },
-            { id: "e_m78", q: "cos(2θ) equals:", a: ["cos²θ - sin²θ", "2 sinθ cosθ", "sin²θ - cos²θ", "2 sin²θ - 1"], c: 0, e: "cos(2θ) = cos²θ - sin²θ." },
-            { id: "e_m79", q: "The period of sin x is:", a: ["2π", "π", "π/2", "4π"], c: 0, e: "sin x has period 2π." },
-            { id: "e_m80", q: "The period of tan x is:", a: ["π", "2π", "π/2", "4π"], c: 0, e: "tan x has period π." },
-            { id: "e_m81", q: "sin(π - θ) equals:", a: ["sin θ", "-sin θ", "cos θ", "-cos θ"], c: 0, e: "sin(π - θ) = sin θ." },
-            { id: "e_m82", q: "cos(π + θ) equals:", a: ["-cos θ", "cos θ", "sin θ", "-sin θ"], c: 0, e: "cos(π + θ) = -cos θ." },
-            { id: "e_m83", q: "The value of sin(15°) is:", a: ["(√6 - √2)/4", "(√6 + √2)/4", "1/2", "√3/2"], c: 0, e: "sin(15°) = sin(45°-30°) = sin45°cos30° - cos45°sin30° = (√6 - √2)/4." },
-            { id: "e_m84", q: "cos(75°) equals:", a: ["(√6 - √2)/4", "(√6 + √2)/4", "1/2", "√3/2"], c: 0, e: "cos(75°) = cos(45°+30°) = (√6 - √2)/4." },
-            { id: "e_m85", q: "sin(90° + θ) equals:", a: ["cos θ", "-cos θ", "sin θ", "-sin θ"], c: 0, e: "sin(90° + θ) = cos θ." },
-            { id: "e_m86", q: "If sin θ = 1/2, then θ in [0, π/2] is:", a: ["30°", "60°", "45°", "90°"], c: 0, e: "sin(30°) = 1/2." },
-            { id: "e_m87", q: "1 + tan²θ equals:", a: ["sec²θ", "csc²θ", "cot²θ", "sin²θ"], c: 0, e: "Identity: 1 + tan²θ = sec²θ." },
-            { id: "e_m88", q: "The general solution of sin θ = 0 is:", a: ["θ = nπ", "θ = (2n+1)π/2", "θ = nπ/2", "θ = 2nπ"], c: 0, e: "sin θ = 0 → θ = nπ, n ∈ Z." },
-            { id: "e_m89", q: "The general solution of cos θ = 0 is:", a: ["θ = (2n+1)π/2", "θ = nπ", "θ = 2nπ", "θ = nπ/2"], c: 0, e: "cos θ = 0 → θ = (2n+1)π/2." },
-            { id: "e_m90", q: "sin(A + B) equals:", a: ["sin A cos B + cos A sin B", "sin A cos B - cos A sin B", "cos A cos B - sin A sin B", "cos A cos B + sin A sin B"], c: 0, e: "sin(A+B) = sin A cos B + cos A sin B." },
-            { id: "e_m91", q: "cos(A + B) equals:", a: ["cos A cos B - sin A sin B", "cos A cos B + sin A sin B", "sin A cos B + cos A sin B", "sin A cos B - cos A sin B"], c: 0, e: "cos(A+B) = cos A cos B - sin A sin B." },
-            { id: "e_m92", q: "sin θ csc θ equals:", a: ["1", "0", "sin²θ", "cos θ"], c: 0, e: "sin θ × csc θ = sin θ × 1/sin θ = 1." },
-            { id: "e_m93", q: "In any triangle ABC, a/sin A equals:", a: ["b/sin B = c/sin C", "b/cos B", "c/sin A", "a/cos A"], c: 0, e: "Law of sines: a/sin A = b/sin B = c/sin C = 2R." },
-            { id: "e_m94", q: "Law of cosines states: a² =", a: ["b² + c² - 2bc cos A", "b² + c² + 2bc cos A", "b² - c² - 2bc cos A", "b² + c² - 2bc sin A"], c: 0, e: "a² = b² + c² - 2bc cos A." },
-            { id: "e_m95", q: "Area of ΔABC = (1/2)ab sin C is valid for:", a: ["Any triangle", "Right triangle only", "Equilateral only", "Isosceles only"], c: 0, e: "Area = (1/2)ab sin C works for any triangle." },
-            { id: "e_m96", q: "If a = 3, b = 4, C = 90°, then c equals:", a: ["5", "7", "25", "1"], c: 0, e: "c² = a² + b² = 9 + 16 = 25 → c = 5." },
-            { id: "e_m97", q: "The limit of (x² - 1)/(x - 1) as x → 1 is:", a: ["2", "0", "∞", "1"], c: 0, e: "lim<sub>x→1</sub> (x²-1)/(x-1) = lim<sub>x→1</sub> (x+1) = 2." },
-            { id: "e_m98", q: "lim<sub>x→0</sub> sin x / x equals:", a: ["1", "0", "∞", "x"], c: 0, e: "Standard limit: lim<sub>x→0</sub> sin x / x = 1." },
-            { id: "e_m99", q: "lim<sub>x→0</sub> (cos x - 1)/x equals:", a: ["0", "1", "-1", "∞"], c: 0, e: "lim<sub>x→0</sub> (cos x - 1)/x = 0." },
-            { id: "e_m100", q: "lim<sub>x→0</sub> (1 + x)<sup>1/x</sup> equals:", a: ["e", "1", "0", "∞"], c: 0, e: "The limit equals e ≈ 2.718." },
-            { id: "e_m101", q: "A function f is continuous at x = a if:", a: ["lim<sub>x→a</sub> f(x) = f(a)", "f(a) exists", "lim exists", "f is differentiable"], c: 0, e: "Continuity requires lim<sub>x→a</sub> f(x) = f(a)." },
-            { id: "e_m102", q: "lim<sub>x→∞</sub> 1/x equals:", a: ["0", "∞", "1", "-∞"], c: 0, e: "As x → ∞, 1/x → 0." },
-            { id: "e_m103", q: "lim<sub>x→0</sub> (e<sup>x</sup> - 1)/x equals:", a: ["1", "0", "e", "-1"], c: 0, e: "Standard limit: lim<sub>x→0</sub> (e<sup>x</sup> - 1)/x = 1." },
-            { id: "e_m104", q: "lim<sub>x→0</sub> tan x / x equals:", a: ["1", "0", "∞", "-1"], c: 0, e: "tan x / x = (sin x / x)(1/cos x) → 1×1 = 1." },
-            { id: "e_m105", q: "d/dx (x<sup>n</sup>) equals:", a: ["nx<sup>n-1</sup>", "nx<sup>n+1</sup>", "x<sup>n-1</sup>", "n²x<sup>n-1</sup>"], c: 0, e: "Power rule: d/dx (x<sup>n</sup>) = nx<sup>n-1</sup>." },
-            { id: "e_m106", q: "d/dx (sin x) equals:", a: ["cos x", "-cos x", "sin x", "-sin x"], c: 0, e: "Derivative of sin x is cos x." },
-            { id: "e_m107", q: "d/dx (cos x) equals:", a: ["-sin x", "sin x", "cos x", "-cos x"], c: 0, e: "Derivative of cos x is -sin x." },
-            { id: "e_m108", q: "d/dx (tan x) equals:", a: ["sec²x", "csc²x", "cot x", "sec x tan x"], c: 0, e: "Derivative of tan x is sec²x." },
-            { id: "e_m109", q: "d/dx (e<sup>x</sup>) equals:", a: ["e<sup>x</sup>", "xe<sup>x</sup>", "e<sup>x</sup>/x", "ln x"], c: 0, e: "Derivative of e<sup>x</sup> is e<sup>x</sup>." },
-            { id: "e_m110", q: "d/dx (ln x) equals:", a: ["1/x", "x", "ln x", "1"], c: 0, e: "Derivative of ln x is 1/x." },
-            { id: "e_m111", q: "d/dx (sin<sup>-1</sup>x) equals:", a: ["1/√(1-x²)", "1/(1+x²)", "-1/√(1-x²)", "1/√(x²-1)"], c: 0, e: "Derivative of sin<sup>-1</sup>x = 1/√(1-x²)." },
-            { id: "e_m112", q: "d/dx (tan<sup>-1</sup>x) equals:", a: ["1/(1+x²)", "1/√(1-x²)", "1/(1-x²)", "1/√(x²-1)"], c: 0, e: "Derivative of tan<sup>-1</sup>x = 1/(1+x²)." },
-            { id: "e_m113", q: "The derivative of x² + 3x at x = 1 is:", a: ["5", "4", "3", "2"], c: 0, e: "f'(x) = 2x + 3. f'(1) = 2 + 3 = 5." },
-            { id: "e_m114", q: "If y = 3x² + 2x, then dy/dx equals:", a: ["6x + 2", "3x + 2", "6x", "3x² + 2"], c: 0, e: "dy/dx = 6x + 2." },
-            { id: "e_m115", q: "d/dx (csc x) equals:", a: ["-csc x cot x", "sec x tan x", "csc²x", "-csc²x"], c: 0, e: "Derivative of csc x = -csc x cot x." },
-            { id: "e_m116", q: "If f(x) = (x² + 1)<sup>3</sup>, then f'(x) equals:", a: ["6x(x²+1)²", "3(x²+1)²", "6x(x²+1)", "3x²(x²+1)²"], c: 0, e: "Chain rule: f'(x) = 3(x²+1)² × 2x = 6x(x²+1)²." },
-            { id: "e_m117", q: "d/dx (a<sup>x</sup>) equals:", a: ["a<sup>x</sup> ln a", "a<sup>x</sup>", "xa<sup>x-1</sup>", "a<sup>x</sup>/ln a"], c: 0, e: "Derivative of a<sup>x</sup> = a<sup>x</sup> ln a." },
-            { id: "e_m118", q: "∫ x<sup>n</sup> dx equals:", a: ["x<sup>n+1</sup>/(n+1) + C", "nx<sup>n-1</sup> + C", "x<sup>n-1</sup>/(n-1) + C", "x<sup>n</sup> + C"], c: 0, e: "∫ x<sup>n</sup> dx = x<sup>n+1</sup>/(n+1) + C, n ≠ -1." },
-            { id: "e_m119", q: "∫ (1/x) dx equals:", a: ["ln|x| + C", "x + C", "1/x² + C", "e<sup>x</sup> + C"], c: 0, e: "∫ 1/x dx = ln|x| + C." },
-            { id: "e_m120", q: "∫ e<sup>x</sup> dx equals:", a: ["e<sup>x</sup> + C", "e<sup>x</sup>/x + C", "xe<sup>x</sup> + C", "ln(e<sup>x</sup>) + C"], c: 0, e: "∫ e<sup>x</sup> dx = e<sup>x</sup> + C." },
-            { id: "e_m121", q: "∫ sin x dx equals:", a: ["-cos x + C", "cos x + C", "sin x + C", "-sin x + C"], c: 0, e: "∫ sin x dx = -cos x + C." },
-            { id: "e_m122", q: "∫ cos x dx equals:", a: ["sin x + C", "-sin x + C", "cos x + C", "-cos x + C"], c: 0, e: "∫ cos x dx = sin x + C." },
-            { id: "e_m123", q: "∫ sec²x dx equals:", a: ["tan x + C", "sec x + C", "cot x + C", "csc x + C"], c: 0, e: "∫ sec²x dx = tan x + C." },
-            { id: "e_m124", q: "∫<sub>0</sub><sup>1</sup> 2x dx equals:", a: ["1", "0", "2", "3"], c: 0, e: "∫<sub>0</sub><sup>1</sup> 2x dx = [x²]<sub>0</sub><sup>1</sup> = 1." },
-            { id: "e_m125", q: "∫ cos 2x dx equals:", a: ["(1/2) sin 2x + C", "sin 2x + C", "2 sin 2x + C", "-sin 2x + C"], c: 0, e: "∫ cos 2x dx = (1/2) sin 2x + C." },
-            { id: "e_m126", q: "∫<sub>0</sub><sup>π</sup> sin x dx equals:", a: ["2", "0", "1", "π"], c: 0, e: "∫<sub>0</sub><sup>π</sup> sin x dx = [-cos x]<sub>0</sub><sup>π</sup> = 1+1 = 2." },
-            { id: "e_m127", q: "∫ 1/(1+x²) dx equals:", a: ["tan<sup>-1</sup>x + C", "sin<sup>-1</sup>x + C", "cos<sup>-1</sup>x + C", "ln(1+x²) + C"], c: 0, e: "∫ 1/(1+x²) dx = tan<sup>-1</sup>x + C." },
-            { id: "e_m128", q: "∫<sub>0</sub><sup>1</sup> x² dx equals:", a: ["1/3", "1", "0", "1/2"], c: 0, e: "∫<sub>0</sub><sup>1</sup> x² dx = [x³/3]<sub>0</sub><sup>1</sup> = 1/3." },
-            { id: "e_m129", q: "The slope of the line through (1,2) and (3,6) is:", a: ["2", "1", "3", "4"], c: 0, e: "m = (6-2)/(3-1) = 4/2 = 2." },
-            { id: "e_m130", q: "The equation of a line with slope m and y-intercept c is:", a: ["y = mx + c", "x = my + c", "y = cx + m", "x = cy + m"], c: 0, e: "Slope-intercept form: y = mx + c." },
-            { id: "e_m131", q: "Two lines are perpendicular if m<sub>1</sub> × m<sub>2</sub> equals:", a: ["-1", "1", "0", "∞"], c: 0, e: "Perpendicular lines: m<sub>1</sub> × m<sub>2</sub> = -1." },
-            { id: "e_m132", q: "Distance between (0,0) and (3,4) is:", a: ["5", "7", "25", "1"], c: 0, e: "d = √(3² + 4²) = √25 = 5." },
-            { id: "e_m133", q: "The center of circle x² + y² - 4x + 6y - 3 = 0 is:", a: ["(2, -3)", "(-2, 3)", "(2, 3)", "(-2, -3)"], c: 0, e: "x² - 4x + y² + 6y = 3 → (x-2)² + (y+3)² = 16. Center (2, -3)." },
-            { id: "e_m134", q: "The radius of circle x² + y² = 25 is:", a: ["5", "25", "√5", "12.5"], c: 0, e: "r = √25 = 5." },
-            { id: "e_m135", q: "The equation of circle with center (0,0) and radius r is:", a: ["x² + y² = r²", "x² + y² = r", "x + y = r", "x² - y² = r²"], c: 0, e: "Standard form: x² + y² = r²." },
-            { id: "e_m136", q: "Focus of parabola y² = 4ax is at:", a: ["(a, 0)", "(0, a)", "(-a, 0)", "(0, -a)"], c: 0, e: "For y² = 4ax, focus is at (a, 0)." },
-            { id: "e_m137", q: "Directrix of parabola y² = 4ax is:", a: ["x = -a", "x = a", "y = -a", "y = a"], c: 0, e: "Directrix of y² = 4ax is x = -a." },
-            { id: "e_m138", q: "The ellipse x²/a² + y²/b² = 1 has vertices on x-axis if:", a: ["a > b", "b > a", "a = b", "a < b"], c: 0, e: "If a > b, the major axis is along x-axis." },
-            { id: "e_m139", q: "Eccentricity of a circle is:", a: ["0", "1", "> 1", "< 1"], c: 0, e: "Circle has eccentricity e = 0." },
-            { id: "e_m140", q: "Foci of hyperbola x²/a² - y²/b² = 1 are at:", a: ["(±c, 0) where c² = a² + b²", "(±a, 0)", "(0, ±b)", "(0, ±c)"], c: 0, e: "For hyperbola, c² = a² + b², foci at (±c, 0)." },
-            { id: "e_m141", q: "If a = (1, 2, 3), then |a| equals:", a: ["√14", "√6", "6", "14"], c: 0, e: "|a| = √(1²+2²+3²) = √14." },
-            { id: "e_m142", q: "Dot product of (1, 2) and (3, 4) equals:", a: ["11", "10", "3", "8"], c: 0, e: "1×3 + 2×4 = 3 + 8 = 11." },
-            { id: "e_m143", q: "If a · b = 0, vectors a and b are:", a: ["Perpendicular", "Parallel", "Collinear", "Equal"], c: 0, e: "Perpendicular (orthogonal) vectors have dot product = 0." },
-            { id: "e_m144", q: "The cross product a × b is perpendicular to:", a: ["Both a and b", "Only a", "Only b", "Neither a nor b"], c: 0, e: "Cross product is perpendicular to both vectors." },
-            { id: "e_m145", q: "|i × j| equals:", a: ["1", "0", "-1", "√2"], c: 0, e: "i × j = k, so |i × j| = |k| = 1." },
-            { id: "e_m146", q: "Probability of an event always lies between:", a: ["0 and 1", "-1 and 1", "0 and ∞", "1 and 100"], c: 0, e: "Probability ranges from 0 to 1 inclusive." },
-            { id: "e_m147", q: "If P(A) = 0.3, P(B) = 0.4, and A, B are mutually exclusive, then P(A∪B) equals:", a: ["0.7", "0.12", "0.1", "0.58"], c: 0, e: "P(A∪B) = P(A) + P(B) = 0.3 + 0.4 = 0.7." },
-            { id: "e_m148", q: "A coin is tossed twice. Probability of at least one head is:", a: ["3/4", "1/4", "1/2", "1"], c: 0, e: "P(at least 1 head) = 1 - P(no heads) = 1 - 1/4 = 3/4." },
-            { id: "e_m149", q: "P(A|B) equals:", a: ["P(A∩B)/P(B)", "P(A∩B)/P(A)", "P(A)/P(B)", "P(A∪B)/P(B)"], c: 0, e: "Conditional probability: P(A|B) = P(A∩B)/P(B)." },
-            { id: "e_m150", q: "If A and B are independent, then P(A∩B) equals:", a: ["P(A) · P(B)", "P(A) + P(B)", "P(A)/P(B)", "0"], c: 0, e: "For independent events: P(A∩B) = P(A) × P(B)." },
-            { id: "e_m151", q: "Equation of line through origin with slope m is:", a: ["y = mx", "y = mx + c", "x = my", "y = x + m"], c: 0, e: "Line through origin: y = mx (c = 0)." },
-            { id: "e_m152", q: "The slope of the line 3x + 4y = 12 is:", a: ["-3/4", "3/4", "-4/3", "4/3"], c: 0, e: "4y = -3x + 12 → y = (-3/4)x + 3. Slope = -3/4." },
-            { id: "e_m153", q: "x-intercept of line 2x + 3y = 6 is:", a: ["3", "2", "6", "-3"], c: 0, e: "Put y = 0: 2x = 6 → x = 3." },
-            { id: "e_m154", q: "sin(270°) equals:", a: ["-1", "0", "1", "undefined"], c: 0, e: "sin(270°) = -1." },
-            { id: "e_m155", q: "cos(180°) equals:", a: ["-1", "0", "1", "1/2"], c: 0, e: "cos(180°) = -1." },
-            { id: "e_m156", q: "The range of f(x) = sin x is:", a: ["[-1, 1]", "[0, 1]", "(-1, 1)", "(-∞, ∞)"], c: 0, e: "sin x ranges from -1 to 1 inclusive." },
-            { id: "e_m157", q: "The domain of f(x) = √(x-2) is:", a: ["[2, ∞)", "(2, ∞)", "(-∞, 2]", "R"], c: 0, e: "x - 2 ≥ 0 → x ≥ 2." },
-            { id: "e_m158", q: "If A = {a, b}, then number of elements in P(A) is:", a: ["4", "2", "3", "1"], c: 0, e: "n(P(A)) = 2² = 4." },
-            { id: "e_m159", q: "The value of log<sub>2</sub>8 is:", a: ["3", "2", "4", "1"], c: 0, e: "2³ = 8 → log<sub>2</sub>8 = 3." },
-            { id: "e_m160", q: "ln(e³) equals:", a: ["3", "e³", "1", "0"], c: 0, e: "ln(e³) = 3 ln e = 3." },
-            { id: "e_m161", q: "If f(x) = e<sup>x</sup>, then f<sup>-1</sup>(x) equals:", a: ["ln x", "x²", "e<sup>-x</sup>", "log x"], c: 0, e: "Inverse of e<sup>x</sup> is ln x." },
-            { id: "e_m162", q: "The period of cos x is:", a: ["2π", "π", "π/2", "4π"], c: 0, e: "cos x has period 2π." },
-            { id: "e_m163", q: "sec²θ - tan²θ equals:", a: ["1", "0", "sec²θ", "tan²θ"], c: 0, e: "1 + tan²θ = sec²θ → sec²θ - tan²θ = 1." },
-            { id: "e_m164", q: "sin(π/3) equals:", a: ["√3/2", "1/2", "1/√2", "1"], c: 0, e: "sin(60°) = √3/2." },
-            { id: "e_m165", q: "cos(π/3) equals:", a: ["1/2", "√3/2", "1/√2", "0"], c: 0, e: "cos(60°) = 1/2." },
-            { id: "e_m166", q: "tan(π/6) equals:", a: ["1/√3", "√3", "1", "0"], c: 0, e: "tan(30°) = 1/√3." },
-            { id: "e_m167", q: "C(5, 2) equals:", a: ["10", "20", "5", "7"], c: 0, e: "C(5,2) = 5!/(2!3!) = 120/(2×6) = 10." },
-            { id: "e_m168", q: "P(5, 2) equals:", a: ["20", "10", "60", "5"], c: 0, e: "P(5,2) = 5!/(5-2)! = 120/6 = 20." },
-            { id: "e_m169", q: "The term independent of x in (x + 1/x)<sup>6</sup> is:", a: ["20", "15", "6", "30"], c: 0, e: "T<sub>r+1</sub> = C(6,r) x<sup>6-r</sup> x<sup>-r</sup> = C(6,r) x<sup>6-2r</sup>. For r=3: C(6,3)=20." },
-            { id: "e_m170", q: "A die is rolled. Probability of getting an even number is:", a: ["1/2", "1/3", "1/6", "2/3"], c: 0, e: "Even numbers: 2, 4, 6 → 3/6 = 1/2." },
-            { id: "e_m171", q: "If f(x) = 2x, then ∫<sub>0</sub><sup>2</sup> f(x) dx equals:", a: ["4", "2", "0", "8"], c: 0, e: "∫<sub>0</sub><sup>2</sup> 2x dx = [x²]<sub>0</sub><sup>2</sup> = 4." },
-            { id: "e_m172", q: "d/dx (log<sub>a</sub> x) equals:", a: ["1/(x ln a)", "1/x", "ln a / x", "x/ln a"], c: 0, e: "d/dx (log<sub>a</sub> x) = 1/(x ln a)." },
-            { id: "e_m173", q: "∫ sec x tan x dx equals:", a: ["sec x + C", "tan x + C", "csc x + C", "cot x + C"], c: 0, e: "∫ sec x tan x dx = sec x + C." },
-            { id: "e_m174", q: "∫ csc²x dx equals:", a: ["-cot x + C", "cot x + C", "tan x + C", "sec x + C"], c: 0, e: "∫ csc²x dx = -cot x + C." },
-            { id: "e_m175", q: "d/dx (cot x) equals:", a: ["-csc²x", "csc²x", "sec²x", "-sec²x"], c: 0, e: "Derivative of cot x = -csc²x." },
-            { id: "e_m176", q: "d/dx (sec x) equals:", a: ["sec x tan x", "sec²x", "tan x", "csc x cot x"], c: 0, e: "Derivative of sec x = sec x tan x." },
-            { id: "e_m177", q: "If A = [1 2; 3 4], then |A| equals:", a: ["-2", "2", "10", "4"], c: 0, e: "det(A) = 1×4 - 2×3 = 4 - 6 = -2." },
-            { id: "e_m178", q: "If A is skew-symmetric, then A<sup>T</sup> equals:", a: ["-A", "A", "A<sup>-1</sup>", "0"], c: 0, e: "Skew-symmetric: A<sup>T</sup> = -A." },
-            { id: "e_m179", q: "The solution of the system x + y = 3, x - y = 1 is:", a: ["(2, 1)", "(1, 2)", "(3, 0)", "(0, 3)"], c: 0, e: "Adding: 2x = 4 → x = 2. Then y = 3 - 2 = 1." },
-            { id: "e_m180", q: "The magnitude of vector 3i + 4j is:", a: ["5", "7", "25", "3"], c: 0, e: "|3i + 4j| = √(9+16) = √25 = 5." },
-            { id: "e_m181", q: "If a = (2, -1, 3) and b = (1, 2, -1), then a·b equals:", a: ["-3", "3", "2", "-2"], c: 0, e: "a·b = 2(1) + (-1)(2) + 3(-1) = 2 - 2 - 3 = -3." },
-            { id: "e_m182", q: "The angle between i and j is:", a: ["90°", "0°", "45°", "180°"], c: 0, e: "i·j = 0, so angle = 90°." },
-            { id: "e_m183", q: "cos(90° - θ) equals:", a: ["sin θ", "cos θ", "-sin θ", "-cos θ"], c: 0, e: "cos(90° - θ) = sin θ." },
-            { id: "e_m184", q: "sin(A - B) equals:", a: ["sin A cos B - cos A sin B", "sin A cos B + cos A sin B", "cos A cos B - sin A sin B", "cos A cos B + sin A sin B"], c: 0, e: "sin(A-B) = sin A cos B - cos A sin B." },
-            { id: "e_m185", q: "The vertex of parabola y² = 4ax is at:", a: ["(0, 0)", "(a, 0)", "(0, a)", "(-a, 0)"], c: 0, e: "Vertex of standard parabola y² = 4ax is at (0, 0)." },
-            { id: "e_m186", q: "Eccentricity of parabola is:", a: ["1", "0", "< 1", "> 1"], c: 0, e: "Parabola has eccentricity e = 1." },
-            { id: "e_m187", q: "Eccentricity of ellipse (for a > b) is:", a: ["√(1 - b²/a²)", "√(1 + b²/a²)", "b/a", "a/b"], c: 0, e: "e = √(1 - b²/a²) for ellipse." },
-            { id: "e_m188", q: "∫ 1/√(1-x²) dx equals:", a: ["sin<sup>-1</sup>x + C", "cos<sup>-1</sup>x + C", "tan<sup>-1</sup>x + C", "sec<sup>-1</sup>x + C"], c: 0, e: "∫ 1/√(1-x²) dx = sin<sup>-1</sup>x + C." },
-            { id: "e_m189", q: "lim<sub>x→0</sub> (1 - cos x)/x² equals:", a: ["1/2", "0", "1", "∞"], c: 0, e: "Using 1 - cos x ≈ x²/2 for small x: limit = 1/2." },
-            { id: "e_m190", q: "The arithmetic mean of 2, 4, 6, 8 is:", a: ["5", "10", "20", "4"], c: 0, e: "AM = (2+4+6+8)/4 = 20/4 = 5." },
-            { id: "e_m191", q: "C(10, 0) equals:", a: ["1", "0", "10", "∞"], c: 0, e: "C(n, 0) = 1 for any n." },
-            { id: "e_m192", q: "If log x = 2, then x equals:", a: ["100", "20", "e²", "2"], c: 0, e: "log<sub>10</sub> x = 2 → x = 10² = 100." },
-            { id: "e_m193", q: "d/dx (cos x²) equals:", a: ["-2x sin x²", "2x sin x²", "-sin x²", "2x cos x²"], c: 0, e: "Chain rule: -sin(x²) × 2x = -2x sin x²." },
-            { id: "e_m194", q: "∫ 2x dx equals:", a: ["x² + C", "2x² + C", "x²/2 + C", "2 + C"], c: 0, e: "∫ 2x dx = x² + C." },
-            { id: "e_m195", q: "If f(x) = |x|, then f is:", a: ["Continuous but not differentiable at x=0", "Differentiable everywhere", "Not continuous at x=0", "Neither continuous nor differentiable"], c: 0, e: "|x| is continuous at 0 but not differentiable (sharp corner)." },
-            { id: "e_m196", q: "Sum of first n even numbers is:", a: ["n(n+1)", "n²", "n(n-1)", "2n"], c: 0, e: "Sum = 2+4+...+2n = 2(1+2+...+n) = n(n+1)." },
-            { id: "e_m197", q: "If AB = AC and A is non-singular, then:", a: ["B = C", "B ≠ C", "A = 0", "|A| = 0"], c: 0, e: "Pre-multiply by A<sup>-1</sup>: A<sup>-1</sup>AB = A<sup>-1</sup>AC → B = C." },
-            { id: "e_m198", q: "The conjugate of -3i is:", a: ["3i", "-3i", "3", "-3"], c: 0, e: "Conjugate of -3i = 3i." },
-            { id: "e_m199", q: "If z<sub>1</sub> = 1 + i, z<sub>2</sub> = 1 - i, then z<sub>1</sub>/z<sub>2</sub> equals:", a: ["i", "-i", "1", "2i"], c: 0, e: "(1+i)/(1-i) = (1+i)²/(1²+1²) = 2i/2 = i." },
-            { id: "e_m200", q: "The number 0.142857 in p/q form is:", a: ["1/7", "2/7", "1/8", "1/9"], c: 0, e: "0.142857... = 1/7." },
-            { id: "e_m201", q: "∫ (3x² + 2x + 1) dx equals:", a: ["x³ + x² + x + C", "x³ + x² + C", "3x³ + 2x² + x + C", "3x³ + x² + x + C"], c: 0, e: "∫ 3x² dx = x³, ∫ 2x dx = x², ∫ 1 dx = x. Sum = x³ + x² + x + C." },
-            { id: "e_m202", q: "∫<sub>0</sub><sup>π/2</sup> cos x dx equals:", a: ["1", "0", "-1", "π/2"], c: 0, e: "∫<sub>0</sub><sup>π/2</sup> cos x dx = [sin x]<sub>0</sub><sup>π/2</sup> = sin(π/2) - sin(0) = 1 - 0 = 1." },
-            { id: "e_m203", q: "∫ e<sup>2x</sup> dx equals:", a: ["(1/2)e<sup>2x</sup> + C", "e<sup>2x</sup> + C", "2e<sup>2x</sup> + C", "e<sup>2x</sup>/2x + C"], c: 0, e: "∫ e<sup>ax</sup> dx = (1/a)e<sup>ax</sup> + C. So ∫ e<sup>2x</sup> dx = (1/2)e<sup>2x</sup> + C." },
-            { id: "e_m204", q: "∫ sin 3x dx equals:", a: ["-(1/3) cos 3x + C", "(1/3) cos 3x + C", "-3 cos 3x + C", "3 cos 3x + C"], c: 0, e: "∫ sin(ax) dx = -(1/a) cos(ax) + C. So ∫ sin 3x dx = -(1/3) cos 3x + C." },
-            { id: "e_m205", q: "∫ (2x + 3)<sup>5</sup> dx equals:", a: ["(2x+3)<sup>6</sup>/12 + C", "(2x+3)<sup>6</sup>/6 + C", "5(2x+3)<sup>4</sup> + C", "(2x+3)<sup>6</sup> + C"], c: 0, e: "Let u = 2x+3, du = 2dx. ∫ u<sup>5</sup>(du/2) = (1/2)(u<sup>6</sup>/6) = (2x+3)<sup>6</sup>/12 + C." },
-            { id: "e_m206", q: "∫<sub>1</sub><sup>2</sup> (1/x) dx equals:", a: ["ln 2", "ln 1", "0", "1"], c: 0, e: "∫<sub>1</sub><sup>2</sup> (1/x) dx = [ln x]<sub>1</sub><sup>2</sup> = ln 2 - ln 1 = ln 2." },
-            { id: "e_m207", q: "∫ tan x dx equals:", a: ["ln|sec x| + C", "ln|sin x| + C", "sec²x + C", "-ln|cos x| + C"], c: 0, e: "∫ tan x dx = ∫ sin x/cos x dx = -ln|cos x| + C = ln|sec x| + C." },
-            { id: "e_m208", q: "∫ cot x dx equals:", a: ["ln|sin x| + C", "ln|cos x| + C", "-ln|sin x| + C", "ln|sec x| + C"], c: 0, e: "∫ cot x dx = ∫ cos x/sin x dx = ln|sin x| + C." },
-            { id: "e_m209", q: "∫ x e<sup>x²</sup> dx equals:", a: ["(1/2)e<sup>x²</sup> + C", "e<sup>x²</sup> + C", "xe<sup>x²</sup> + C", "(1/2)e<sup>x</sup> + C"], c: 0, e: "Let u = x², du = 2x dx. ∫ e<sup>u</sup>(du/2) = (1/2)e<sup>x²</sup> + C." },
-            { id: "e_m210", q: "∫<sub>0</sub><sup>1</sup> (x² + x) dx equals:", a: ["5/6", "1/3", "1/2", "2/3"], c: 0, e: "∫<sub>0</sub><sup>1</sup> (x²+x) dx = [x³/3 + x²/2]<sub>0</sub><sup>1</sup> = 1/3 + 1/2 = 5/6." },
-            { id: "e_m211", q: "∫ sec x dx equals:", a: ["ln|sec x + tan x| + C", "ln|sec x| + C", "ln|tan x| + C", "sec x tan x + C"], c: 0, e: "∫ sec x dx = ln|sec x + tan x| + C (standard formula)." },
-            { id: "e_m212", q: "∫ 1/(x ln x) dx equals:", a: ["ln|ln x| + C", "ln|x| + C", "1/ln x + C", "ln x + C"], c: 0, e: "Let u = ln x, du = dx/x. ∫ (1/u) du = ln|u| + C = ln|ln x| + C." },
-            { id: "e_m213", q: "∫<sub>0</sub><sup>∞</sup> e<sup>-x</sup> dx equals:", a: ["1", "0", "∞", "-1"], c: 0, e: "∫<sub>0</sub><sup>∞</sup> e<sup>-x</sup> dx = [-e<sup>-x</sup>]<sub>0</sub><sup>∞</sup> = 0 - (-1) = 1." },
-            { id: "e_m214", q: "∫ (sin x)/(cos²x) dx equals:", a: ["sec x + C", "cos x + C", "tan x + C", "csc x + C"], c: 0, e: "∫ sin x/cos²x dx = ∫ sec x tan x dx = sec x + C." },
-            { id: "e_m215", q: "∫ x √(x² + 1) dx equals:", a: ["(1/3)(x²+1)<sup>3/2</sup> + C", "(x²+1)<sup>3/2</sup> + C", "(1/2)(x²+1)<sup>1/2</sup> + C", "x²√(x²+1)/2 + C"], c: 0, e: "Let u = x²+1, du = 2x dx. ∫ u<sup>1/2</sup>(du/2) = (1/3)u<sup>3/2</sup> + C." },
-            { id: "e_m216", q: "The integral of a constant k is:", a: ["kx + C", "k + C", "x + C", "k²x + C"], c: 0, e: "∫ k dx = kx + C." },
-            { id: "e_m217", q: "∫<sub>-π/2</sub><sup>π/2</sup> cos x dx equals:", a: ["2", "0", "1", "π"], c: 0, e: "∫<sub>-π/2</sub><sup>π/2</sup> cos x dx = [sin x]<sub>-π/2</sub><sup>π/2</sup> = 1 - (-1) = 2." },
-            { id: "e_m218", q: "The area under curve y = x² from x=0 to x=2 is:", a: ["8/3", "4/3", "2", "8"], c: 0, e: "Area = ∫<sub>0</sub><sup>2</sup> x² dx = [x³/3]<sub>0</sub><sup>2</sup> = 8/3." },
-            { id: "e_m219", q: "∫ 1/(x² + a²) dx equals:", a: ["(1/a) tan<sup>-1</sup>(x/a) + C", "tan<sup>-1</sup>(x/a) + C", "(1/a) sin<sup>-1</sup>(x/a) + C", "ln(x²+a²) + C"], c: 0, e: "Standard formula: ∫ 1/(x²+a²) dx = (1/a) tan<sup>-1</sup>(x/a) + C." },
-            { id: "e_m220", q: "∫<sub>0</sub><sup>π</sup> sin²x dx equals:", a: ["π/2", "π", "0", "1"], c: 0, e: "∫<sub>0</sub><sup>π</sup> sin²x dx = ∫<sub>0</sub><sup>π</sup> (1-cos2x)/2 dx = [x/2 - sin2x/4]<sub>0</sub><sup>π</sup> = π/2." },
-            { id: "e_m240", q: "A bag contains 3 red and 5 black balls. Probability of drawing a red ball is:", a: ["3/8", "5/8", "3/5", "1/8"], c: 0, e: "Total balls = 3+5 = 8. Favorable (red) = 3. P(red) = 3/8." },
-            { id: "e_m241", q: "Two dice are rolled. Probability of getting sum 7 is:", a: ["1/6", "1/12", "1/36", "1/18"], c: 0, e: "Favorable pairs: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) = 6 outcomes. Total = 36. P = 6/36 = 1/6." },
-            { id: "e_m242", q: "A card is drawn from a deck of 52 cards. Probability of getting a king is:", a: ["1/13", "1/52", "4/13", "1/26"], c: 0, e: "There are 4 kings in a deck. P(king) = 4/52 = 1/13." },
-            { id: "e_m243", q: "Probability of getting exactly 2 heads when 3 coins are tossed is:", a: ["3/8", "1/8", "1/4", "1/2"], c: 0, e: "Total outcomes = 8. Favorable (HHT, HTH, THH) = 3. P = 3/8." },
-            { id: "e_m244", q: "If P(A) = 1/3 and P(B) = 1/4, and A, B are mutually exclusive, then P(A or B) equals:", a: ["7/12", "1/12", "1/7", "1/2"], c: 0, e: "P(A∪B) = P(A) + P(B) = 1/3 + 1/4 = 4/12 + 3/12 = 7/12." },
-            { id: "e_m245", q: "A fair die is rolled. Probability of getting an odd number is:", a: ["1/2", "1/3", "1/6", "2/3"], c: 0, e: "Odd numbers: 1,3,5 → 3 outcomes. P = 3/6 = 1/2." },
-            { id: "e_m246", q: "A letter is chosen from the word 'PROBABILITY'. Probability it is 'B' is:", a: ["2/11", "1/11", "1/2", "2/10"], c: 0, e: "Total letters = 11. Letter B appears twice. P = 2/11." },
-            { id: "e_m247", q: "If P(A) = 0.6, P(B) = 0.3, and P(A∩B) = 0.2, then P(A∪B) equals:", a: ["0.7", "0.9", "0.5", "0.8"], c: 0, e: "P(A∪B) = P(A) + P(B) - P(A∩B) = 0.6 + 0.3 - 0.2 = 0.7." },
-            { id: "e_m248", q: "From a pack of 52 cards, probability of drawing a spade or a king is:", a: ["4/13", "1/13", "17/52", "1/4"], c: 0, e: "P(spade) = 13/52, P(king) = 4/52, P(spade & king) = 1/52. P = 13/52+4/52-1/52 = 16/52 = 4/13." },
-            { id: "e_m249", q: "A box has 5 red, 4 green, 3 blue balls. Probability of drawing a green ball is:", a: ["1/3", "4/12", "5/12", "3/12"], c: 0, e: "Total = 5+4+3 = 12. Green = 4. P(green) = 4/12 = 1/3." },
-            { id: "e_m250", q: "Two coins are tossed. Probability of at most one head is:", a: ["3/4", "1/4", "1/2", "1"], c: 0, e: "Outcomes: HH, HT, TH, TT. At most one head: HT, TH, TT → 3. P = 3/4." },
-            { id: "e_m251", q: "If P(A) = 0.8, P(B) = 0.7, and P(A∪B) = 0.9, then P(A∩B) equals:", a: ["0.6", "1.5", "0.5", "0.56"], c: 0, e: "P(A∩B) = P(A) + P(B) - P(A∪B) = 0.8 + 0.7 - 0.9 = 0.6." },
-            { id: "e_m252", q: "Probability that a leap year has 53 Sundays is:", a: ["2/7", "1/7", "1/2", "1/52"], c: 0, e: "Leap year has 366 days = 52 weeks + 2 days. These 2 days can be (Sun,Mon), (Mon,Tue)... 2/7 chance one is Sunday." },
-            { id: "e_m253", q: "A pair of dice is rolled. Probability of getting doublets is:", a: ["1/6", "1/12", "1/36", "1/18"], c: 0, e: "Doublets: (1,1),(2,2),(3,3),(4,4),(5,5),(6,6) → 6 outcomes. P = 6/36 = 1/6." },
-            { id: "e_m254", q: "A committee of 2 is chosen from 3 men and 2 women. Probability that both are men is:", a: ["3/10", "9/25", "3/5", "1/10"], c: 0, e: "Total ways = C(5,2) = 10. Ways to choose 2 men = C(3,2) = 3. P = 3/10." },
-            { id: "e_m255", q: "Three cards are drawn from a deck. Probability all are aces is:", a: ["1/5525", "4/52", "1/2197", "1/140608"], c: 0, e: "P = (4/52)(3/51)(2/50) = 24/132600 = 1/5525." },
-            { id: "e_m256", q: "If P(A) = 0.5, P(B) = 0.4, and A, B are independent, then P(A∩B) equals:", a: ["0.2", "0.9", "0.1", "0.02"], c: 0, e: "For independent events: P(A∩B) = P(A)×P(B) = 0.5×0.4 = 0.2." },
-            { id: "e_m257", q: "A bag has 4 white, 5 black balls. Two balls drawn without replacement. Probability both are white is:", a: ["1/6", "4/9", "2/9", "1/3"], c: 0, e: "P = (4/9)(3/8) = 12/72 = 1/6." },
-            { id: "e_m258", q: "Probability of getting a sum of 9 with two dice is:", a: ["1/9", "1/12", "1/36", "5/36"], c: 0, e: "Favorable: (3,6),(4,5),(5,4),(6,3) → 4 outcomes. P = 4/36 = 1/9." },
-            { id: "e_m259", q: "In a Poisson distribution, the mean and variance are:", a: ["Equal", "Mean > Variance", "Mean < Variance", "Not related"], c: 0, e: "In Poisson distribution, mean = variance = λ." },
+            { id: "e_m1", q: "If $z = 3 + 4i$, then $|z|$ equals:", a: ["$5$", "$7$", "$25$", "$\\sqrt{5}$"], c: 0, e: "$|z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = 5$." }
+            { id: "e_m2", q: "The value of $i^{19}$ is:", a: ["$-i$", "$i$", "$1$", "$-1$"], c: 0, e: "$i^{19} = i^{16} \\cdot i^3 = 1 \\cdot (-i) = -i$." }
+            { id: "e_m3", q: "The conjugate of $(2 + 3i)(1 - i)$ is:", a: ["$5 + i$", "$5 - i$", "$1 + 5i$", "$1 - 5i$"], c: 1, e: "$(2+3i)(1-i) = 2-2i+3i-3i^2 = 5+i$. Conjugate is $5-i$." }
+            { id: "e_m4", q: "If $z = 1 + i$, then $z^3$ equals:", a: ["$-2 + 2i$", "$2 - 2i$", "$-2 - 2i$", "$2 + 2i$"], c: 0, e: "$z^2 = (1+i)^2 = 2i$, so $z^3 = 2i(1+i) = -2 + 2i$." }
+            { id: "e_m5", q: "The modulus of $(1 + i)(2 + i)$ is:", a: ["$\\sqrt{10}$", "$\\sqrt{5}$", "$2\\sqrt{5}$", "$5$"], c: 0, e: "$(1+i)(2+i) = 1+3i$. $|1+3i| = \\sqrt{1+9} = \\sqrt{10}$." }
+            { id: "e_m6", q: "The argument of $-1 - i$ is:", a: ["$\\pi/4$", "$-\\pi/4$", "$3\\pi/4$", "$-3\\pi/4$"], c: 3, e: "Lies in Q3, so argument is $-\\pi + \\pi/4 = -3\\pi/4$." }
+            { id: "e_m7", q: "If $|z - 1| = |z + 1|$, then:", a: ["$x = 0$", "$y = 0$", "$x = y$", "$x + y = 0$"], c: 0, e: "Equating distances, $(x-1)^2 = (x+1)^2 \\implies x=0$." }
+            { id: "e_m8", q: "The multiplicative inverse of $i$ is:", a: ["$-i$", "$i$", "$1$", "$-1$"], c: 0, e: "$1/i = i/i^2 = -i$." }
+            { id: "e_m9", q: "If $z = 2 - 3i$, then $\\text{Im}(\\bar{z})$ equals:", a: ["$-3$", "$3$", "$2$", "$-2$"], c: 1, e: "$\\bar{z} = 2 + 3i$, so the imaginary part is $3$." }
+            { id: "e_m10", q: "The complex number $(1 + i)^4$ equals:", a: ["$-4$", "$4$", "$4i$", "$-4i$"], c: 0, e: "$(1+i)^2 = 2i$. $(2i)^2 = 4i^2 = -4$." }
+            { id: "e_m11", q: "$\\sqrt{-25} + \\sqrt{-9}$ equals:", a: ["$8i$", "$(\\sqrt{34})i$", "$-8i$", "$8$"], c: 0, e: "$5i + 3i = 8i$." }
+            { id: "e_m12", q: "If $z_1 = 2 + i$ and $z_2 = 1 - 3i$, then $z_1 + z_2$ is:", a: ["$3 - 2i$", "$3 + 2i$", "$1 - 4i$", "$1 + 4i$"], c: 0, e: "$(2+1) + (1-3)i = 3 - 2i$." }
+            { id: "e_m13", q: "The polar form of $-1 + i$ is:", a: ["$\\sqrt{2}(\\cos 135^\\circ + i \\sin 135^\\circ)$", "$\\sqrt{2}(\\cos 45^\\circ + i \\sin 45^\\circ)$", "$2(\\cos 135^\\circ + i \\sin 135^\\circ)$", "$\\sqrt{2}(\\cos 225^\\circ + i \\sin 225^\\circ)$"], c: 0, e: "$r=\\sqrt{2}, \\theta=135^\\circ$." }
+            { id: "e_m14", q: "If $(x + iy)(1 + i) = 2 + 3i$, then $y$ equals:", a: ["$1/2$", "$5/2$", "$-1/2$", "$3/2$"], c: 1, e: "$x+iy = \\frac{2+3i}{1+i} = \\frac{(2+3i)(1-i)}{2} = \\frac{5+i}{2}$. So $y = 1/2$." }
+            { id: "e_m15", q: "The value of $i^{49} + i^{50} + i^{51} + i^{52}$ is:", a: ["$0$", "$1$", "$i$", "$-1$"], c: 0, e: "Sum of four consecutive powers of $i$ is $0$." }
+            { id: "e_m16", q: "If $A = \\{1, 2, 3\\}$ and $B = \\{2, 3, 4\\}$, then $A \\cup B$ is:", a: ["$\\{1, 2, 3, 4\\}$", "$\\{2, 3\\}$", "$\\{1, 4\\}$", "$\\{1, 2, 3\\}$"], c: 0, e: "Union combines all elements: $\\{1, 2, 3, 4\\}$." }
+            { id: "e_m17", q: "The set of all subsets of a set is called its:", a: ["Power set", "Complement", "Union", "Intersection"], c: 0, e: "By definition, the set of all subsets is the power set." }
+            { id: "e_m18", q: "If $n(A) = 5$, then $n(P(A))$ equals:", a: ["$32$", "$25$", "$10$", "$5$"], c: 0, e: "$2^5 = 32$." }
+            { id: "e_m19", q: "A function $f: A \\to B$ is bijective if it is:", a: ["Both one-one and onto", "Only one-one", "Only onto", "Neither one-one nor onto"], c: 0, e: "Bijective = injective + surjective." }
+            { id: "e_m20", q: "If $f(x) = x^2 + 1$, then $f(-2)$ equals:", a: ["$5$", "$3$", "$-3$", "$1$"], c: 0, e: "$(-2)^2 + 1 = 5$." }
+            { id: "e_m21", q: "The range of $f(x) = \\sqrt{x}$ is:", a: ["$[0, \\infty)$", "$(-\\infty, \\infty)$", "$(0, \\infty)$", "$(-\\infty, 0]$"], c: 0, e: "Square roots of non-negative numbers are non-negative." }
+            { id: "e_m22", q: "If $A = \\{a, b\\}$ and $B = \\{1, 2\\}$, then $A \\times B$ has how many elements?", a: ["$4$", "$2$", "$3$", "$1$"], c: 0, e: "$2 \\times 2 = 4$." }
+            { id: "e_m23", q: "The set of integers is closed under:", a: ["Addition and multiplication", "Subtraction only", "Division only", "All operations"], c: 0, e: "Integers lack closure under division." }
+            { id: "e_m24", q: "A group $(G, *)$ is called abelian if:", a: ["$a * b = b * a$", "$a * a = e$", "$a * (b * c) = (a * b) * c$", "There exists identity"], c: 0, e: "Abelian implies commutative property." }
+            { id: "e_m25", q: "The identity element of a group is always:", a: ["Unique", "Not unique", "Zero", "One"], c: 0, e: "Identity elements are unique in group theory." }
+            { id: "e_m26", q: "If $f(x) = 2x + 3$, then $f^{-1}(x)$ equals:", a: ["$(x - 3)/2$", "$(x + 3)/2$", "$2x - 3$", "$x/2 + 3$"], c: 0, e: "Solving $y = 2x+3$ for $x$ gives $(x-3)/2$." }
+            { id: "e_m27", q: "The domain of $f(x) = 1/(x - 1)$ is:", a: ["$R - \\{1\\}$", "$R$", "$R - \\{0\\}$", "All integers"], c: 0, e: "Denominator cannot be zero." }
+            { id: "e_m28", q: "A binary operation $*$ on a set $S$ is commutative if:", a: ["$a * b = b * a$", "$a * (b * c) = (a * b) * c$", "$a * e = a$", "$a * a^{-1} = e$"], c: 0, e: "Commutative means order doesn't matter." }
+            { id: "e_m29", q: "If $f(x) = 3x - 1$ and $g(x) = x + 2$, then $(f \\circ g)(x)$ equals:", a: ["$3x + 5$", "$3x + 1$", "$3x - 1$", "$x + 1$"], c: 0, e: "$f(g(x)) = 3(x+2)-1 = 3x+5$." }
+            { id: "e_m30", q: "Which of the following is not a group?", a: ["$(N, +)$", "$(Z, +)$", "$(R, +)$", "$(Q, +)$"], c: 0, e: "Natural numbers lack identity ($0$) and inverses." }
+            { id: "e_m31", q: "If $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, the determinant of $A$ is:", a: ["$-2$", "$2$", "$10$", "$4$"], c: 0, e: "$1(4) - 2(3) = 4-6 = -2$." }
+            { id: "e_m32", q: "A matrix is singular if its determinant is:", a: ["$0$", "$1$", "Non-zero", "Negative"], c: 0, e: "Singular matrices have determinant zero." }
+            { id: "e_m33", q: "If $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, then $A^{-1}$ exists if:", a: ["$ad - bc \\neq 0$", "$ad - bc = 0$", "$a \\neq 0$", "$d \\neq 0$"], c: 0, e: "Inverse exists if determinant is non-zero." }
+            { id: "e_m34", q: "The transpose of a row matrix is a:", a: ["Column matrix", "Row matrix", "Square matrix", "Null matrix"], c: 0, e: "Swapping rows and columns turns $1 \\times n$ to $n \\times 1$." }
+            { id: "e_m35", q: "If $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$, then $A$ is called:", a: ["Identity matrix", "Null matrix", "Diagonal matrix", "Scalar matrix"], c: 0, e: "Identity matrix has 1s on diagonal." }
+            { id: "e_m36", q: "The order of matrix $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{pmatrix}$ is:", a: ["$2 \\times 3$", "$3 \\times 2$", "$2 \\times 2$", "$3 \\times 3$"], c: 0, e: "2 rows, 3 columns." }
+            { id: "e_m37", q: "If $A$ is a symmetric matrix, then $A^T$ equals:", a: ["$A$", "$-A$", "$A^{-1}$", "$0$"], c: 0, e: "Definition of symmetric: $A^T = A$." }
+            { id: "e_m38", q: "For two matrices $A$ and $B$, $(AB)^T$ equals:", a: ["$B^T A^T$", "$A^T B^T$", "$AB$", "$BA$"], c: 0, e: "Standard property of transposes." }
+            { id: "e_m39", q: "If $A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$, then $A^2$ equals:", a: ["$\\begin{pmatrix} 5 & 4 \\\\ 4 & 5 \\end{pmatrix}$", "$\\begin{pmatrix} 4 & 4 \\\\ 4 & 4 \\end{pmatrix}$", "$\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$", "$\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}$"], c: 0, e: "Matrix multiplication $A \\times A$." }
+            { id: "e_m40", q: "The determinant of a $3 \\times 3$ matrix can be found using:", a: ["Sarrus rule", "Cramer's rule only", "Addition only", "Multiplication only"], c: 0, e: "Sarrus rule is for $3 \\times 3$ determinants." }
+            { id: "e_m41", q: "The discriminant of $x^2 - 4x + 4 = 0$ is:", a: ["$0$", "$16$", "$-16$", "$8$"], c: 0, e: "$(-4)^2 - 4(1)(4) = 0$." }
+            { id: "e_m42", q: "Roots of the equation $x^2 - 5x + 6 = 0$ are:", a: ["$2, 3$", "$-2, -3$", "$2, -3$", "$-2, 3$"], c: 0, e: "$(x-2)(x-3)=0$." }
+            { id: "e_m43", q: "If $D > 0$, the roots are:", a: ["Real and distinct", "Real and equal", "Complex", "Imaginary"], c: 0, e: "Positive $D$ means two distinct real roots." }
+            { id: "e_m44", q: "Sum of roots of $ax^2 + bx + c = 0$ is:", a: ["$-b/a$", "$b/a$", "$c/a$", "$-c/a$"], c: 0, e: "Vieta's formula: sum = $-b/a$." }
+            { id: "e_m45", q: "Product of roots of $ax^2 + bx + c = 0$ is:", a: ["$c/a$", "$b/a$", "$-c/a$", "$-b/a$"], c: 0, e: "Vieta's formula: product = $c/a$." }
+            { id: "e_m46", q: "The roots of $x^2 + 1 = 0$ are:", a: ["$\\pm i$", "$\\pm 1$", "$0$", "$\\pm \\sqrt{2}$"], c: 0, e: "$x^2 = -1 \\implies x = \\pm i$." }
+            { id: "e_m47", q: "If one root of $x^2 - 5x + k = 0$ is 2, then $k$ equals:", a: ["$6$", "$-6$", "$10$", "$-10$"], c: 0, e: "$4 - 10 + k = 0 \\implies k = 6$." }
+            { id: "e_m48", q: "The nature of roots of $x^2 + x + 1 = 0$ is:", a: ["Complex", "Real and equal", "Real and distinct", "Rational"], c: 0, e: "$1^2 - 4(1)(1) = -3 < 0$." }
+            { id: "e_m49", q: "If sum of roots = $-3$ and product = 2, the equation is:", a: ["$x^2 + 3x + 2 = 0$", "$x^2 - 3x + 2 = 0$", "$x^2 - 3x - 2 = 0$", "$x^2 + 3x - 2 = 0$"], c: 0, e: "$x^2 - (sum)x + product = 0$." }
+            { id: "e_m50", q: "The graph of a quadratic function is a:", a: ["Parabola", "Circle", "Ellipse", "Hyperbola"], c: 0, e: "Quadratics always graph as parabolas." }
+            { id: "e_m51", q: "For proper rational fractions, the degree of numerator is:", a: ["Less than denominator", "Greater than denominator", "Equal to denominator", "Zero"], c: 0, e: "Definition of proper fraction." }
+            { id: "e_m52", q: "The partial fraction of $1/((x+1)(x-1))$ has the form:", a: ["$A/(x+1) + B/(x-1)$", "$A/(x+1) + Bx/(x-1)$", "$A/x + B/(x-1)$", "$A/(x+1)^2 + B/(x-1)$"], c: 0, e: "Distinct linear factors." }
+            { id: "e_m53", q: "If the denominator has repeated linear factor $(x-a)^2$, the partial fraction includes:", a: ["$A/(x-a) + B/(x-a)^2$", "$A/(x-a)$", "$A/(x-a)^2$", "$A/(x-a) + Bx/(x-a)^2$"], c: 0, e: "Repeated factors require terms for each power." }
+            { id: "e_m54", q: "The $n^{th}$ term of an AP is given by:", a: ["$a + (n-1)d$", "$a + nd$", "$ar^{n-1}$", "$a(r^n - 1)/(r - 1)$"], c: 0, e: "Standard AP formula." }
+            { id: "e_m55", q: "If $5, x, 11$ are in AP, then $x$ equals:", a: ["$8$", "$6$", "$16$", "$3$"], c: 0, e: "Arithmetic mean is $(5+11)/2 = 8$." }
+            { id: "e_m56", q: "Sum of first $n$ natural numbers is:", a: ["$n(n+1)/2$", "$n(n-1)/2$", "$n^2$", "$n(n+1)$"], c: 0, e: "Standard sum formula." }
+            { id: "e_m57", q: "The $n^{th}$ term of a GP is:", a: ["$ar^{n-1}$", "$a + (n-1)d$", "$a(r^n - 1)/(r - 1)$", "$a(1 - r^n)/(1 - r)$"], c: 0, e: "Standard GP formula." }
+            { id: "e_m58", q: "If $2, x, 8$ are in GP, then $x$ equals:", a: ["$\\pm 4$", "$4$", "$5$", "$6$"], c: 0, e: "$x^2 = 2 \\times 8 = 16 \\implies x = \\pm 4$." }
+            { id: "e_m59", q: "The sum of infinite GP $1 + 1/2 + 1/4 + \\dots$ is:", a: ["$2$", "$1$", "$3$", "$\\infty$"], c: 0, e: "$a/(1-r) = 1/(0.5) = 2$." }
+            { id: "e_m60", q: "Arithmetic mean between $a$ and $b$ is:", a: ["$(a+b)/2$", "$\\sqrt{ab}$", "$2ab/(a+b)$", "$a - b$"], c: 0, e: "Definition of AM." }
+            { id: "e_m61", q: "Geometric mean between $a$ and $b$ is:", a: ["$\\sqrt{ab}$", "$(a+b)/2$", "$2ab/(a+b)$", "$ab$"], c: 0, e: "Definition of GM." }
+            { id: "e_m62", q: "The sum of first 10 terms of AP $1, 3, 5, \\dots$ is:", a: ["$100$", "$50$", "$25$", "$200$"], c: 0, e: "$S_n = n/2(2a+(n-1)d) = 5(2+18) = 100$." }
+            { id: "e_m63", q: "A sequence is a function whose domain is:", a: ["Set of natural numbers", "Set of integers", "Set of real numbers", "Set of complex numbers"], c: 0, e: "Sequences are mapped from natural numbers." }
+            { id: "e_m64", q: "Harmonic mean between $a$ and $b$ is:", a: ["$2ab/(a+b)$", "$(a+b)/2$", "$\\sqrt{ab}$", "$ab/(a+b)$"], c: 0, e: "Definition of HM." }
+            { id: "e_m65", q: "The series $1 + 1/2 + 1/3 + 1/4 + \\dots$ is:", a: ["Divergent", "Convergent", "Converges to 2", "Converges to 1"], c: 0, e: "Harmonic series is divergent." }
+            { id: "e_m66", q: "$(1 + x)^n$ expands to:", a: ["$\\sum C(n,r) x^r$", "$\\sum n! x^r$", "$\\sum r! x^r$", "$\\sum (n-r)! x^r$"], c: 0, e: "Binomial theorem expansion." }
+            { id: "e_m67", q: "$C(10, 3)$ equals:", a: ["$120$", "$720$", "$30$", "$240$"], c: 0, e: "$(10 \\times 9 \\times 8) / (3 \\times 2 \\times 1) = 120$." }
+            { id: "e_m68", q: "The number of terms in $(a + b)^n$ is:", a: ["$n + 1$", "$n$", "$2n$", "$n - 1$"], c: 0, e: "Standard property." }
+            { id: "e_m69", q: "The middle term of $(a + b)^{10}$ is the:", a: ["6th term", "5th term", "7th term", "10th term"], c: 0, e: "$n+1 = 11$, middle is $(11+1)/2 = 6$." }
+            { id: "e_m70", q: "$C(n, 0) + C(n, 1) + \\dots + C(n, n)$ equals:", a: ["$2^n$", "$n$", "$2n$", "$n^2$"], c: 0, e: "Sum of binomial coefficients." }
+            { id: "e_m71", q: "The general term of $(1 + x)^n$ is:", a: ["$C(n,r) x^r$", "$C(n,r) x^{n-r}$", "$n!(n-r)! x^r$", "$C(n,r) (1)^{n-r} x^r$"], c: 0, e: "General term formula." }
+            { id: "e_m72", q: "$C(n, r) + C(n, r-1)$ equals:", a: ["$C(n+1, r)$", "$C(n, r+1)$", "$C(n-1, r)$", "$C(n+1, r+1)$"], c: 0, e: "Pascal's identity." }
+            { id: "e_m73", q: "$\\sin(\\pi/2)$ equals:", a: ["$1$", "$0$", "$-1$", "$1/2$"], c: 0, e: "$\\sin(90^\\circ) = 1$." }
+            { id: "e_m74", q: "$\\cos(0^\\circ)$ equals:", a: ["$1$", "$0$", "$-1$", "$1/2$"], c: 0, e: "Trig value." }
+            { id: "e_m75", q: "$\\tan(\\pi/4)$ equals:", a: ["$1$", "$0$", "$\\sqrt{3}$", "$1/\\sqrt{3}$"], c: 0, e: "$\\tan(45^\\circ) = 1$." }
+            { id: "e_m76", q: "$\\sin^2\\theta + \\cos^2\\theta$ equals:", a: ["$1$", "$0$", "$\\sin^2\\theta$", "$\\cos^2\\theta$"], c: 0, e: "Pythagorean identity." }
+            { id: "e_m77", q: "$\\sin(2\\theta)$ equals:", a: ["$2 \\sin\\theta \\cos\\theta$", "$\\sin^2\\theta - \\cos^2\\theta$", "$2 \\cos^2\\theta - 1$", "$1 - 2 \\sin^2\\theta$"], c: 0, e: "Double angle formula." }
+            { id: "e_m78", q: "$\\cos(2\\theta)$ equals:", a: ["$\\cos^2\\theta - \\sin^2\\theta$", "$2 \\sin\\theta \\cos\\theta$", "$\\sin^2\\theta - \\cos^2\\theta$", "$2 \\sin^2\\theta - 1$"], c: 0, e: "Double angle formula." }
+            { id: "e_m79", q: "The period of $\\sin x$ is:", a: ["$2\\pi$", "$\\pi$", "$\\pi/2$", "$4\\pi$"], c: 0, e: "Standard period." }
+            { id: "e_m80", q: "The period of $\\tan x$ is:", a: ["$\\pi$", "$2\\pi$", "$\\pi/2$", "$4\\pi$"], c: 0, e: "Standard period." }
+            { id: "e_m81", q: "$\\sin(\\pi - \\theta)$ equals:", a: ["$\\sin \\theta$", "$-\\sin \\theta$", "$\\cos \\theta$", "$-\\cos \\theta$"], c: 0, e: "Quadrant 2 property." }
+            { id: "e_m82", q: "$\\cos(\\pi + \\theta)$ equals:", a: ["$-\\cos \\theta$", "$\\cos \\theta$", "$\\sin \\theta$", "$-\\sin \\theta$"], c: 0, e: "Quadrant 3 property." }
+            { id: "e_m83", q: "The value of $\\sin(15^\\circ)$ is:", a: ["$(\\sqrt{6} - \\sqrt{2})/4$", "$(\\sqrt{6} + \\sqrt{2})/4$", "$1/2$", "$\\sqrt{3}/2$"], c: 0, e: "Subtraction formula." }
+            { id: "e_m84", q: "$\\cos(75^\\circ)$ equals:", a: ["$(\\sqrt{6} - \\sqrt{2})/4$", "$(\\sqrt{6} + \\sqrt{2})/4$", "$1/2$", "$\\sqrt{3}/2$"], c: 0, e: "Addition formula." }
+            { id: "e_m85", q: "$\\sin(90^\\circ + \\theta)$ equals:", a: ["$\\cos \\theta$", "$-\\cos \\theta$", "$\\sin \\theta$", "$-\\sin \\theta$"], c: 0, e: "Co-function identity." }
+            { id: "e_m86", q: "If $\\sin \\theta = 1/2$, then $\\theta$ in $[0, \\pi/2]$ is:", a: ["$30^\\circ$", "$60^\\circ$", "$45^\\circ$", "$90^\\circ$"], c: 0, e: "$\\sin(30^\\circ)=0.5$." }
+            { id: "e_m87", q: "$1 + \\tan^2\\theta$ equals:", a: ["$\\sec^2\\theta$", "$\\csc^2\\theta$", "$\\cot^2\\theta$", "$\\sin^2\\theta$"], c: 0, e: "Identity." }
+            { id: "e_m88", q: "The general solution of $\\sin \\theta = 0$ is:", a: ["$\\theta = n\\pi$", "$\\theta = (2n+1)\\pi/2$", "$\\theta = n\\pi/2$", "$\\theta = 2n\\pi$"], c: 0, e: "General solution." }
+            { id: "e_m89", q: "The general solution of $\\cos \\theta = 0$ is:", a: ["$\\theta = (2n+1)\\pi/2$", "$\\theta = n\\pi$", "$\\theta = 2n\\pi$", "$\\theta = n\\pi/2$"], c: 0, e: "General solution." }
+            { id: "e_m90", q: "$\\sin(A + B)$ equals:", a: ["$\\sin A \\cos B + \\cos A \\sin B$", "$\\sin A \\cos B - \\cos A \\sin B$", "$\\cos A \\cos B - \\sin A \\sin B$", "$\\cos A \\cos B + \\sin A \\sin B$"], c: 0, e: "Sum formula." }
+            { id: "e_m91", q: "$\\cos(A + B)$ equals:", a: ["$\\cos A \\cos B - \\sin A \\sin B$", "$\\cos A \\cos B + \\sin A \\sin B$", "$\\sin A \\cos B + \\cos A \\sin B$", "$\\sin A \\cos B - \\cos A \\sin B$"], c: 0, e: "Sum formula." }
+            { id: "e_m92", q: "$\\sin \\theta \\csc \\theta$ equals:", a: ["$1$", "$0$", "$\\sin^2\\theta$", "$\\cos \\theta$"], c: 0, e: "Reciprocal identity." }
+            { id: "e_m93", q: "In any triangle $ABC$, $a/\\sin A$ equals:", a: ["$b/\\sin B = c/\\sin C$", "$b/\\cos B$", "$c/\\sin A$", "$a/\\cos A$"], c: 0, e: "Sine rule." }
+            { id: "e_m94", q: "Law of cosines states: $a^2$ =", a: ["$b^2 + c^2 - 2bc \\cos A$", "$b^2 + c^2 + 2bc \\cos A$", "$b^2 - c^2 - 2bc \\cos A$", "$b^2 + c^2 - 2bc \\sin A$"], c: 0, e: "Cosine rule." }
+            { id: "e_m95", q: "Area of $\\Delta ABC = (1/2)ab \\sin C$ is valid for:", a: ["Any triangle", "Right triangle only", "Equilateral only", "Isosceles only"], c: 0, e: "Area formula." }
+            { id: "e_m96", q: "If $a = 3, b = 4, C = 90^\\circ$, then $c$ equals:", a: ["$5$", "$7$", "$25$", "$1$"], c: 0, e: "Pythagorean theorem." }
+            { id: "e_m97", q: "The limit of $(x^2 - 1)/(x - 1)$ as $x \\to 1$ is:", a: ["$2$", "$0$", "$\\infty$", "$1$"], c: 0, e: "Factorize to $(x+1)$." }
+            { id: "e_m98", q: "$\\lim_{x \\to 0} \\sin x / x$ equals:", a: ["$1$", "$0$", "$\\infty$", "$x$"], c: 0, e: "Fundamental limit." }
+            { id: "e_m99", q: "$\\lim_{x \\to 0} (\\cos x - 1)/x$ equals:", a: ["$0$", "$1$", "$-1$", "$\\infty$"], c: 0, e: "Fundamental limit." }
+            { id: "e_m100", q: "$\\lim_{x \\to 0} (1 + x)^{1/x}$ equals:", a: ["$e$", "$1$", "$0$", "$\\infty$"], c: 0, e: "Definition of $e$." }
+            { id: "e_m101", q: "A function $f$ is continuous at $x = a$ if:", a: ["$\\lim_{x \\to a} f(x) = f(a)$", "$f(a)$ exists", "lim exists", "$f$ is differentiable"], c: 0, e: "Continuity condition." }
+            { id: "e_m102", q: "$\\lim_{x \\to \\infty} 1/x$ equals:", a: ["$0$", "$\\infty$", "$1$", "$-\\infty$"], c: 0, e: "Limit property." }
+            { id: "e_m103", q: "$\\lim_{x \\to 0} (e^x - 1)/x$ equals:", a: ["$1$", "$0$", "$e$", "$-1$"], c: 0, e: "Fundamental limit." }
+            { id: "e_m104", q: "$\\lim_{x \\to 0} \\tan x / x$ equals:", a: ["$1$", "$0$", "$\\infty$", "$-1$"], c: 0, e: "Identical to $\\sin x/x$ limit." }
+            { id: "e_m105", q: "$d/dx (x^n)$ equals:", a: ["$nx^{n-1}$", "$nx^{n+1}$", "$x^{n-1}$", "$n^2x^{n-1}$"], c: 0, e: "Power rule." }
+            { id: "e_m106", q: "$d/dx (\\sin x)$ equals:", a: ["$\\cos x$", "$-\\cos x$", "$\\sin x$", "$-\\sin x$"], c: 0, e: "Deriv property." }
+            { id: "e_m107", q: "$d/dx (\\cos x)$ equals:", a: ["$-\\sin x$", "$\\sin x$", "$\\cos x$", "$-\\cos x$"], c: 0, e: "Deriv property." }
+            { id: "e_m108", q: "$d/dx (\\tan x)$ equals:", a: ["$\\sec^2x$", "$\\csc^2x$", "$\\cot x$", "$\\sec x \\tan x$"], c: 0, e: "Deriv property." }
+            { id: "e_m109", q: "$d/dx (e^x)$ equals:", a: ["$e^x$", "$xe^x$", "$e^x/x$", "$\\ln x$"], c: 0, e: "Exponential property." }
+            { id: "e_m110", q: "$d/dx (\\ln x)$ equals:", a: ["$1/x$", "$x$", "$\\ln x$", "$1$"], c: 0, e: "Log property." }
+            { id: "e_m111", q: "$d/dx (\\sin^{-1}x)$ equals:", a: ["$1/\\sqrt{1-x^2}$", "$1/(1+x^2)$", "$-1/\\sqrt{1-x^2}$", "$1/\\sqrt{x^2-1}$"], c: 0, e: "Inverse trig deriv." }
+            { id: "e_m112", q: "$d/dx (\\tan^{-1}x)$ equals:", a: ["$1/(1+x^2)$", "$1/\\sqrt{1-x^2}$", "$1/(1-x^2)$", "$1/\\sqrt{x^2-1}$"], c: 0, e: "Inverse trig deriv." }
+            { id: "e_m113", q: "The derivative of $x^2 + 3x$ at $x = 1$ is:", a: ["$5$", "$4$", "$3$", "$2$"], c: 0, e: "$2x+3$ at $x=1$ is $5$." }
+            { id: "e_m114", q: "If $y = 3x^2 + 2x$, then $dy/dx$ equals:", a: ["$6x + 2$", "$3x + 2$", "$6x$", "$3x^2 + 2$"], c: 0, e: "Differentiate term by term." }
+            { id: "e_m115", q: "$d/dx (\\csc x)$ equals:", a: ["$-\\csc x \\cot x$", "$\\sec x \\tan x$", "$\\csc^2x$", "$-\\csc^2x$"], c: 0, e: "Deriv property." }
+            { id: "e_m116", q: "If $f(x) = (x^2 + 1)^3$, then $f'(x)$ equals:", a: ["$6x(x^2+1)^2$", "$3(x^2+1)^2$", "$6x(x^2+1)$", "$3x^2(x^2+1)^2$"], c: 0, e: "Chain rule." }
+            { id: "e_m117", q: "$d/dx (a^x)$ equals:", a: ["$a^x \\ln a$", "$a^x$", "$xa^{x-1}$", "$a^x/\\ln a$"], c: 0, e: "Exponential rule." }
+            { id: "e_m118", q: "$\\int x^n dx$ equals:", a: ["$x^{n+1}/(n+1) + C$", "$nx^{n-1} + C$", "$x^{n-1}/(n-1) + C$", "$x^n + C$"], c: 0, e: "Integration rule." }
+            { id: "e_m119", q: "$\\int (1/x) dx$ equals:", a: ["$\\ln|x| + C$", "$x + C$", "$1/x^2 + C$", "$e^x + C$"], c: 0, e: "Log rule." }
+            { id: "e_m120", q: "$\\int e^x dx$ equals:", a: ["$e^x + C$", "$e^x/x + C$", "$xe^x + C$", "$\\ln(e^x) + C$"], c: 0, e: "Exponential rule." }
+            { id: "e_m121", q: "$\\int \\sin x dx$ equals:", a: ["$-\\cos x + C$", "$\\cos x + C$", "$\\sin x + C$", "$-\\sin x + C$"], c: 0, e: "Trig integration." }
+            { id: "e_m122", q: "$\\int \\cos x dx$ equals:", a: ["$\\sin x + C$", "$-\\sin x + C$", "$\\cos x + C$", "$-\\cos x + C$"], c: 0, e: "Trig integration." }
+            { id: "e_m123", q: "$\\int \\sec^2x dx$ equals:", a: ["$\\tan x + C$", "$\\sec x + C$", "$\\cot x + C$", "$\\csc x + C$"], c: 0, e: "Trig integration." }
+            { id: "e_m124", q: "$\\int_0^1 2x dx$ equals:", a: ["$1$", "$0$", "$2$", "$3$"], c: 0, e: "$[x^2]_0^1 = 1$." }
+            { id: "e_m125", q: "$\\int \\cos 2x dx$ equals:", a: ["$(1/2) \\sin 2x + C$", "$\\sin 2x + C$", "$2 \\sin 2x + C$", "$-\\sin 2x + C$"], c: 0, e: "Chain rule for integrals." }
+            { id: "e_m126", q: "$\\int_0^\\pi \\sin x dx$ equals:", a: ["$2$", "$0$", "$1$", "$\\pi$"], c: 0, e: "$[-\\cos x]_0^\\pi = 1 - (-1) = 2$." }
+            { id: "e_m127", q: "$\\int 1/(1+x^2) dx$ equals:", a: ["$\\tan^{-1}x + C$", "$\\sin^{-1}x + C$", "$\\cos^{-1}x + C$", "$\\ln(1+x^2) + C$"], c: 0, e: "Standard integral." }
+            { id: "e_m128", q: "$\\int_0^1 x^2 dx$ equals:", a: ["$1/3$", "$1$", "$0$", "$1/2$"], c: 0, e: "$[x^3/3]_0^1 = 1/3$." }
+            { id: "e_m129", q: "The slope of the line through $(1,2)$ and $(3,6)$ is:", a: ["$2$", "$1$", "$3$", "$4$"], c: 0, e: "$(6-2)/(3-1) = 2$." }
+            { id: "e_m130", q: "The equation of a line with slope $m$ and $y$-intercept $c$ is:", a: ["$y = mx + c$", "$x = my + c$", "$y = cx + m$", "$x = cy + m$"], c: 0, e: "Slope-intercept form." }
+            { id: "e_m131", q: "Two lines are perpendicular if $m_1 \\times m_2$ equals:", a: ["$-1$", "$1$", "$0$", "$\\infty$"], c: 0, e: "Perpendicular condition." }
+            { id: "e_m132", q: "Distance between $(0,0)$ and $(3,4)$ is:", a: ["$5$", "$7$", "$25$", "$1$"], c: 0, e: "$\\sqrt{3^2+4^2} = 5$." }
+            { id: "e_m133", q: "The center of circle $x^2 + y^2 - 4x + 6y - 3 = 0$ is:", a: ["$(2, -3)$", "$(-2, 3)$", "$(2, 3)$", "$(-2, -3)$"], c: 0, e: "Complete the square." }
+            { id: "e_m134", q: "The radius of circle $x^2 + y^2 = 25$ is:", a: ["$5$", "$25$", "$\\sqrt{5}$", "$12.5$"], c: 0, e: "$\\sqrt{25}=5$." }
+            { id: "e_m135", q: "The equation of circle with center $(0,0)$ and radius $r$ is:", a: ["$x^2 + y^2 = r^2$", "$x^2 + y^2 = r$", "$x + y = r$", "$x^2 - y^2 = r^2$"], c: 0, e: "Standard form." }
+            { id: "e_m136", q: "Focus of parabola $y^2 = 4ax$ is at:", a: ["$(a, 0)$", "$(0, a)$", "$(-a, 0)$", "$(0, -a)$"], c: 0, e: "Property." }
+            { id: "e_m137", q: "Directrix of parabola $y^2 = 4ax$ is:", a: ["$x = -a$", "$x = a$", "$y = -a$", "$y = a$"], c: 0, e: "Property." }
+            { id: "e_m138", q: "The ellipse $x^2/a^2 + y^2/b^2 = 1$ has vertices on $x$-axis if:", a: ["$a > b$", "$b > a$", "$a = b$", "$a < b$"], c: 0, e: "Major axis." }
+            { id: "e_m139", q: "Eccentricity of a circle is:", a: ["$0$", "$1$", "$> 1$", "$< 1$"], c: 0, e: "Circle definition." }
+            { id: "e_m140", q: "Foci of hyperbola $x^2/a^2 - y^2/b^2 = 1$ are at:", a: ["$(\\pm c, 0)$ where $c^2 = a^2 + b^2$", "$(\\pm a, 0)$", "$(0, \\pm b)$", "$(0, \\pm c)$"], c: 0, e: "Hyperbola property." }
+            { id: "e_m141", q: "If $a = (1, 2, 3)$, then $|a|$ equals:", a: ["$\\sqrt{14}$", "$\\sqrt{6}$", "$6$", "$14$"], c: 0, e: "Magnitude formula." }
+            { id: "e_m142", q: "Dot product of $(1, 2)$ and $(3, 4)$ equals:", a: ["$11$", "$10$", "$3$", "$8$"], c: 0, e: "$1(3) + 2(4) = 11$." }
+            { id: "e_m143", q: "If $a \\cdot b = 0$, vectors $a$ and $b$ are:", a: ["Perpendicular", "Parallel", "Collinear", "Equal"], c: 0, e: "Dot product logic." }
+            { id: "e_m144", q: "The cross product $a \\times b$ is perpendicular to:", a: ["Both $a$ and $b$", "Only $a$", "Only $b$", "Neither $a$ nor $b$"], c: 0, e: "Cross product rule." }
+            { id: "e_m145", q: "$|i \\times j|$ equals:", a: ["$1$", "$0$", "$-1$", "$\\sqrt{2}$"], c: 0, e: "Unit vector property." }
+            { id: "e_m146", q: "Probability of an event always lies between:", a: ["$0$ and $1$", "$-1$ and $1$", "$0$ and $\\infty$", "$1$ and $100$"], c: 0, e: "Probability axioms." }
+            { id: "e_m147", q: "If $P(A) = 0.3, P(B) = 0.4$, and $A, B$ are mutually exclusive, then $P(A\\cup B)$ equals:", a: ["$0.7$", "$0.12$", "$0.1$", "$0.58$"], c: 0, e: "Sum for mutual exclusion." }
+            { id: "e_m148", q: "A coin is tossed twice. Probability of at least one head is:", a: ["$3/4$", "$1/4$", "$1/2$", "$1$"], c: 0, e: "$1 - 1/4 = 3/4$." }
+            { id: "e_m149", q: "$P(A|B)$ equals:", a: ["$P(A\\cap B)/P(B)$", "$P(A\\cap B)/P(A)$", "$P(A)/P(B)$", "$P(A\\cup B)/P(B)$"], c: 0, e: "Conditional prob." }
+            { id: "e_m150", q: "If $A$ and $B$ are independent, then $P(A\\cap B)$ equals:", a: ["$P(A) \\cdot P(B)$", "$P(A) + P(B)$", "$P(A)/P(B)$", "$0$"], c: 0, e: "Independence property." }
+            { id: "e_m151", q: "Equation of line through origin with slope $m$ is:", a: ["$y = mx$", "$y = mx + c$", "$x = my$", "$y = x + m$"], c: 0, e: "$y=mx+c$ with $c=0$." }
+            { id: "e_m152", q: "The slope of the line $3x + 4y = 12$ is:", a: ["$-3/4$", "$3/4$", "$-4/3$", "$4/3$"], c: 0, e: "$y = (-3/4)x + 3$." }
+            { id: "e_m153", q: "$x$-intercept of line $2x + 3y = 6$ is:", a: ["$3$", "$2$", "$6$", "$-3$"], c: 0, e: "Set $y=0$." }
+            { id: "e_m154", q: "$\\sin(270^\\circ)$ equals:", a: ["$-1$", "$0$", "$1$", "undefined"], c: 0, e: "Unit circle." }
+            { id: "e_m155", q: "$\\cos(180^\\circ)$ equals:", a: ["$-1$", "$0$", "$1$", "$1/2$"], c: 0, e: "Unit circle." }
+            { id: "e_m156", q: "The range of $f(x) = \\sin x$ is:", a: ["$[-1, 1]$", "$[0, 1]$", "$(-1, 1)$", "$(-\\infty, \\infty)$"], c: 0, e: "Standard range." }
+            { id: "e_m157", q: "The domain of $f(x) = \\sqrt{x-2}$ is:", a: ["$[2, \\infty)$", "$(2, \\infty)$", "$(-\\infty, 2]$", "$R$"], c: 0, e: "Radicand $\\geq 0$." }
+            { id: "e_m158", q: "If $A = \\{a, b\\}$, then number of elements in $P(A)$ is:", a: ["$4$", "$2$", "$3$", "$1$"], c: 0, e: "$2^2=4$." }
+            { id: "e_m159", q: "The value of $\\log_28$ is:", a: ["$3$", "$2$", "$4$", "$1$"], c: 0, e: "$2^3=8$." }
+            { id: "e_m160", q: "$\\ln(e^3)$ equals:", a: ["$3$", "$e^3$", "$1$", "$0$"], c: 0, e: "Log property." }
+            { id: "e_m161", q: "If $f(x) = e^x$, then $f^{-1}(x)$ equals:", a: ["$\\ln x$", "$x^2$", "$e^{-x}$", "$\\log x$"], c: 0, e: "Inverse function." }
+            { id: "e_m162", q: "The period of $\\cos x$ is:", a: ["$2\\pi$", "$\\pi$", "$\\pi/2$", "$4\\pi$"], c: 0, e: "Standard period." }
+            { id: "e_m163", q: "$\\sec^2\\theta - \\tan^2\\theta$ equals:", a: ["$1$", "$0$", "$\\sec^2\\theta$", "$\\tan^2\\theta$"], c: 0, e: "Identity." }
+            { id: "e_m164", q: "$\\sin(\\pi/3)$ equals:", a: ["$\\sqrt{3}/2$", "$1/2$", "$1/\\sqrt{2}$", "$1$"], c: 0, e: "$\\sin(60^\\circ)$." }
+            { id: "e_m165", q: "$\\cos(\\pi/3)$ equals:", a: ["$1/2$", "$\\sqrt{3}/2$", "$1/\\sqrt{2}$", "$0$"], c: 0, e: "$\\cos(60^\\circ)$." }
+            { id: "e_m166", q: "$\\tan(\\pi/6)$ equals:", a: ["$1/\\sqrt{3}$", "$\\sqrt{3}$", "$1$", "$0$"], c: 0, e: "$\\tan(30^\\circ)$." }
+            { id: "e_m167", q: "$C(5, 2)$ equals:", a: ["$10$", "$20$", "$5$", "$7$"], c: 0, e: "$10$." }
+            { id: "e_m168", q: "$P(5, 2)$ equals:", a: ["$20$", "$10$", "$60$", "$5$"], c: 0, e: "$20$." }
+            { id: "e_m169", q: "The term independent of $x$ in $(x + 1/x)^6$ is:", a: ["$20$", "$15$", "$6$", "$30$"], c: 0, e: "$C(6,3)=20$." }
+            { id: "e_m170", q: "A die is rolled. Probability of getting an even number is:", a: ["$1/2$", "$1/3$", "$1/6$", "$2/3$"], c: 0, e: "$3/6$." }
+            { id: "e_m171", q: "If $f(x) = 2x$, then $\\int_0^2 f(x) dx$ equals:", a: ["$4$", "$2$", "$0$", "$8$"], c: 0, e: "$[x^2]_0^2=4$." }
+            { id: "e_m172", q: "$d/dx (\\log_a x)$ equals:", a: ["$1/(x \\ln a)$", "$1/x$", "$\\ln a / x$", "$x/\\ln a$"], c: 0, e: "Derivative formula." }
+            { id: "e_m173", q: "$\\int \\sec x \\tan x dx$ equals:", a: ["$\\sec x + C$", "$\\tan x + C$", "$\\csc x + C$", "$\\cot x + C$"], c: 0, e: "Standard integral." }
+            { id: "e_m174", q: "$\\int \\csc^2x dx$ equals:", a: ["$-\\cot x + C$", "$\\cot x + C$", "$\\tan x + C$", "$\\sec x + C$"], c: 0, e: "Standard integral." }
+            { id: "e_m175", q: "$d/dx (\\cot x)$ equals:", a: ["$-\\csc^2x$", "$\\csc^2x$", "$\\sec^2x$", "$-\\sec^2x$"], c: 0, e: "Derivative formula." }
+            { id: "e_m176", q: "$d/dx (\\sec x)$ equals:", a: ["$\\sec x \\tan x$", "$\\sec^2x$", "$\\tan x$", "$\\csc x \\cot x$"], c: 0, e: "Derivative formula." }
+            { id: "e_m177", q: "If $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$, then $|A|$ equals:", a: ["$-2$", "$2$", "$10$", "$4$"], c: 0, e: "$4 - 6 = -2$." }
+            { id: "e_m178", q: "If $A$ is skew-symmetric, then $A^T$ equals:", a: ["$-A$", "$A$", "$A^{-1}$", "$0$"], c: 0, e: "Skew-symmetric property." }
+            { id: "e_m179", q: "The solution of the system $x + y = 3, x - y = 1$ is:", a: ["$(2, 1)$", "$(1, 2)$", "$(3, 0)$", "$(0, 3)$"], c: 0, e: "Solving linear system." }
+            { id: "e_m180", q: "The magnitude of vector $3i + 4j$ is:", a: ["$5$", "$7$", "$25$", "$3$"], c: 0, e: "$\\sqrt{9+16}=5$." }
+            { id: "e_m181", q: "If $a = (2, -1, 3)$ and $b = (1, 2, -1)$, then $a \\cdot b$ equals:", a: ["$-3$", "$3$", "$2$", "$-2$"], c: 0, e: "$2 - 2 - 3 = -3$." }
+            { id: "e_m182", q: "The angle between $i$ and $j$ is:", a: ["$90^\\circ$", "$0^\\circ$", "$45^\\circ$", "$180^\\circ$"], c: 0, e: "Orthogonal vectors." }
+            { id: "e_m183", q: "$\\cos(90^\\circ - \\theta)$ equals:", a: ["$\\sin \\theta$", "$\\cos \\theta$", "$-\\sin \\theta$", "$-\\cos \\theta$"], c: 0, e: "Co-function identity." }
+            { id: "e_m184", q: "$\\sin(A - B)$ equals:", a: ["$\\sin A \\cos B - \\cos A \\sin B$", "$\\sin A \\cos B + \\cos A \\sin B$", "$\\cos A \\cos B - \\sin A \\sin B$", "$\\cos A \\cos B + \\sin A \\sin B$"], c: 0, e: "Difference formula." }
+            { "id": "e_m185", "q": "The vertex of parabola y² = 4ax is at:", "a": ["(0, 0)", "(a, 0)", "(0, a)", "(-a, 0)"], "c": 0, "e": "Vertex of standard parabola y² = 4ax is at (0, 0)." },
+            { "id": "e_m186", "q": "Eccentricity of parabola is:", "a": ["1", "0", "< 1", "> 1"], "c": 0, "e": "Parabola has eccentricity e = 1." },
+            { "id": "e_m187", "q": "Eccentricity of ellipse (for a > b) is:", "a": ["√(1 - b²/a²)", "√(1 + b²/a²)", "b/a", "a/b"], "c": 0, "e": "e = √(1 - b²/a²) for ellipse." },
+            { "id": "e_m188", "q": "∫ 1/√(1-x²) dx equals:", "a": ["sin⁻¹x + C", "cos⁻¹x + C", "tan⁻¹x + C", "sec⁻¹x + C"], "c": 0, "e": "∫ 1/√(1-x²) dx = sin⁻¹x + C." },
+            { "id": "e_m189", "q": "limₓ→₀ (1 - cos x)/x² equals:", "a": ["1/2", "0", "1", "∞"], "c": 0, "e": "Using 1 - cos x ≈ x²/2 for small x: limit = 1/2." },
+            { "id": "e_m190", "q": "The arithmetic mean of 2, 4, 6, 8 is:", "a": ["5", "10", "20", "4"], "c": 0, "e": "AM = (2+4+6+8)/4 = 20/4 = 5." },
+            { "id": "e_m191", "q": "C(10, 0) equals:", "a": ["1", "0", "10", "∞"], "c": 0, "e": "C(n, 0) = 1 for any n." },
+            { "id": "e_m192", "q": "If log x = 2, then x equals:", "a": ["100", "20", "e²", "2"], "c": 0, "e": "log₁₀ x = 2 → x = 10² = 100." },
+            { "id": "e_m193", "q": "d/dx (cos x²) equals:", "a": ["-2x sin x²", "2x sin x²", "-sin x²", "2x cos x²"], "c": 0, "e": "Chain rule: -sin(x²) × 2x = -2x sin x²." },
+            { "id": "e_m194", "q": "∫ 2x dx equals:", "a": ["x² + C", "2x² + C", "x²/2 + C", "2 + C"], "c": 0, "e": "∫ 2x dx = x² + C." },
+            { "id": "e_m195", "q": "If f(x) = |x|, then f is:", "a": ["Continuous but not differentiable at x=0", "Differentiable everywhere", "Not continuous at x=0", "Neither continuous nor differentiable"], "c": 0, "e": "|x| is continuous at 0 but not differentiable (sharp corner)." },
+            { "id": "e_m196", "q": "Sum of first n even numbers is:", "a": ["n(n+1)", "n²", "n(n-1)", "2n"], "c": 0, "e": "Sum = 2+4+...+2n = 2(1+2+...+n) = n(n+1)." },
+            { "id": "e_m197", "q": "If AB = AC and A is non-singular, then:", "a": ["B = C", "B ≠ C", "A = 0", "|A| = 0"], "c": 0, "e": "Pre-multiply by A⁻¹: A⁻¹AB = A⁻¹AC → B = C." },
+            { "id": "e_m198", "q": "The conjugate of -3i is:", "a": ["3i", "-3i", "3", "-3"], "c": 0, "e": "Conjugate of -3i = 3i." },
+            { "id": "e_m199", "q": "If z₁ = 1 + i, z₂ = 1 - i, then z₁/z₂ equals:", "a": ["i", "-i", "1", "2i"], "c": 0, "e": "(1+i)/(1-i) = (1+i)²/(1²+1²) = 2i/2 = i." },
+            { "id": "e_m200", "q": "The number 0.142857 in p/q form is:", "a": ["1/7", "2/7", "1/8", "1/9"], "c": 0, "e": "0.142857... = 1/7." },
+            { "id": "e_m201", "q": "∫ (3x² + 2x + 1) dx equals:", "a": ["x³ + x² + x + C", "x³ + x² + C", "3x³ + 2x² + x + C", "3x³ + x² + x + C"], "c": 0, "e": "∫ 3x² dx = x³, ∫ 2x dx = x², ∫ 1 dx = x. Sum = x³ + x² + x + C." },
+            { "id": "e_m202", "q": "∫₀^π/2 cos x dx equals:", "a": ["1", "0", "-1", "π/2"], "c": 0, "e": "∫₀^π/2 cos x dx = [sin x]₀^π/2 = sin(π/2) - sin(0) = 1 - 0 = 1." },
+            { "id": "e_m203", "q": "∫ e²ˣ dx equals:", "a": ["(1/2)e²ˣ + C", "e²ˣ + C", "2e²ˣ + C", "e²ˣ/2x + C"], "c": 0, "e": "∫ eᵃˣ dx = (1/a)eᵃˣ + C. So ∫ e²ˣ dx = (1/2)e²ˣ + C." },
+            { "id": "e_m204", "q": "∫ sin 3x dx equals:", "a": ["-(1/3) cos 3x + C", "(1/3) cos 3x + C", "-3 cos 3x + C", "3 cos 3x + C"], "c": 0, "e": "∫ sin(ax) dx = -(1/a) cos(ax) + C. So ∫ sin 3x dx = -(1/3) cos 3x + C." },
+            { "id": "e_m205", "q": "∫ (2x + 3)⁵ dx equals:", "a": ["(2x+3)⁶/12 + C", "(2x+3)⁶/6 + C", "5(2x+3)⁴ + C", "(2x+3)⁶ + C"], "c": 0, "e": "Let u = 2x+3, du = 2dx. ∫ u⁵(du/2) = (1/2)(u⁶/6) = (2x+3)⁶/12 + C." },
+            { "id": "e_m206", "q": "∫₁² (1/x) dx equals:", "a": ["ln 2", "ln 1", "0", "1"], "c": 0, "e": "∫₁² (1/x) dx = [ln x]₁² = ln 2 - ln 1 = ln 2." },
+            { "id": "e_m207", "q": "∫ tan x dx equals:", "a": ["ln|sec x| + C", "ln|sin x| + C", "sec²x + C", "-ln|cos x| + C"], "c": 0, "e": "∫ tan x dx = ∫ sin x/cos x dx = -ln|cos x| + C = ln|sec x| + C." },
+            { "id": "e_m208", "q": "∫ cot x dx equals:", "a": ["ln|sin x| + C", "ln|cos x| + C", "-ln|sin x| + C", "ln|sec x| + C"], "c": 0, "e": "∫ cot x dx = ∫ cos x/sin x dx = ln|sin x| + C." },
+            { "id": "e_m209", "q": "∫ x eˣ² dx equals:", "a": ["(1/2)eˣ² + C", "eˣ² + C", "xeˣ² + C", "(1/2)eˣ + C"], "c": 0, "e": "Let u = x², du = 2x dx. ∫ eᵘ(du/2) = (1/2)eˣ² + C." },
+            { "id": "e_m210", "q": "∫₀¹ (x² + x) dx equals:", "a": ["5/6", "1/3", "1/2", "2/3"], "c": 0, "e": "∫₀¹ (x²+x) dx = [x³/3 + x²/2]₀¹ = 1/3 + 1/2 = 5/6." },
+            { "id": "e_m211", "q": "∫ sec x dx equals:", "a": ["ln|sec x + tan x| + C", "ln|sec x| + C", "ln|tan x| + C", "sec x tan x + C"], "c": 0, "e": "∫ sec x dx = ln|sec x + tan x| + C." },
+            { "id": "e_m212", "q": "∫ 1/(x ln x) dx equals:", "a": ["ln|ln x| + C", "ln|x| + C", "1/ln x + C", "ln x + C"], "c": 0, "e": "Let u = ln x, du = dx/x. ∫ (1/u) du = ln|u| + C = ln|ln x| + C." },
+            { "id": "e_m213", "q": "∫₀^∞ e⁻ˣ dx equals:", "a": ["1", "0", "∞", "-1"], "c": 0, "e": "∫₀^∞ e⁻ˣ dx = [-e⁻ˣ]₀^∞ = 0 - (-1) = 1." },
+            { "id": "e_m214", "q": "∫ (sin x)/(cos²x) dx equals:", "a": ["sec x + C", "cos x + C", "tan x + C", "csc x + C"], "c": 0, "e": "∫ sin x/cos²x dx = ∫ sec x tan x dx = sec x + C." },
+            { "id": "e_m215", "q": "∫ x √(x² + 1) dx equals:", "a": ["(1/3)(x²+1)³/² + C", "(x²+1)³/² + C", "(1/2)(x²+1)¹/² + C", "x²√(x²+1)/2 + C"], "c": 0, "e": "Let u = x²+1, du = 2x dx. ∫ u¹/²(du/2) = (1/3)u³/² + C." },
+            { "id": "e_m216", "q": "The integral of a constant k is:", "a": ["kx + C", "k + C", "x + C", "k²x + C"], "c": 0, "e": "∫ k dx = kx + C." },
+            { "id": "e_m217", "q": "∫₋π/2^π/2 cos x dx equals:", "a": ["2", "0", "1", "π"], "c": 0, "e": "∫₋π/2^π/2 cos x dx = [sin x]₋π/2^π/2 = 1 - (-1) = 2." },
+            { "id": "e_m218", "q": "The area under curve y = x² from x=0 to x=2 is:", "a": ["8/3", "4/3", "2", "8"], "c": 0, "e": "Area = ∫₀² x² dx = [x³/3]₀² = 8/3." },
+            { "id": "e_m219", "q": "∫ 1/(x² + a²) dx equals:", "a": ["(1/a) tan⁻¹(x/a) + C", "tan⁻¹(x/a) + C", "(1/a) sin⁻¹(x/a) + C", "ln(x²+a²) + C"], "c": 0, "e": "Standard formula: ∫ 1/(x²+a²) dx = (1/a) tan⁻¹(x/a) + C." },
+            { "id": "e_m220", "q": "∫₀^π sin²x dx equals:", "a": ["π/2", "π", "0", "1"], "c": 0, "e": "∫₀^π sin²x dx = ∫₀^π (1-cos2x)/2 dx = [x/2 - sin2x/4]₀^π = π/2." },
+            { "id": "e_m240", "q": "A bag contains 3 red and 5 black balls. Probability of drawing a red ball is:", "a": ["3/8", "5/8", "3/5", "1/8"], "c": 0, "e": "Total balls = 3+5 = 8. Favorable (red) = 3. P(red) = 3/8." },
+            { "id": "e_m241", "q": "Two dice are rolled. Probability of getting sum 7 is:", "a": ["1/6", "1/12", "1/36", "1/18"], "c": 0, "e": "Favorable pairs: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) = 6 outcomes. Total = 36. P = 6/36 = 1/6." },
+            { "id": "e_m242", "q": "A card is drawn from a deck of 52 cards. Probability of getting a king is:", "a": ["1/13", "1/52", "4/13", "1/26"], "c": 0, "e": "There are 4 kings in a deck. P(king) = 4/52 = 1/13." },
+            { "id": "e_m243", "q": "Probability of getting exactly 2 heads when 3 coins are tossed is:", "a": ["3/8", "1/8", "1/4", "1/2"], "c": 0, "e": "Total outcomes = 8. Favorable (HHT, HTH, THH) = 3. P = 3/8." },
+            { "id": "e_m244", "q": "If P(A) = 1/3 and P(B) = 1/4, and A, B are mutually exclusive, then P(A or B) equals:", "a": ["7/12", "1/12", "1/7", "1/2"], "c": 0, "e": "P(A∪B) = P(A) + P(B) = 1/3 + 1/4 = 4/12 + 3/12 = 7/12." },
+            { "id": "e_m245", "q": "A fair die is rolled. Probability of getting an odd number is:", "a": ["1/2", "1/3", "1/6", "2/3"], "c": 0, "e": "Odd numbers: 1,3,5 → 3 outcomes. P = 3/6 = 1/2." },
+            { "id": "e_m246", "q": "A letter is chosen from the word 'PROBABILITY'. Probability it is 'B' is:", "a": ["2/11", "1/11", "1/2", "2/10"], "c": 0, "e": "Total letters = 11. Letter B appears twice. P = 2/11." },
+            { "id": "e_m247", "q": "If P(A) = 0.6, P(B) = 0.3, and P(A∩B) = 0.2, then P(A∪B) equals:", "a": ["0.7", "0.9", "0.5", "0.8"], "c": 0, "e": "P(A∪B) = P(A) + P(B) - P(A∩B) = 0.6 + 0.3 - 0.2 = 0.7." },
+            { "id": "e_m248", "q": "From a pack of 52 cards, probability of drawing a spade or a king is:", "a": ["4/13", "1/13", "17/52", "1/4"], "c": 0, "e": "P(spade) = 13/52, P(king) = 4/52, P(spade & king) = 1/52. P = 13/52+4/52-1/52 = 16/52 = 4/13." },
+            { "id": "e_m249", "q": "A box has 5 red, 4 green, 3 blue balls. Probability of drawing a green ball is:", "a": ["1/3", "4/12", "5/12", "3/12"], "c": 0, "e": "Total = 5+4+3 = 12. Green = 4. P(green) = 4/12 = 1/3." },
+            { "id": "e_m250", "q": "Two coins are tossed. Probability of at most one head is:", "a": ["3/4", "1/4", "1/2", "1"], "c": 0, "e": "Outcomes: HH, HT, TH, TT. At most one head: HT, TH, TT → 3. P = 3/4." },
+            { "id": "e_m251", "q": "If P(A) = 0.8, P(B) = 0.7, and P(A∪B) = 0.9, then P(A∩B) equals:", "a": ["0.6", "1.5", "0.5", "0.56"], "c": 0, "e": "P(A∩B) = P(A) + P(B) - P(A∪B) = 0.8 + 0.7 - 0.9 = 0.6." },
+            { "id": "e_m252", "q": "Probability that a leap year has 53 Sundays is:", "a": ["2/7", "1/7", "1/2", "1/52"], "c": 0, "e": "Leap year has 366 days = 52 weeks + 2 days. These 2 days can be (Sun,Mon), (Mon,Tue)... 2/7 chance one is Sunday." },
+            { "id": "e_m253", "q": "A pair of dice is rolled. Probability of getting doublets is:", "a": ["1/6", "1/12", "1/36", "1/18"], "c": 0, "e": "Doublets: (1,1),(2,2),(3,3),(4,4),(5,5),(6,6) → 6 outcomes. P = 6/36 = 1/6." },
+            { "id": "e_m254", "q": "A committee of 2 is chosen from 3 men and 2 women. Probability that both are men is:", "a": ["3/10", "9/25", "3/5", "1/10"], "c": 0, "e": "Total ways = C(5,2) = 10. Ways to choose 2 men = C(3,2) = 3. P = 3/10." },
+            { "id": "e_m255", "q": "Three cards are drawn from a deck. Probability all are aces is:", "a": ["1/5525", "4/52", "1/2197", "1/140608"], "c": 0, "e": "P = (4/52)(3/51)(2/50) = 24/132600 = 1/5525." },
+            { "id": "e_m256", "q": "If P(A) = 0.5, P(B) = 0.4, and A, B are independent, then P(A∩B) equals:", "a": ["0.2", "0.9", "0.1", "0.02"], "c": 0, "e": "For independent events: P(A∩B) = P(A)×P(B) = 0.5×0.4 = 0.2." },
+            { "id": "e_m257", "q": "A bag has 4 white, 5 black balls. Two balls drawn without replacement. Probability both are white is:", "a": ["1/6", "4/9", "2/9", "1/3"], "c": 0, "e": "P = (4/9)(3/8) = 12/72 = 1/6." },
+            { "id": "e_m258", "q": "Probability of getting a sum of 9 with two dice is:", "a": ["1/9", "1/12", "1/36", "5/36"], "c": 0, "e": "Favorable: (3,6),(4,5),(5,4),(6,3) → 4 outcomes. P = 4/36 = 1/9." },
+            { "id": "e_m259", "q": "In a Poisson distribution, the mean and variance are:", "a": ["Equal", "Mean > Variance", "Mean < Variance", "Not related"], "c": 0, "e": "In Poisson distribution, mean = variance = λ." }
         ],
         physics: [            
             { id: "e_p1", q: "The number of significant figures in 0.00708600 is:", a: ["4", "5", "6", "8"], c: 2, e: "Leading zeros not significant. Digits 7,0,8,6,0,0 give 6 significant figures." },
