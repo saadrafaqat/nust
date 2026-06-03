@@ -60,7 +60,7 @@ const QUESTION_BANK = {
             { id: "e_m56", q: "Sum of first $n$ natural numbers is:", a: ["$n(n+1)/2$", "$n(n-1)/2$", "$n^2$", "$n(n+1)$"], c: 0, e: "Standard sum formula." },
             { id: "e_m57", q: "The $n^{th}$ term of a GP is:", a: ["$ar^{n-1}$", "$a + (n-1)d$", "$a(r^n - 1)/(r - 1)$", "$a(1 - r^n)/(1 - r)$"], c: 0, e: "Standard GP formula." },
             { id: "e_m58", q: "If $2, x, 8$ are in GP, then $x$ equals:", a: ["$\\pm 4$", "$4$", "$5$", "$6$"], c: 0, e: "$x^2 = 2 \\times 8 = 16 \\implies x = \\pm 4$." },
-            { id: "e_m59", q: "The sum of infinite GP $1 + 1/2 + 1/4 + \\dots$ is:", a: ["$2$", "$1$", "$3$", "$\\infty$"], c: 0, e: "$a/(1-r) = 1/(0.5) = 2$." }
+            { id: "e_m59", q: "The sum of infinite GP $1 + 1/2 + 1/4 + \\dots$ is:", a: ["$2$", "$1$", "$3$", "$\\infty$"], c: 0, e: "$a/(1-r) = 1/(0.5) = 2$." },
             { id: "e_m60", q: "Arithmetic mean between $a$ and $b$ is:", a: ["$(a+b)/2$", "$\\sqrt{ab}$", "$2ab/(a+b)$", "$a - b$"], c: 0, e: "Definition of AM." },
             { id: "e_m61", q: "Geometric mean between $a$ and $b$ is:", a: ["$\\sqrt{ab}$", "$(a+b)/2$", "$2ab/(a+b)$", "$ab$"], c: 0, e: "Definition of GM." },
             { id: "e_m62", q: "The sum of first 10 terms of AP $1, 3, 5, \\dots$ is:", a: ["$100$", "$50$", "$25$", "$200$"], c: 0, e: "$S_n = n/2(2a+(n-1)d) = 5(2+18) = 100$." },
