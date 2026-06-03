@@ -243,8 +243,7 @@ const QUESTION_BANK = {
             { id: "e_m258", q: "Probability of getting a sum of 9 with two dice is:", a: ["1/9", "1/12", "1/36", "5/36"], c: 0, e: "Favorable: (3,6),(4,5),(5,4),(6,3) → 4 outcomes. P = 4/36 = 1/9." },
             { id: "e_m259", q: "In a Poisson distribution, the mean and variance are:", a: ["Equal", "Mean > Variance", "Mean < Variance", "Not related"], c: 0, e: "In Poisson distribution, mean = variance = λ." },
         ],
-        physics: [
-            
+        physics: [            
             { id: "e_p1", q: "The number of significant figures in 0.00708600 is:", a: ["4", "5", "6", "8"], c: 2, e: "Leading zeros not significant. Digits 7,0,8,6,0,0 give 6 significant figures." },
             { id: "e_p2", q: "Which is a base SI unit?", a: ["Newton", "Candela", "Joule", "Watt"], c: 1, e: "The 7 base SI units: meter, kilogram, second, ampere, kelvin, mole, candela." },
             { id: "e_p3", q: "The dimension of torque is:", a: ["[MLT⁻²]", "[ML²T⁻²]", "[MLT⁻¹]", "[ML²T⁻³]"], c: 1, e: "Torque = Force × Distance = [MLT⁻²][L] = [ML²T⁻²]" },
@@ -416,7 +415,6 @@ const QUESTION_BANK = {
             { id: "e_p169", q: "The device used to detect nuclear radiations is:", a: ["Galvanometer", "Geiger-Müller tube", "Thermocouple", "Potentiometer"], c: 1, e: "Geiger-Müller (GM) tube is used to detect and measure nuclear radiations." },
             { id: "e_p170", q: "For a convex lens, when the object is placed at the focal point, the image is formed at:", a: ["Focus", "Infinity", "Center of curvature", "2F"], c: 1, e: "When object is at F, rays become parallel after refraction, forming image at infinity." },
         ],
-        
         english: [
             { id: "e_e1", q: "Choose the word closest in meaning to 'Accord':", a: ["Disunity", "Cord", "Concurrence", "Pack"], c: 2, e: "Accord means agreement or harmony; concurrence is a synonym." },
             { id: "e_e2", q: "Choose the word closest in meaning to 'Mediation':", a: ["Annoyance", "Irritating", "Aggregate", "Intercession"], c: 3, e: "Mediation is the act of intervening between parties; intercession is a synonym." },
