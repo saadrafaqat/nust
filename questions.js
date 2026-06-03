@@ -1236,7 +1236,7 @@ const QUESTION_BANK = {
             { id: "ar_082", q: "3 cats catch 3 lizards in 3 mins. Time for 100 cats to catch 100 lizards?", a: ["3 mins", "100 mins", "300 mins", "1 min"], c: 0, e: "Constant rate logic." },
             { id: "ar_083", q: "A farmer sees 10 birds and shoots one. How many are left?", a: ["9", "10", "0", "1"], c: 2, e: "The rest fly away." },
             { id: "ar_084", q: "Room volume 10x2x30 ft, machine pumps 60,000L/min. Time to empty?", a: ["Fast", "Slow", "Instant", "Variable"], c: 0, e: "Volume/Rate calculation." },
-            { id: "ar_085", q: "Identify the bridge in the image.", a: ["Golden Gate", "London Bridge", "Brooklyn Bridge", "Sydney Bridge"], c: 0, e: "Visual identification.", d:"85.png" },
+            { id: "ar_085", q: "Identify the bridge in the image.", a: ["Golden Gate", "London Bridge", "Brooklyn Bridge", "Sydney Bridge"], c: 0, e: "Visual identification.", d:"84.png" },
             { id: "ar_086", q: "In which order is plaster handled?", a: ["Mixing-Pouring-Curing-Drying", "Drying-Mixing-Pouring", "Pouring-Curing-Mixing", "Curing-Mixing-Drying"], c: 0, e: "Standard plaster procedure." },
             { id: "ar_087", q: "If an object has radial symmetry, what shape could it be?", a: ["Square", "Rectangle", "Flower", "Triangle"], c: 2, e: "Flowers have radial symmetry." },
             { id: "ar_088", q: "Which of the following is a 3D object?", a: ["Square", "Circle", "Pyramid", "Triangle"], c: 2, e: "A pyramid has volume." },
