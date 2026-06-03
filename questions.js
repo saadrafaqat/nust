@@ -241,7 +241,7 @@ const QUESTION_BANK = {
             { id: "e_m256", "q": "If P(A) = 0.5, P(B) = 0.4, and A, B are independent, then P(A∩B) equals:", "a": ["0.2", "0.9", "0.1", "0.02"], "c": 0, "e": "For independent events: P(A∩B) = P(A)×P(B) = 0.5×0.4 = 0.2." },
             { id: "e_m257", "q": "A bag has 4 white, 5 black balls. Two balls drawn without replacement. Probability both are white is:", "a": ["1/6", "4/9", "2/9", "1/3"], "c": 0, "e": "P = (4/9)(3/8) = 12/72 = 1/6." },
             { id: "e_m258", "q": "Probability of getting a sum of 9 with two dice is:", "a": ["1/9", "1/12", "1/36", "5/36"], "c": 0, "e": "Favorable: (3,6),(4,5),(5,4),(6,3) → 4 outcomes. P = 4/36 = 1/9." },
-            { id: "e_m259", "q": "In a Poisson distribution, the mean and variance are:", "a": ["Equal", "Mean > Variance", "Mean < Variance", "Not related"], "c": 0, "e": "In Poisson distribution, mean = variance = λ." },
+            { id: "e_m259", "q": "In a Poisson distribution, the mean and variance are:", "a": ["Equal", "Mean > Variance", "Mean < Variance", "Not related"], "c": 0, "e": "In Poisson distribution, mean = variance = λ." }
         ],
         physics: [            
             { id: "e_p1", q: "The number of significant figures in 0.00708600 is:", a: ["4", "5", "6", "8"], c: 2, e: "Leading zeros not significant. Digits 7,0,8,6,0,0 give 6 significant figures." },
