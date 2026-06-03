@@ -1512,7 +1512,21 @@ const QUESTION_BANK = {
             { id: "ns_m197", q: "If AB=AC, A non-singular:", a: ["B=C", "B≠C", "A=0", "|A|=0"], c: 0, e: "B = C" },
             { id: "ns_m198", q: "Conjugate of -3i is:", a: ["3i", "-3i", "3", "-3"], c: 0, e: "z̅ = 3i" },
             { id: "ns_m199", q: "If z₁=1+i, z₂=1-i, z₁/z₂ is:", a: ["i", "-i", "1", "2i"], c: 0, e: "i" },
-            { id: "ns_m200", q: "0.142857 in p/q form:", a: ["1/7", "2/7", "1/8", "1/9"], c: 0, e: "1/7" }
+            { id: "ns_m200", q: "0.142857 in p/q form:", a: ["1/7", "2/7", "1/8", "1/9"], c: 0, e: "1/7" },
+            { id: "ns_m202", q: "∫<sub>0</sub><sup>π/2</sup> cos x dx equals:", a: ["1", "0", "-1", "π/2"], c: 0, e: "∫<sub>0</sub><sup>π/2</sup> cos x dx = [sin x]<sub>0</sub><sup>π/2</sup> = sin(π/2) - sin(0) = 1 - 0 = 1." },
+            { id: "ns_m203", q: "∫ e<sup>2x</sup> dx equals:", a: ["(1/2)e<sup>2x</sup> + C", "e<sup>2x</sup> + C", "2e<sup>2x</sup> + C", "e<sup>2x</sup>/2x + C"], c: 0, e: "∫ e<sup>ax</sup> dx = (1/a)e<sup>ax</sup> + C. So ∫ e<sup>2x</sup> dx = (1/2)e<sup>2x</sup> + C." },
+            { id: "ns_m204", q: "∫ sin 3x dx equals:", a: ["-(1/3) cos 3x + C", "(1/3) cos 3x + C", "-3 cos 3x + C", "3 cos 3x + C"], c: 0, e: "∫ sin(ax) dx = -(1/a) cos(ax) + C. So ∫ sin 3x dx = -(1/3) cos 3x + C." },
+            { id: "ns_m205", q: "∫ (2x + 3)<sup>5</sup> dx equals:", a: ["(2x+3)<sup>6</sup>/12 + C", "(2x+3)<sup>6</sup>/6 + C", "5(2x+3)<sup>4</sup> + C", "(2x+3)<sup>6</sup> + C"], c: 0, e: "Let u = 2x+3, du = 2dx. ∫ u<sup>5</sup>(du/2) = (1/2)(u<sup>6</sup>/6) = (2x+3)<sup>6</sup>/12 + C." },
+            { id: "ns_m206", q: "∫<sub>1</sub><sup>2</sup> (1/x) dx equals:", a: ["ln 2", "ln 1", "0", "1"], c: 0, e: "∫<sub>1</sub><sup>2</sup> (1/x) dx = [ln x]<sub>1</sub><sup>2</sup> = ln 2 - ln 1 = ln 2." },
+            { id: "ns_m207", q: "∫ tan x dx equals:", a: ["ln|sec x| + C", "ln|sin x| + C", "sec²x + C", "-ln|cos x| + C"], c: 0, e: "∫ tan x dx = ∫ sin x/cos x dx = -ln|cos x| + C = ln|sec x| + C." },
+            { id: "ns_m208", q: "∫ cot x dx equals:", a: ["ln|sin x| + C", "ln|cos x| + C", "-ln|sin x| + C", "ln|sec x| + C"], c: 0, e: "∫ cot x dx = ∫ cos x/sin x dx = ln|sin x| + C." },
+            { id: "ns_m209", q: "∫ x e<sup>x²</sup> dx equals:", a: ["(1/2)e<sup>x²</sup> + C", "e<sup>x²</sup> + C", "xe<sup>x²</sup> + C", "(1/2)e<sup>x</sup> + C"], c: 0, e: "Let u = x², du = 2x dx. ∫ e<sup>u</sup>(du/2) = (1/2)e<sup>x²</sup> + C." },
+            { id: "ns_m210", q: "∫<sub>0</sub><sup>1</sup> (x² + x) dx equals:", a: ["5/6", "1/3", "1/2", "2/3"], c: 0, e: "∫<sub>0</sub><sup>1</sup> (x²+x) dx = [x³/3 + x²/2]<sub>0</sub><sup>1</sup> = 1/3 + 1/2 = 5/6." },
+            { id: "ns_m211", q: "∫ sec x dx equals:", a: ["ln|sec x + tan x| + C", "ln|sec x| + C", "ln|tan x| + C", "sec x tan x + C"], c: 0, e: "∫ sec x dx = ln|sec x + tan x| + C (standard formula)." },
+            { id: "ns_m212", q: "∫ 1/(x ln x) dx equals:", a: ["ln|ln x| + C", "ln|x| + C", "1/ln x + C", "ln x + C"], c: 0, e: "Let u = ln x, du = dx/x. ∫ (1/u) du = ln|u| + C = ln|ln x| + C." },
+            { id: "ns_m213", q: "∫<sub>0</sub><sup>∞</sup> e<sup>-x</sup> dx equals:", a: ["1", "0", "∞", "-1"], c: 0, e: "∫<sub>0</sub><sup>∞</sup> e<sup>-x</sup> dx = [-e<sup>-x</sup>]<sub>0</sub><sup>∞</sup> = 0 - (-1) = 1." },
+            { id: "ns_m214", q: "∫ (sin x)/(cos²x) dx equals:", a: ["sec x + C", "cos x + C", "tan x + C", "csc x + C"], c: 0, e: "∫ sin x/cos²x dx = ∫ sec x tan x dx = sec x + C." },
+            { id: "ns_m215", q: "∫ x √(x² + 1) dx equals:", a: ["(1/3)(x²+1)<sup>3/2</sup> + C", "(x²+1)<sup>3/2</sup> + C", "(1/2)(x²+1)<sup>1/2</sup> + C", "x²√(x²+1)/2 + C"], c: 0, e: "Let u = x²+1, du = 2x dx. ∫ u<sup>1/2</sup>(du/2) = (1/3)u<sup>3/2</sup> + C." },
       
         ],
         english: [
