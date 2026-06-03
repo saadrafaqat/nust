@@ -353,7 +353,7 @@ const QUESTION_BANK = {
             { id: "e_p107", q: "Alpha particle =", a: ["2p + 2n", "1p + 1n", "2p + 1n", "2e"], c: 0, e: "α = helium nucleus = 2p + 2n" },
             { id: "e_p108", q: "Einstein's mass-energy relation:", a: ["E = mc", "E = mc²", "E = ½mv²", "E = hf"], c: 1, e: "E = mc²" },
             { id: "e_p109", q: "SI unit of radioactivity:", a: ["Curie", "Rutherford", "Becquerel", "Roentgen"], c: 2, e: "Becquerel (Bq) = 1 disintegration/s" },
-            { id: "e_p110", q: "Photocopiers & inkjet printers use:", a: ["Electrostatics", "Electromagnetism", "Thermodynamics", "Nuclear physics"], c: 0, e: "Xerography uses electrostatic principles." }
+            { id: "e_p110", q: "Photocopiers & inkjet printers use:", a: ["Electrostatics", "Electromagnetism", "Thermodynamics", "Nuclear physics"], c: 0, e: "Xerography uses electrostatic principles." },
             { id: "e_p111", q: "The SI unit of electric flux is:", a: ["Nm²/C", "N/C", "Vm", "C/m²"], c: 0, e: "Electric flux = E·A = N/C × m² = Nm²/C" },
             { id: "e_p112", q: "The number of significant figures in 0.00320 is:", a: ["3", "5", "4", "2"], c: 0, e: "Leading zeros are not significant; trailing zeros after decimal are. So 3,2,0 → 3 significant figures." },
             { id: "e_p113", q: "Which of the following is a vector quantity?", a: ["Speed", "Work", "Torque", "Power"], c: 2, e: "Torque has both magnitude and direction; speed, work, and power are scalars." },
