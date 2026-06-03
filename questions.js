@@ -1333,6 +1333,7 @@ const QUESTION_BANK = {
             { id: "ns_m18", q: "Transpose of a product $(AB)^T$ equals:", a: ["$B^T A^T$", "$A^T B^T$", "$AB$", "$BA$"], c: 0, e: "By property of transpose, $(AB)^T = B^T A^T$." },
             { id: "ns_m19", q: "Work done by a spring is:", a: ["$1/2 kx^2$", "$kx$", "$1/2 kx$", "$k/x^2$"], c: 0, e: "Energy stored in a spring is $U = \\frac{1}{2}kx^2$." },
             { id: "ns_m20", q: "If $D > 0$, the roots of $ax^2+bx+c=0$ are:", a: ["Real and distinct", "Real and equal", "Complex", "Imaginary"], c: 0, e: "A positive discriminant implies real, distinct roots." },
+        ],    
         english: [
             { id: "ns_e1", q: "Choose the synonym of 'ANOMALOUS':", a: ["Normal", "Abnormal", "Aggressive", "Capacious"], c: 1, e: "'Anomalous' refers to something that deviates from what is standard, normal, or expected; hence, 'abnormal' is its exact synonym." },
             { id: "ns_e2", q: "Identify the antonym of the word 'EXTOL':", a: ["Praise", "Criticize", "Magnify", "Exalt"], c: 1, e: "'Extol' means to praise enthusiastically or highly. The opposite action is to find fault or 'criticize'." },
