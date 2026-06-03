@@ -1217,7 +1217,7 @@ const QUESTION_BANK = {
             { id: "ar_058", q: "What is a gear labeled 1–5 with a blank spot likely indicating?", a: ["Reverse (R)", "Neutral", "Park", "Drive"], c: 0, e: "The R spot indicates reverse." },
             { id: "ar_059", q: "What is the purpose of curing in plaster?", a: ["To color it", "To harden the material", "To make it flexible", "To smell good"], c: 1, e: "Curing allows the chemical bonds to solidify." },
             { id: "ar_060", q: "Which of the following is a Pakistani brand?", a: ["Bata", "Tapal Tea", "Apple", "Nestle"], c: 1, e: "Tapal is a Pakistani tea brand." },
-            { id: "ar_061", q: "How many triangles are there in a large triangle?", a: ["1", "3", "5", "7"], c: 0, e: "Geometric counting puzzle." },
+            { id: "ar_061", q: "How many triangles are there in a large triangle?", a: ["1", "3", "5", "7"], c: 0, e: "Geometric counting puzzle.", d: "61.png" },
             { id: "ar_062", q: "How many squares can be formed from 8 triangles?", a: ["2", "4", "6", "8"], c: 1, e: "Geometric configuration." },
             { id: "ar_063", q: "Which shape completes the shaded box without repetition?", a: ["Triangle", "Square", "Circle", "Cross"], c: 1, e: "Logical pattern completion." },
             { id: "ar_064", q: "What shadow matches the given object?", a: ["Match A", "Match B", "Match C", "Match D"], c: 0, e: "Shadow projection analysis." },
